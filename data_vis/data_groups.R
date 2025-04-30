@@ -287,10 +287,13 @@ ms_groups <- read_csv(here('data_working', 'site_groupings_by_prsim_trend.csv'))
 # munge ms and grid together ####
 ms_temp <- ms_groups %>%
     mutate(source = 'ms') %>%
+    tibble() %>%
     select(source, coarse_grouping)
+
 
 grid_temp <- grid_groups  %>%
     mutate(source = 'grid') %>%
+    tibble()%>%
     select(source, coarse_grouping)
 
 both_groups <- rbind(ms_temp, grid_temp) %>% na.omit()

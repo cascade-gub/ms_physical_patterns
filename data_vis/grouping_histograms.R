@@ -54,13 +54,13 @@ aridity %>%
 aridity %>%
     filter(trend_precip_mean > 0,
            trend_temp_mean > 0) %>%
-    ggplot(aes(x = mean_ai, color = q_flag))+
+    ggplot(aes(x = mean_ai, fill = q_flag))+
         #geom_density(lwd = 2)+
     geom_histogram()+
-    scale_color_manual(values = c('blue', 'grey', 'black'))+
+    scale_fill_manual(values = c('red','blue', 'grey', 'black'))+
     labs(x = 'Aridity Index (mean, 1980-2020)',
          y = 'Density',
-         color = 'Q trend',
+         fill = 'Q trend',
          title = 'Hotter and wetter')+
     geom_vline(xintercept = 1, color = 'orange', lwd = 2, lty = 'longdash')+
     theme_few(base_size = 20)
@@ -75,12 +75,13 @@ aridity %>%
 aridity %>%
     filter(trend_precip_mean < 0,
            trend_temp_mean > 0) %>%
-    ggplot(aes(x = mean_ai, color = q_flag))+
-    geom_density(lwd = 2)+
-    scale_color_manual(values = c('red', 'grey', 'black'))+
+    ggplot(aes(x = mean_ai, fill = q_flag))+
+    #geom_density(lwd = 2)+
+    geom_histogram()+
+    scale_fill_manual(values = c('red','blue', 'grey', 'black'))+
     labs(x = 'Aridity Index (mean, 1980-2020)',
          y = 'Density',
-         color = 'Q trend',
+         fill = 'Q trend',
          title = 'Hotter and drier')+
     geom_vline(xintercept = 1, color = 'orange', lwd = 2, lty = 'longdash')+
     theme_few(base_size = 20)

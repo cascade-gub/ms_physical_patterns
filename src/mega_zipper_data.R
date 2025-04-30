@@ -4,7 +4,11 @@ source(here('src', 'setup.R'))
 
 # read in full q_metrics.R output
 #source(here('src', 'q_metrics.R'))
-metrics <- readRDS(here('data_working', 'discharge_metrics_siteyear.rds')) %>%
+
+
+
+#metrics <- readRDS(here('data_working', 'discharge_metrics_siteyear.rds')) %>%
+metrics <- readRDS(here('data_working', 'discharge_metrics_siteyear_nTest.rds')) %>%
     distinct()
 
 # run full climate trends first
@@ -31,7 +35,8 @@ clim_trends %>%
 # make frame of all data during prism
 prism_site_run_trends_data <- metrics %>%
     select(-contains('date')) %>% # dates breaking math
-    filter(agg_code == 'annual') %>%
+    filter(agg_code == 'annual',
+           n > 90) %>%
     select(site_code, water_year, agg_code,
            # climate
            temp_mean,
