@@ -10,6 +10,7 @@ source(here('src', 'setup.R'))
 # set logging
 set_logger()
 # Q ####
+q_freq_check = F
 ## read data ####
 log_info('load data')
 
@@ -72,6 +73,7 @@ q_data_scaled <- q_data_nointerp_scaled %>%
   mutate(water_year = case_when(month %in% c(10, 11, 12) ~ year+1,
                                 TRUE ~ year))
 
+if(q_freq_check == T){
 ## q freq check ####
 log_info('performing freq check')
 freq_check <- frequency_check(q_data_scaled)
@@ -93,7 +95,7 @@ sites_lost <- q_data_scaled %>%
 if(length(sites_lost > 0)){
     log_warn({nrow(sites_lost)}, ' sites lost in q freq check')
 }
-
+}else{q_data_good <- q_data_scaled}
 ## AR(1) ####
 
 # A few additional calculations are required for the
@@ -161,7 +163,8 @@ q_data_doy <- q_data_good %>%
                q75_sum = 0.75*sum(val_mmd),
                q95_sum = 0.95*sum(val_mmd),
                q99_sum = 0.99*sum(val_mmd),
-               q_sum = cumsum(val_mmd)) %>%
+               q_sum = cumsum(val_mmd),
+               n = n()) %>%
     # and then add in demarcation of when cumulative q
     # thresholds are surpassed
         mutate(q01_exceed = case_when(q_sum > q01_sum ~ 1,
@@ -191,9 +194,10 @@ q_data_doy <- q_data_good %>%
                                              as_date(paste(water_year-1, "10", "01")),
                                              units = "days"))) %>%
     # and keep only columns of interest for later joining
-    select(site_code, water_year, q_totsum:q99_sum, quantile_exceeded, dowy_exceed) %>%
+    select(site_code, water_year, q_totsum:q99_sum, quantile_exceeded, dowy_exceed, n) %>%
     # and finally pivot for easier viewing
-    pivot_wider(names_from = quantile_exceeded, values_from = dowy_exceed)
+    pivot_wider(names_from = quantile_exceeded, values_from = dowy_exceed) %>%
+    mutate(agg_code = 'annual')
 
 ## monthly flow summaries #####
 log_info('month q summaries')
@@ -212,7 +216,8 @@ q_data_month_summaries <- q_data_good %>%
                           mean(val_mmd, na.rm = TRUE)), # coefficient of variation
               q_skew = skewness(val_mmd, na.rm = TRUE), # skewness
               q_kurt = kurtosis(val_mmd, na.rm = TRUE), # kurtosis
-              q_rbi = rbi_print(val_mmd)) %>% # Richards-Baker flashiness index
+              q_rbi = rbi_print(val_mmd), # Richards-Baker flashiness index
+              n = n()) %>%
     rename(agg_code = month) %>%
     mutate(agg_code = as.character(agg_code))
 
@@ -235,7 +240,8 @@ q_data_season_summaries <- q_data_good %>%
                           mean(val_mmd, na.rm = TRUE)), # coefficient of variation
               q_skew = skewness(val_mmd, na.rm = TRUE), # skewness
               q_kurt = kurtosis(val_mmd, na.rm = TRUE), # kurtosis
-              q_rbi = rbi_print(val_mmd)) %>% # Richards-Baker flashiness index
+              q_rbi = rbi_print(val_mmd), # Richards-Baker flashiness index
+              n = n()) %>%
     rename(agg_code = season)
 
 
@@ -280,7 +286,8 @@ q_wy_mean <- q_data_good %>%
     drop_na(val_mmd) %>%
     mutate(site_wy = paste(site_code,water_year, sep = "_")) %>%
     group_by(site_wy) %>%
-    summarize(mean = mean(val_mmd, na.rm = TRUE)) %>%
+    summarize(mean = mean(val_mmd, na.rm = TRUE),
+              n = n()) %>%
     ungroup() %>%
     mutate(use2 = case_when(mean > 0 ~ 1,
                             mean <= 0 ~ 0)) %>%
@@ -320,7 +327,8 @@ q_metrics_siteyear <- q_data_good %>%
             a_flow_sig = lm(scaleQ ~ sin_2pi_year + cos_2pi_year,
                             na.action = na.omit)$coefficients["sin_2pi_year"],
             b_flow_sig = lm(scaleQ ~ sin_2pi_year + cos_2pi_year,
-                            na.action = na.omit)$coefficients["cos_2pi_year"]) %>%
+                            na.action = na.omit)$coefficients["cos_2pi_year"],
+            n = n()) %>%
   ungroup() %>%
   mutate(q_amp = sqrt((a_flow_sig)^2 + (b_flow_sig)^2), # amplitude
          q_phi = atan(-a_flow_sig/b_flow_sig), # phase shift
@@ -337,7 +345,7 @@ if(length(sites_lost > 0)){
 
 # Join with all other discharge metrics created.
 q_metrics_out <- q_metrics_siteyear %>%
-    left_join(., q_data_doy, by = c('site_code', 'water_year')) %>%
+    left_join(., q_data_doy, by = c('site_code', 'water_year', 'agg_code', 'n')) %>%
     left_join(., q_high_flows, by = c('site_code', 'water_year', 'agg_code')) %>%
     full_join(., q_data_month_summaries) %>%
     full_join(., q_data_season_summaries)
@@ -692,54 +700,54 @@ saveRDS(n_q_vwm_month, "data_working/N_VWM_monthly.rds")
 saveRDS(n_q_vwm_seas, "data_working/N_VWM_seasonal.rds")
 saveRDS(n_q_vwm_ann, "data_working/N_VWM_annual.rds")
 
-#### DOC ####
-
-##### Monthly means #####
-
-doc_monthly_vwmeans <- chem_q_good %>%
-    select(site_code, var, water_year, month, monthly_vwm_mgL) %>%
-    pivot_wider(
-        names_from = c(var, month),
-        values_from = monthly_vwm_mgL)
-
-#out_path <- here("data_working", "doc_monthly_VWM.rds")
-#saveRDS(doc_monthly_vwmeans, out_path)
-
-pH_monthly_vwmeans <- chem_q_good %>%
-    select(site_code, var, water_year, month, monthly_vwm_mgL) %>%
-    pivot_wider(
-        names_from = c(var, month),
-        values_from = monthly_vwm_mgL)
-
-#out_path <- here("data_working", "pH_monthly_VWM.rds")
-#saveRDS(pH_monthly_vwmeans, out_path)
-
-##### Annual means #####
-
-doc_annual_vwmeans <- chem_q_good %>%
-    group_by(site_code, var, water_year) %>%
-    summarize(Annual = mean(monthly_vwm_mgL, na.rm = TRUE)) %>%
-    ungroup() %>%
-    pivot_wider(
-        names_from = var,
-        values_from = Annual) %>%
-    rename(DOC_Annual = DOC)
-
-doc_vwmeans <- full_join(doc_monthly_vwmeans, doc_annual_vwmeans)
-
-#out_path <- here("data_working", "doc_annual_VWM.rds")
-#saveRDS(doc_vwmeans, out_path)
-
-pH_annual_vwmeans <- chem_q_good %>%
-    group_by(site_code, var, water_year) %>%
-    summarize(Annual = mean(monthly_vwm_mgL, na.rm = TRUE)) %>%
-    ungroup() %>%
-    pivot_wider(
-        names_from = var,
-        values_from = Annual) %>%
-    rename(pH_Annual = pH)
-
-pH_vwmeans <- full_join(pH_monthly_vwmeans, pH_annual_vwmeans)
+# #### DOC ####
+#
+# ##### Monthly means #####
+#
+# doc_monthly_vwmeans <- chem_q_good %>%
+#     select(site_code, var, water_year, month, monthly_vwm_mgL) %>%
+#     pivot_wider(
+#         names_from = c(var, month),
+#         values_from = monthly_vwm_mgL)
+#
+# #out_path <- here("data_working", "doc_monthly_VWM.rds")
+# #saveRDS(doc_monthly_vwmeans, out_path)
+#
+# pH_monthly_vwmeans <- chem_q_good %>%
+#     select(site_code, var, water_year, month, monthly_vwm_mgL) %>%
+#     pivot_wider(
+#         names_from = c(var, month),
+#         values_from = monthly_vwm_mgL)
+#
+# #out_path <- here("data_working", "pH_monthly_VWM.rds")
+# #saveRDS(pH_monthly_vwmeans, out_path)
+#
+# ##### Annual means #####
+#
+# doc_annual_vwmeans <- chem_q_good %>%
+#     group_by(site_code, var, water_year) %>%
+#     summarize(Annual = mean(monthly_vwm_mgL, na.rm = TRUE)) %>%
+#     ungroup() %>%
+#     pivot_wider(
+#         names_from = var,
+#         values_from = Annual) %>%
+#     rename(DOC_Annual = DOC)
+#
+# doc_vwmeans <- full_join(doc_monthly_vwmeans, doc_annual_vwmeans)
+#
+# #out_path <- here("data_working", "doc_annual_VWM.rds")
+# #saveRDS(doc_vwmeans, out_path)
+#
+# pH_annual_vwmeans <- chem_q_good %>%
+#     group_by(site_code, var, water_year) %>%
+#     summarize(Annual = mean(monthly_vwm_mgL, na.rm = TRUE)) %>%
+#     ungroup() %>%
+#     pivot_wider(
+#         names_from = var,
+#         values_from = Annual) %>%
+#     rename(pH_Annual = pH)
+#
+# pH_vwmeans <- full_join(pH_monthly_vwmeans, pH_annual_vwmeans)
 
 #out_path <- here("data_working", "pH_annual_VWM.rds")
 #saveRDS(pH_vwmeans, out_path)
@@ -835,7 +843,7 @@ q_data_out <- q_metrics_out %>%
     distinct() %>%
     drop_na(agg_code)
 
-out_path <- here('data_working', 'discharge_metrics_siteyear.rds')
+out_path <- here('data_working', 'discharge_metrics_siteyear_nTest.rds')
 saveRDS(q_data_out, out_path)
 log_info('file saved to ', out_path)
 
