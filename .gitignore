@@ -37,3 +37,7 @@ Rplot*.png
 
 # Word temp/lock files
 ~$*
+
+# Claude Code
+CLAUDE.md
+.claude/

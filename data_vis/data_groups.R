@@ -162,16 +162,16 @@ full_prism_trends %>%
 
 full_prism_trends %>%
     filter(grouping_exp == 'NON',
-           streamflow == 'decreasing') %>%
+           q_flag == 'decreasing') %>%
     select(domain)
 
-View(full_prism_trends %>%
-    filter(grouping == 'NNN',
-           streamflow == 'decreasing') %>%
+print(full_prism_trends %>%
+    filter(grouping == '---',
+           q_flag == 'decreasing') %>%
     select(domain, site_code, ws_status))
 
 
-metrics <- readRDS(here('data_working', 'discharge_metrics_siteyear.RDS')) %>%
+metrics <- readRDS(here('data_working', 'discharge_metrics_siteyear_nTest.rds')) %>%
     distinct()
 
 metrics %>%
@@ -183,7 +183,7 @@ metrics %>%
 q_data <- ms_load_product(prodname = 'discharge', macrosheds_root = my_ms_dir)
 
 group_counts <- full_prism_trends %>%
-    filter(streamflow != 'data limited') %>%
+    filter(q_flag != 'data limited') %>%
     group_by(grouping) %>%
     summarize(n = n())
 
@@ -229,7 +229,7 @@ grid_metrics <- read_csv(here('data_raw', 'grid_csvs', 'et2.csv')) %>%
 grid_trends <- grid_metrics %>%
     detect_trends()
 
-#write_csv(grid_trends, here('data_working', 'grid_trends.csv'))
+write_csv(grid_trends, here('data_working', 'grid_trends.csv'))
 grid_trends <- read_csv(here('data_working', 'grid_trends.csv')) %>%
     add_flags()
 
@@ -500,16 +500,16 @@ map_data %>%
 map_data %>%
     mapview(., zcol = 'trend_GPP', col.regions=brewer.pal(10, "PiYG"))
 
-map_data %>%
-    filter(p_GPP < 0.1) %>%
-    mapview(., zcol = 'trend_GPP', col.regions=brewer.pal(10, "PiYG"))
+# map_data %>%
+#     filter(p_GPP < 0.1) %>%
+#     mapview(., zcol = 'trend_GPP', col.regions=brewer.pal(10, "PiYG"))
 
 
 map_data %>%
     mapview(., zcol = 'trend_ppt', col.regions=brewer.pal(10, "Spectral"))
 
-map_data %>%
-    filter(p_tmean < 0.05) %>%
-    mapview(., zcol = 'trend_tmean', col.regions=rev(brewer.pal(10, "Spectral")))
+# map_data %>%
+#     filter(p_tmean < 0.05) %>%
+#     mapview(., zcol = 'trend_tmean', col.regions=rev(brewer.pal(10, "Spectral")))
 
 

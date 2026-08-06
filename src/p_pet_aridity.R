@@ -13,7 +13,7 @@ trends <- read_csv(here('data_working', 'site_groupings_by_prsim_trend.csv'))
 sums <- ms_load_product(my_ms_dir,
                                   prodname = "ws_attr_timeseries:all",
                                   warn = FALSE)
-metrics <- readRDS(here('data_working', 'discharge_metrics_siteyear.rds'))%>%
+metrics <- readRDS(here('data_working', 'discharge_metrics_siteyear_nTest.rds'))%>%
     filter(agg_code == 'annual')
 
 # ms_download_ws_attr(ms_root, "time series", timeout = 10000, skip_existing = TRUE)
@@ -87,7 +87,7 @@ d %>%
     scale_color_viridis(discrete = T)+
     theme(legend.position = 'none')
 
-ggplotly(pq_couple)
+# ggplotly(pq_couple)
 
 d_all <- d %>%
     filter(year %in% 1980:2020) %>%
