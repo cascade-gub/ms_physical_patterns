@@ -15,7 +15,8 @@ ms_groups <- read_csv(here('data_working', 'site_groupings_by_prsim_trend.csv'))
 
 grid_groups <- read_csv(here('data_working', 'grid_groups.csv'))%>%
     select(site_code, grouping, coarse_grouping) %>%
-    mutate(source = 'grid')
+    mutate(source = 'grid',
+           site_code = as.character(site_code))
 
 groups <- rbind(ms_groups, grid_groups)
 

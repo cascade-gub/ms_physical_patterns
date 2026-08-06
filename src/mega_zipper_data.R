@@ -4,7 +4,11 @@ source(here('src', 'setup.R'))
 
 # read in full q_metrics.R output
 #source(here('src', 'q_metrics.R'))
-metrics <- readRDS(here('data_working', 'discharge_metrics_siteyear.rds')) %>%
+
+
+
+#metrics <- readRDS(here('data_working', 'discharge_metrics_siteyear.rds')) %>%
+metrics <- readRDS(here('data_working', 'discharge_metrics_siteyear_nTest.rds')) %>%
     distinct()
 
 # run full climate trends first
@@ -29,9 +33,26 @@ clim_trends %>%
 
 # create longest run w/ prism data ####
 # make frame of all data during prism
+
+#first filter data for years of interest
+valid_site_years <- metrics %>%
+    select(-contains('date')) %>%
+    filter(agg_code == 'annual') %>%
+    group_by(site_code) %>%
+    summarize(n_median = median(n, na.rm = T),
+              n_max = max(n, na.rm = T),
+              n_sd = sd(n, na.rm = T)) %>%
+    mutate(seasonal = case_when(n_median > 89 & n_median <180 ~ 1,
+                                n_median > 181 ~ 0,
+                                n_median < 90 ~ 0)) %>%
+    select(site_code, seasonal)
+
 prism_site_run_trends_data <- metrics %>%
     select(-contains('date')) %>% # dates breaking math
-    filter(agg_code == 'annual') %>%
+    left_join(., valid_site_years, by = 'site_code') %>%
+    filter(agg_code == 'annual',
+           case_when(seasonal == 1 ~ n > 89,
+                     seasonal == 0 ~ n > 305)) %>%
     select(site_code, water_year, agg_code,
            # climate
            temp_mean,
