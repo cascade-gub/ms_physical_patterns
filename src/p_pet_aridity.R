@@ -54,16 +54,17 @@ d <- inner_join(p, daymet, by = c('network', 'domain', 'site_code', 'date')) %>%
     full_join(., et_obs, by = c('site_code', 'year' = 'wy'))
 
 
-d%>%
+ei_scatter <- d%>%
     left_join(., ms_site_data, by = 'site_code') %>%
 ggplot(., aes(x = ei_obs, y = evaporative_index, color = domain))+
     geom_point()+
     theme_few()+
     geom_abline(slope = 1, color = 'red', linewidth = 2)
     #geom_smooth(method = 'lm')
+ggsave(here('figures', 'ei_obs_vs_modeled.png'), ei_scatter, width = 10, height = 8, dpi = 300)
 
 
-d %>%
+pq_couple <- d %>%
     left_join(., ms_site_data, by = 'site_code') %>%
     #filter(q_totsum > 1000) %>%
     filter(ws_status == "non-experimental") %>%
@@ -86,6 +87,7 @@ d %>%
             y = 'total Q (mm)')+
     scale_color_viridis(discrete = T)+
     theme(legend.position = 'none')
+ggsave(here('figures', 'pq_coupling.png'), pq_couple, width = 10, height = 8, dpi = 300)
 
 # ggplotly(pq_couple)
 
@@ -124,19 +126,20 @@ d_all <- d %>%
 # the aridity values given in ws_attr_CAMELS_summaries. It'll be most similar if you use "prcp(mm/day)"
 # from daymet instead of "precip_median" from prism.
 
-d_all %>%
+ei_range_bar <- d_all %>%
     filter(ei_obs_range > 0,
            !is.na(q_flag)) %>%
 ggplot(aes(x = reorder(site_code, ei_obs_range), y = ei_obs_range, fill = q_flag))+
     geom_bar(stat = "identity")+
     theme_few()+
     theme(axis.text.x = element_text(angle = 45))
+ggsave(here('figures', 'ei_range_by_site.png'), ei_range_bar, width = 14, height = 7, dpi = 300)
 
 
 
 
 
-d_all %>%
+budyko_plot <- d_all %>%
     filter(!is.na(q_flag)) %>%
     mutate(label = paste(domain.x, ' ', site_code)) %>%
 ggplot(.,aes(x = aridity_index, y = ei_obs, color = q_flag))+
@@ -150,6 +153,7 @@ ggplot(.,aes(x = aridity_index, y = ei_obs, color = q_flag))+
     scale_color_manual(values = c('red', 'blue', 'grey'))+
     labs(color = 'Q trend',
          title = '1980-2020 average w/ sd error bars')
+ggsave(here('figures', 'budyko_plot.png'), budyko_plot, width = 12, height = 10, dpi = 300)
 
 # time series graphs
 # north creek is increasing in flow

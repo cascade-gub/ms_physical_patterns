@@ -74,6 +74,7 @@ gpp_plot <- ggplot(full_prism_trends, aes(x = trend_temp_mean*10, y = trend_prec
     scale_shape_manual(values = c(17,16), labels = c('experimental', 'non-experimental'))
 
 gpp_plot
+ggsave(here('figures', 'fig2_gpp_climate_trends.png'), gpp_plot, width = 10, height = 8, dpi = 300)
 library(plotly)
 ggplotly(gpp_plot, tooltip = 'text')
 
@@ -105,9 +106,10 @@ q_plot <- ggplot(full_prism_trends, aes(x = trend_temp_mean*10, y = trend_precip
          shape = 'Condition')
 
 q_plot
+ggsave(here('figures', 'fig3_q_climate_trends.png'), q_plot, width = 10, height = 8, dpi = 300)
 ggplotly(q_plot, tooltip = 'text')
 
-full_prism_trends %>%
+q_nonexp_plot <- full_prism_trends %>%
     filter(ws_status == 'non-experimental') %>%
 ggplot(., aes(x = trend_temp_mean, y = trend_precip_mean, text = paste("Site:", site_code, "<br>Domain:", domain))) +
     # Points with 'non-significant' flag
@@ -133,21 +135,24 @@ ggplot(., aes(x = trend_temp_mean, y = trend_precip_mean, text = paste("Site:", 
     labs(x = 'Temperature trend (mean annual, degrees C)',
          y = 'Precipitation trend (mean annual, mm)',
          color = 'Q trend (mean, mm/yr)')
+ggsave(here('figures', 'fig3b_q_nonexp_climate_trends.png'), q_nonexp_plot, width = 10, height = 8, dpi = 300)
 
 ## bar charts  by group ####
-ggplot(full_prism_trends, aes(x = coarse_grouping, fill = q_flag))+
+bar_coarse <- ggplot(full_prism_trends, aes(x = coarse_grouping, fill = q_flag))+
     geom_bar()+
     theme_few(base_size = 20)+
     scale_fill_manual(values = flag_colors)+#,
     labs(fill = target_q_trend)
+ggsave(here('figures', 'bar_coarse_grouping.png'), bar_coarse, width = 10, height = 7, dpi = 300)
 
-ggplot(full_prism_trends, aes(x = coarse_grouping, fill = q_flag))+
+bar_faceted <- ggplot(full_prism_trends, aes(x = coarse_grouping, fill = q_flag))+
     geom_bar()+
     theme_few(base_size = 20)+
     theme(axis.text.x = element_text(angle = 45, vjust = .5, hjust = .5))+
     scale_fill_manual(values = flag_colors)+#,
     facet_wrap(~grouping_exp) +
     labs(fill = target_q_trend)
+ggsave(here('figures', 'bar_coarse_by_exp.png'), bar_faceted, width = 12, height = 7, dpi = 300)
 
 
 full_prism_trends %>%
@@ -188,7 +193,7 @@ group_counts <- full_prism_trends %>%
     summarize(n = n())
 
 options(scipen = 999) # turn off scientific notation
-q_data %>%
+hydrograph_plot <- q_data %>%
     right_join(., full_prism_trends, by = 'site_code') %>%
     right_join(., group_counts) %>%
     filter(val != 0) %>%
@@ -205,6 +210,7 @@ q_data %>%
           legend.position = 'none',
           )+
     facet_wrap(~facet_lab, scales = 'fixed')
+ggsave(here('figures', 'hydrographs_by_grouping.png'), hydrograph_plot, width = 16, height = 12, dpi = 300)
 
 
 # Grid Groups ####
@@ -293,7 +299,7 @@ grid_temp <- grid_groups  %>%
 
 both_groups <- rbind(ms_temp, grid_temp) %>% na.omit()
 
-both_groups %>%
+density_plot <- both_groups %>%
     group_by(source, coarse_grouping) %>%
     summarize(n =n()) %>%
     mutate(density = case_when(source == 'grid' ~ n/nrow(grid_temp),
@@ -306,13 +312,14 @@ both_groups %>%
          x = 'Density',
          fill = 'Dataset')+
     scale_fill_manual(labels = c('Grid', 'MacroSheds'), values = c('blue', 'black'))
+ggsave(here('figures', 'density_grid_vs_ms.png'), density_plot, width = 10, height = 7, dpi = 300)
 
 
 # gpp scatter
 # these are annual rn, need to make mean
 grid_groups$trend_ppt_scaled <- grid_groups$trend_ppt/365
 
-ggplot(grid_groups, aes(x = trend_tmean, y = trend_ppt_scaled)) +
+grid_gpp_scatter <- ggplot(grid_groups, aes(x = trend_tmean, y = trend_ppt_scaled)) +
     # Points with 'non-significant' flag
     geom_point(data = subset(grid_groups, flag_GPP == "non-significant"),
                color = "grey", size = 2) +
@@ -326,6 +333,7 @@ ggplot(grid_groups, aes(x = trend_tmean, y = trend_ppt_scaled)) +
     labs(x = 'Temperature trend (mean annual, degrees C)',
          y = 'Precipitation trend (mean annual, mm)',
          color = 'GPP trend (mean annual)')
+ggsave(here('figures', 'grid_gpp_climate_scatter.png'), grid_gpp_scatter, width = 10, height = 8, dpi = 300)
 
 
 # maps ####
@@ -345,7 +353,7 @@ map_data <- grid_metrics %>%
 
 
 
-tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
+map_temp <- tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
     tm_polygons() + # Base US map
     tm_shape(map_data) +
     tm_symbols(
@@ -384,9 +392,9 @@ tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
         legend.text.size = 1.5,
         legend.outside.size = .3
     )
+tmap_save(map_temp, here('figures', 'map_temperature_trends.png'), width = 10, height = 7, dpi = 300)
 
-
-tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
+map_ppt <- tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
     tm_polygons() + # Base US map
     tm_shape(map_data) +
     tm_symbols(
@@ -425,8 +433,9 @@ tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
         legend.text.size = 1.5,
         legend.outside.size = .3
     )
+tmap_save(map_ppt, here('figures', 'map_precip_trends.png'), width = 10, height = 7, dpi = 300)
 
-tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
+map_gpp <- tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
     tm_polygons() + # Base US map
     tm_shape(map_data) +
     tm_symbols(
@@ -472,6 +481,7 @@ tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
         legend.text.size = 1.5,
         legend.outside.size = .3
     )
+tmap_save(map_gpp, here('figures', 'map_gpp_trends.png'), width = 10, height = 7, dpi = 300)
 
 # map_data %>%
 #     filter(var == 'tmean') %>%

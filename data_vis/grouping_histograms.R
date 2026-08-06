@@ -55,7 +55,7 @@ aridity %>%
            trend_temp_mean > 0) %>%
     nrow()
 
-aridity %>%
+hist_hw <- aridity %>%
     filter(trend_precip_mean > 0,
            trend_temp_mean > 0) %>%
     ggplot(aes(x = mean_ai, fill = q_flag))+
@@ -70,6 +70,7 @@ aridity %>%
          title = 'Hotter and wetter')+
     geom_vline(xintercept = 1, color = 'orange', lwd = 2, lty = 'longdash')+
     theme_few(base_size = 20)
+ggsave(here('figures', 'hist_hotter_wetter.png'), hist_hw, width = 10, height = 7, dpi = 300)
 
 
 #Hotter drier
@@ -78,7 +79,7 @@ aridity %>%
            trend_temp_mean > 0) %>%
     nrow()
 
-aridity %>%
+hist_hd <- aridity %>%
     filter(trend_precip_mean < 0,
            trend_temp_mean > 0) %>%
     ggplot(aes(x = mean_ai, fill = q_flag))+
@@ -93,6 +94,7 @@ aridity %>%
          title = 'Hotter and drier')+
     geom_vline(xintercept = 1, color = 'orange', lwd = 2, lty = 'longdash')+
     theme_few(base_size = 20)
+ggsave(here('figures', 'hist_hotter_drier.png'), hist_hd, width = 10, height = 7, dpi = 300)
 
 #cooler drier
 aridity %>%
@@ -101,7 +103,7 @@ aridity %>%
     nrow()
 
 
-aridity %>%
+hist_cd <- aridity %>%
     filter(trend_precip_mean < 0,
            trend_temp_mean < 0) %>%
     ggplot(aes(x = mean_ai, fill = q_flag))+
@@ -117,6 +119,7 @@ aridity %>%
          title = 'Cooler and drier')+
     geom_vline(xintercept = 1, color = 'orange', lwd = 2, lty = 'longdash')+
     theme_few(base_size = 20)
+ggsave(here('figures', 'hist_cooler_drier.png'), hist_cd, width = 10, height = 7, dpi = 300)
 
 #cooler wetter
 aridity %>%
@@ -124,7 +127,7 @@ aridity %>%
            trend_temp_mean < 0) %>%
     nrow()
 
-aridity %>%
+hist_cw <- aridity %>%
     filter(trend_precip_mean > 0,
            trend_temp_mean < 0) %>%
     ggplot(aes(x = mean_ai, fill = q_flag))+
@@ -140,3 +143,4 @@ aridity %>%
          title = 'Cooler and wetter')+
     geom_vline(xintercept = 1, color = 'orange', lwd = 2, lty = 'longdash')+
     theme_few(base_size = 20)
+ggsave(here('figures', 'hist_cooler_wetter.png'), hist_cw, width = 10, height = 7, dpi = 300)
