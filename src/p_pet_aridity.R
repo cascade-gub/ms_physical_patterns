@@ -51,7 +51,6 @@ d <- inner_join(p, daymet, by = c('network', 'domain', 'site_code', 'date')) %>%
               precip = sum(`prcp(mm/day)`))  %>%
     full_join(., et, by = c('site_code', 'year')) %>%
     mutate(evaporative_index = val/(precip*10)) %>%
-    select(-year) %>%
     full_join(., et_obs, by = c('site_code', 'year' = 'wy'))
 
 
@@ -104,7 +103,7 @@ d_all <- d %>%
               evaporative_index_max = max(evaporative_index, na.rm = T),
               evaporative_index_range = evaporative_index_max - evaporative_index_min,
               evaporative_index_sd = sd(evaporative_index, na.rm = T),
-              evaporative_index = mean(evaporative_index, an.rm = T),
+              evaporative_index = mean(evaporative_index, na.rm = T),
               ei_obs_min = min(ei_obs, na.rm = T),
               ei_obs_max = max(ei_obs, na.rm = T),
               ei_obs_range = ei_obs_max - ei_obs_min,

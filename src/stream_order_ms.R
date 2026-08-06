@@ -41,22 +41,18 @@ output <- tibble(site_code = as.character(),
 
 for(i in 1:nrow(us_only)){
 
-try(
-nearest_comid <- discover_nhdplus_id(us_only[i,]), silent = T
-)
-if(exists('nearest_comid') & !is.null(nearest_comid)){
+    nearest_comid <- try(discover_nhdplus_id(us_only[i,]), silent = TRUE)
 
-flowline_data <- get_nhdplus(comid = nearest_comid)
+    if(!inherits(nearest_comid, 'try-error') && !is.null(nearest_comid)){
+        flowline_data <- get_nhdplus(comid = nearest_comid)
+        inner <- tibble(site_code = us_only$site_code[i],
+                        stream_order = flowline_data$streamorde)
+    } else {
+        inner <- tibble(site_code = us_only$site_code[i],
+                        stream_order = NA_integer_)
+    }
 
-inner = tibble(site_code = geospatial_aoi$site_code[i],
-               stream_order = flowline_data$streamorde)
-
-rm(nearest_comid)
-
-}else{inner = tibble(site_code = geospatial_aoi$site_code[i],
-                     stream_order = NA)}
-
-output <- rbind(output, inner)
+    output <- rbind(output, inner)
 }
 # Extract the stream order from the flowline data
 
@@ -64,7 +60,8 @@ ms_sites_str_ord <- ms_load_sites() %>%
     filter(site_code %in% unique(us_only$site_code)) %>%
     full_join(., output, by = 'site_code')
 
-ms_sites_str_ord$stream_order[is.na(ms_sites_str_ord$stream_order)] <- 0
+ms_sites_str_ord <- ms_sites_str_ord %>%
+    filter(!is.na(stream_order))
 
 ms_sites_str_ord %>%
     filter(stream_order < 2) %>%

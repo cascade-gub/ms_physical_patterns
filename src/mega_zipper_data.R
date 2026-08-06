@@ -42,8 +42,8 @@ valid_site_years <- metrics %>%
     summarize(n_median = median(n, na.rm = T),
               n_max = max(n, na.rm = T),
               n_sd = sd(n, na.rm = T)) %>%
-    mutate(seasonal = case_when(n_median > 89 & n_median <180 ~ 1,
-                                n_median > 181 ~ 0,
+    mutate(seasonal = case_when(n_median > 89 & n_median < 180 ~ 1,
+                                n_median >= 180 ~ 0,
                                 n_median < 90 ~ 0)) %>%
     select(site_code, seasonal)
 

@@ -33,24 +33,19 @@ full_prism_trends <- read_csv(here('data_working', 'trends', 'full_prisim_climat
                                 is.na(flag_gpp_CONUS_30m_median) ~ '-'),
            grouping = as.factor(paste0(warming, wetting, greening)),
            coarse_grouping = case_when(grouping %in% c('HDG', 'HD-', 'H-G', '-DG', 'HDB', 'H--', '--G', '-D-') ~ '(+)',
-                                       grouping %in% c('--B', '-W-', '-WB') ~ '(-)',
+                                       grouping %in% c('--B', '-W-', '-WB', 'C--', 'C-B', 'CW-', 'CWB') ~ '(-)',
                                        grouping %in% c('---') ~ 'no change',
-                                       grouping %in% c('HWG', 'HW-', 'H-B', '-DB', '-WG', 'HDB') ~ 'variable')
+                                       grouping %in% c('HWG', 'HW-', 'H-B', '-DB', '-WG', 'HWB', 'C-G', 'CWG', 'CD-', 'CDG', 'CDB') ~ 'variable')
            ) %>%
     left_join(., ms_site_data, by = 'site_code') %>%
     mutate(grouping_exp = case_when(ws_status == 'experimental' ~ 'EXP',
                                 .default = 'NON')) %>%
     left_join(., q_trends, by = 'site_code')
 
-full_prism_trends$grouping <- factor(full_prism_trends$grouping, levels = c('HDG', #strong down
-                                                                            'HD-', 'H-G', '-DG', # mid down
-                                                                            'H--', '--G', '-D-', # light down
-                                                                            '---', # no change
-                                                                            'HWG', 'HW-', 'H-B', '-DB', '-WG', 'HDB',# variable
-                                                                            '--B', '-W-', #light up
-                                                                            '-WB')) # strong up
-
-full_prism_trends$grouping <- factor(full_prism_trends$ws_status, levels = c('experimental', 'non-experimental'))
+full_prism_trends$grouping <- factor(full_prism_trends$grouping, levels = c('HDG', 'HD-', 'H-G', '-DG', 'HDB', 'H--', '--G', '-D-',
+                                                                            '---',
+                                                                            'HWG', 'HW-', 'H-B', '-DB', '-WG', 'HWB', 'C-G', 'CWG', 'CD-', 'CDG', 'CDB',
+                                                                            'C--', 'C-B', 'CW-', 'CWB', '--B', '-W-', '-WB'))
 
 full_prism_trends %>%
     #select(site_code, grouping, streamflow) %>%
@@ -264,9 +259,9 @@ grid_groups <- grid_trends %>%
                                 is.na(flag_GPP) ~ '-'),
            grouping = as.factor(paste0(warming, wetting, greening)),
            coarse_grouping = case_when(grouping %in% c('HDG', 'HD-', 'H-G', '-DG', 'HDB', 'H--', '--G', '-D-') ~ '(+)',
-                                       grouping %in% c('--B', '-W-', '-WB') ~ '(-)',
+                                       grouping %in% c('--B', '-W-', '-WB', 'C--', 'C-B', 'CW-', 'CWB') ~ '(-)',
                                        grouping %in% c('---') ~ 'no change',
-                                       grouping %in% c('HWG', 'HW-', 'H-B', '-DB', '-WG', 'HDB') ~ 'variable')
+                                       grouping %in% c('HWG', 'HW-', 'H-B', '-DB', '-WG', 'HWB', 'C-G', 'CWG', 'CD-', 'CDG', 'CDB') ~ 'variable')
     )
 #
 # grid_groups$grouping <- factor(grid_groups$grouping, levels = c('HDG', #strong down

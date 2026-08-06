@@ -32,7 +32,6 @@ d <- inner_join(p, daymet, by = c('network', 'domain', 'site_code', 'date')) %>%
               precip = sum(`prcp(mm/day)`))  %>%
     full_join(., et, by = c('site_code', 'year')) %>%
     mutate(evaporative_index = val/(precip*10)) %>%
-    select(-year) %>%
     full_join(., et_obs, by = c('site_code', 'year' = 'wy'))
 
 

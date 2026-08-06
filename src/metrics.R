@@ -10,7 +10,7 @@ source(here('src', 'setup.R'))
 # set logging
 set_logger()
 # Q ####
-q_freq_check = F
+q_freq_check = T
 ## read data ####
 log_info('load data')
 
