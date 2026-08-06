@@ -70,9 +70,9 @@ lrp_wide <- longest_run_prisim %>%
     mutate(var = paste0(var,'_longest_run')) %>%
     pivot_wider(id_cols = 'site_code', names_from = 'var', values_from = 'flag')
 
-side_data <- full_join(fp_wide, lrp_wide) %>%
-    full_join(distinct(select(q_plot_data, site_code, n)), .) %>%
-    drop_na(n)
+side_data <- left_join(fp_wide, lrp_wide) %>%
+    left_join(distinct(select(q_plot_data, site_code, n)), .) %>%
+    drop_na(n, ends_with('_full'))
 
 # data checks
 side_data%>%
@@ -90,9 +90,24 @@ side_data%>%
 # plots #####
 make_trend_panel <- function(target_trend, title_string){
 
+    if(target_trend %in% c('temp_mean_full', 'temp_mean_longest_run')){
+    # T
     plotColors <-
-        setNames( c('blue', 'red', 'grey', 'black')
-                  , c('decreasing', 'increasing', 'non-significant', 'insufficient data')  )
+        setNames( c('darkblue', 'red', 'grey', 'black')
+                  , c('decreasing', 'increasing', 'non-significant', 'insufficient data')  )}
+
+    if(target_trend %in% c('precip_mean_full', 'precip_mean_longest_run')){
+    # Precip
+    plotColors <-
+        setNames( c('orange', 'blue', 'grey', 'black')
+                  , c('decreasing', 'increasing', 'non-significant', 'insufficient data')  )}
+
+    if(target_trend %in% c('gpp_CONUS_30m_median_full', 'gpp_conus_longest_run')){
+    # GPP
+    plotColors <-
+        setNames( c('brown4', 'green4', 'grey', 'black')
+                  , c('decreasing', 'increasing', 'non-significant', 'insufficient data')  )}
+
 
     temp_data <- side_data %>%
         select(site_code, n, val = starts_with(target_trend))
@@ -107,7 +122,7 @@ make_trend_panel <- function(target_trend, title_string){
         geom_bar(width = 1)+
         coord_cartesian(xlim = c(0.4, .6))+
         #scale_fill_manual(labels = c('decreasing', 'increasing', 'non-significant', 'insufficient data'), values = c('blue', 'red', 'grey', 'black'))+
-        scale_fill_manual(values = flag_colors)+#,
+        scale_fill_manual(values = plotColors)+#,
                           #labels = c('Decreasing', 'Increasing', 'Non-significant', 'Insufficient Data'))+
         theme_few(base_size = 20)+
         theme(axis.text = element_blank(),
@@ -123,15 +138,16 @@ add_legend <- function(plot){
     plot+
         theme(legend.position = 'right')+
         labs(fill = 'Trend')+
-        scale_fill_manual(labels = c('decreasing', 'increasing', 'non-significant', 'insufficient data'), values = c('blue', 'red', 'grey', 'black'))
+        scale_fill_manual(labels = c('decreasing', 'increasing', 'non-significant', 'insufficient data'), values = c('brown4', 'green4', 'grey', 'black'))
 }
 ## make coverage plot ####
 
 contrast_color <- 'darkorange'
 
 c_master <- q_plot_data %>%
+    semi_join(., side_data) %>%
     ggplot(., aes(x = water_year, y = reorder(site_code, n)))+
-    geom_text(aes(label = "-"), size = 8, family = "mono")+
+    geom_text(aes(label = "-"), color = 'purple4', size = 8, family = "mono")+
     theme_few(base_size = 20)+
     theme(legend.position = 'none',
           axis.text.y = element_blank(),
@@ -150,14 +166,16 @@ c_master
 
 
 ## assemble plot #####
-zipper_plot <- make_trend_panel('temp_mean_full', 'Temp') +
+zipper_plot <- make_trend_panel('temp_mean_full', 'T') +
     make_trend_panel('precip_mean_full', 'PPT')+  labs(caption = 'Trends from 1980-Present') +
     make_trend_panel('gpp_CONUS_30m_median_full', 'GPP')+
     c_master +
-    make_trend_panel('temp_mean_longest_run', 'Temp') +
+    make_trend_panel('temp_mean_longest_run', 'T') +
     #make_trend_panel('stream_temp_mean_longest_run', 'Ts')+
     make_trend_panel('precip_mean_longest_run', 'PPT') + labs(caption = 'Trends cut to Q data') +
-    add_legend(make_trend_panel('gpp_conus_longest_run', 'GPP'))+
+    add_legend(
+        make_trend_panel('gpp_conus_longest_run', 'GPP') #+
+        )+
     plot_layout(ncol = 7, widths = c(.25, .25, .25, 1.5, .25, .25, .25))#+
     #plot_annotation(tag_levels = 'A')
 zipper_plot

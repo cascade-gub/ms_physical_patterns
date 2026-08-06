@@ -1,15 +1,39 @@
+# R session files
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
-macrosheds_dataset_v2
+ms_physical_patterns.Rproj
 
-# Folders ignored on Heili's fork
+# Data folders
+macrosheds_dataset_v2
 data_raw
 data_working
-figures
-ms_physical_patterns.Rproj
-log
 data_raw_old
 data_raw_2024archive
 data_raw_incomplete
+
+# Data files anywhere in the repo
+*.csv
+*.zip
+*.rds
+*.rda
+*.feather
+*.parquet
+*.nc
+*.tif
+*.shp
+*.dbf
+*.shx
+*.prj
+
+# Keep small reference files that are already tracked
+!good_nwis_sites.csv
+
+# Output / scratch
+figures
+log
+Rplot*.png
+
+# Word temp/lock files
+~$*

@@ -59,23 +59,23 @@ full_prism_trends %>%
 # figure 2 for the paper
 # make plot of warming on x, wetting on y, and gpp as point size or color
 
-gpp_plot <- ggplot(full_prism_trends, aes(x = trend_temp_mean, y = trend_precip_mean, text = paste("Site:", site_code, "<br>Domain:", domain))) +
+gpp_plot <- ggplot(full_prism_trends, aes(x = trend_temp_mean*10, y = trend_precip_mean*10, text = paste("Site:", site_code, "<br>Domain:", domain))) +
     # Points with 'non-significant' flag
     geom_point(data = subset(full_prism_trends, flag_gpp_CONUS_30m_median == "non-significant"),
-               color = "grey", size = 10) +
+               color = "grey", size = 2) +
     # Points with other flags
-    geom_point(data = subset(full_prism_trends, flag_gpp_CONUS_30m_median != "non-significant"),
-               aes(color = trend_gpp_CONUS_30m_median, shape = ws_status), size = 10) +
+    geom_point(data = subset(arrange(full_prism_trends, trend_gpp_CONUS_30m_median), flag_gpp_CONUS_30m_median != "non-significant"),
+               aes(color = trend_gpp_CONUS_30m_median*10, shape = ws_status), size = 5) +
     scale_color_distiller(palette = 'BrBG', direction = 1) +
     theme_few(base_size = 20) +
     geom_hline(yintercept = 0) +
     geom_vline(xintercept = 0) +
-    labs(x = 'Temperature trend (mean annual, degrees C)',
-         y = 'Precipitation trend (mean annual, mm)',
-         color = 'GPP trend \n (mean, kgC/m^2/d/yr)',
+    labs(x = 'Temperature trend \n (decade, mean annual, degrees C)',
+         y = 'Precipitation trend \n (decade, mean annual, mm)',
+         color = 'GPP trend \n (mean, kgC/m^2/decade)',
          shape = 'Condition')+
-    lims(x = c(-.06, .06),
-         y = c(-.04, .04))+
+    lims(x = c(-.6, .6),
+         y = c(-.4, .4))+
     scale_shape_manual(values = c(17,16), labels = c('experimental', 'non-experimental'))
 
 gpp_plot
@@ -83,17 +83,17 @@ library(plotly)
 ggplotly(gpp_plot, tooltip = 'text')
 
 
-limit <- max(abs(full_prism_trends$q_trend), na.rm = T) * c(-1, 1)
+limit <- max(abs(full_prism_trends$q_trend)*10, na.rm = T) * c(-1, 1)
 
-q_plot <- ggplot(full_prism_trends, aes(x = trend_temp_mean, y = trend_precip_mean, text = paste("Site:", site_code, "<br>Domain:", domain))) +
+q_plot <- ggplot(full_prism_trends, aes(x = trend_temp_mean*10, y = trend_precip_mean*10, text = paste("Site:", site_code, "<br>Domain:", domain))) +
     # Points with 'non-significant' flag
     geom_point(data = subset(full_prism_trends, is.na(q_flag)),
-               color = "black", size = 7, shape = 4 ) +
+               color = "black", size = 2, shape = 4 ) +
     geom_point(data = subset(full_prism_trends, q_flag == "non-significant"),
-               color = "grey", size = 7, aes(shape = ws_status)) +
+               color = "grey", size = 2, aes(shape = ws_status)) +
     # Points with other flags
     geom_point(data = subset(full_prism_trends, q_flag != "non-significant"),
-               aes(color = q_trend, shape = ws_status), size = 7) +
+               aes(color = q_trend*10, shape = ws_status), size = 5) +
     #scale_color_distiller(palette = 'RdBu', direction = 1, limit = limit) +
     scale_color_gradientn(colors = c(  "#b2182b", "#d6604d", "#4393c3", "#2166ac"),  # No white
                           values = rescale(c(min(limit), 0, max(limit))),  # Centered around 0
@@ -102,11 +102,11 @@ q_plot <- ggplot(full_prism_trends, aes(x = trend_temp_mean, y = trend_precip_me
     theme_few(base_size = 20) +
     geom_hline(yintercept = 0) +
     geom_vline(xintercept = 0) +
-    lims(x = c(-.06, .06),
-         y = c(-.04, .04))+
-    labs(x = 'Temperature trend (mean annual, degrees C)',
-         y = 'Precipitation trend (mean annual, mm)',
-         color = 'Q trend (mean, mm/yr)',
+    lims(x = c(-.6, .6),
+         y = c(-.4, .4))+
+    labs(x = 'Temperature trend \n (decade, mean annual, degrees C)',
+         y = 'Precipitation trend \n (decade, mean annual, mm)',
+         color = 'Q trend (mean, mm/decade)',
          shape = 'Condition')
 
 q_plot
@@ -385,9 +385,9 @@ tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
         legend.outside = TRUE,
         legend.outside.position = "right",
         frame = F,
-        legend.title.size = 1,
-        legend.text.size = .9,
-        legend.outside.size = .4
+        legend.title.size = 2,
+        legend.text.size = 1.5,
+        legend.outside.size = .3
     )
 
 
@@ -426,9 +426,9 @@ tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
         legend.outside = TRUE,
         legend.outside.position = "right",
         frame = F,
-        legend.title.size = 1,
-        legend.text.size = .9,
-        legend.outside.size = .4
+        legend.title.size = 2,
+        legend.text.size = 1.5,
+        legend.outside.size = .3
     )
 
 tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
@@ -436,7 +436,7 @@ tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
     tm_shape(map_data) +
     tm_symbols(
         col = "trend_GPP", # Color by effect size
-        title.col = "GPP (kgC/sqm/d/yr)",
+        title.col = "GPP (kgC/sqm/yr)",
         #shape = "significant", # Different shape for significant points
         #shapes = c(21, 24), # 21 (circle), 24 (cross-hatch-like triangle)
         border.alpha = 0,
@@ -473,9 +473,9 @@ tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
         legend.outside = TRUE,
         legend.outside.position = "right",
         frame = F,
-        legend.title.size = 1,
-        legend.text.size = .9,
-        legend.outside.size = .4
+        legend.title.size = 2,
+        legend.text.size = 1.5,
+        legend.outside.size = .3
     )
 
 # map_data %>%
