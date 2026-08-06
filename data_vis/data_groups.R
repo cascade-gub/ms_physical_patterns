@@ -353,134 +353,55 @@ map_data <- grid_metrics %>%
 
 
 
-map_temp <- tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
-    tm_polygons() + # Base US map
+map_temp <- tm_shape(usmap::us_map(exclude = c('AK', 'HI', 'PR'))) +
+    tm_polygons() +
     tm_shape(map_data) +
     tm_symbols(
-        col = "trend_tmean", # Color by effect size
-        title.col = "Temperature (C/yr)",
-        #shape = "significant", # Different shape for significant points
-        #shapes = c(21, 24), # 21 (circle), 24 (cross-hatch-like triangle)
-        border.col = "black",
-        size = 0.1,
-        palette = "-RdBu", # Diverging palette for effect size
-        legend.col.show = TRUE,
-        border.alpha = 0,
-        style = 'cont'
+        fill = "trend_tmean",
+        fill.scale = tm_scale_continuous(values = "-RdBu"),
+        fill.legend = tm_legend(title = "Temperature\n(°C/yr)"),
+        col_alpha = 0,
+        size = 0.15
     ) +
-    tm_shape(ms_groups)+
-    tm_symbols(col = 'black',
-               title.col = 'MS sites',
-               legend.col.show = TRUE,
-               size = .2)+
-    # tm_symbols(
-    #     col = "trend_precip_mean", # Color by effect size
-    #     title.col = "Sen's slope",
-    #     #shape = "significant", # Different shape for significant points
-    #     #shapes = c(21, 24), # 21 (circle), 24 (cross-hatch-like triangle)
-    #     border.col = "black",
-    #     size = 0.5,
-    #     palette = "-RdBu", # Diverging palette for effect size
-    #     legend.col.show = TRUE#,
-    #     #legend.shape.show = TRUE
-    # )  +
-    tm_layout(
-        legend.outside = TRUE,
-        legend.outside.position = "right",
-        frame = F,
-        legend.title.size = 2,
-        legend.text.size = 1.5,
-        legend.outside.size = .3
-    )
+    tm_shape(ms_groups) +
+    tm_symbols(fill = 'black', size = 0.3,
+               fill.legend = tm_legend(title = "MS sites")) +
+    tm_layout(frame = FALSE,
+              legend.position = tm_pos_out("right", "center"))
 tmap_save(map_temp, here('figures', 'map_temperature_trends.png'), width = 10, height = 7, dpi = 300)
 
-map_ppt <- tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
-    tm_polygons() + # Base US map
+map_ppt <- tm_shape(usmap::us_map(exclude = c('AK', 'HI', 'PR'))) +
+    tm_polygons() +
     tm_shape(map_data) +
     tm_symbols(
-        col = "trend_ppt", # Color by effect size
-        title.col = "PPT (mm/yr)",
-        #shape = "significant", # Different shape for significant points
-        #shapes = c(21, 24), # 21 (circle), 24 (cross-hatch-like triangle)
-        border.alpha = 0,
-        palette = "Spectral", # Diverging palette for effect size
-        legend.col.show = TRUE,
-        size = .1,
-        style = 'cont'
-        #legend.shape.show = TRUE
+        fill = "trend_ppt",
+        fill.scale = tm_scale_continuous(values = "Spectral"),
+        fill.legend = tm_legend(title = "PPT\n(mm/yr)"),
+        col_alpha = 0,
+        size = 0.15
     ) +
-    tm_shape(ms_groups)+
-    tm_symbols(col = 'black',
-               title.col = 'MS sites',
-               legend.col.show = TRUE,
-               size = .2)+
-    # tm_symbols(
-    #     col = "trend_precip_mean", # Color by effect size
-    #     title.col = "Sen's slope",
-    #     #shape = "significant", # Different shape for significant points
-    #     #shapes = c(21, 24), # 21 (circle), 24 (cross-hatch-like triangle)
-    #     border.col = "black",
-    #     size = 0.5,
-    #     palette = "-RdBu", # Diverging palette for effect size
-    #     legend.col.show = TRUE#,
-    #     #legend.shape.show = TRUE
-    # ) +
-    tm_layout(
-        legend.outside = TRUE,
-        legend.outside.position = "right",
-        frame = F,
-        legend.title.size = 2,
-        legend.text.size = 1.5,
-        legend.outside.size = .3
-    )
+    tm_shape(ms_groups) +
+    tm_symbols(fill = 'black', size = 0.3,
+               fill.legend = tm_legend(title = "MS sites")) +
+    tm_layout(frame = FALSE,
+              legend.position = tm_pos_out("right", "center"))
 tmap_save(map_ppt, here('figures', 'map_precip_trends.png'), width = 10, height = 7, dpi = 300)
 
-map_gpp <- tm_shape(usmap::us_map(exclude = c('AK', 'HI'))) +
-    tm_polygons() + # Base US map
+map_gpp <- tm_shape(usmap::us_map(exclude = c('AK', 'HI', 'PR'))) +
+    tm_polygons() +
     tm_shape(map_data) +
     tm_symbols(
-        col = "trend_GPP", # Color by effect size
-        title.col = "GPP (kgC/sqm/yr)",
-        #shape = "significant", # Different shape for significant points
-        #shapes = c(21, 24), # 21 (circle), 24 (cross-hatch-like triangle)
-        border.alpha = 0,
-        palette = "BrBG", # Diverging palette for effect size
-        legend.col.show = TRUE,
-        size = .1,
-        style = 'cont'
-        #legend.shape.show = TRUE
+        fill = "trend_GPP",
+        fill.scale = tm_scale_continuous(values = "BrBG"),
+        fill.legend = tm_legend(title = "GPP\n(kgC/m²/yr)"),
+        col_alpha = 0,
+        size = 0.15
     ) +
-    tm_shape(ms_groups)+
-    tm_symbols(col = 'black',
-               title.col = 'MS sites',
-               legend.col.show = TRUE,
-               size = .2)+
-    tm_add_legend(
-        type = "symbol",
-        labels = "MS sites", # Legend label
-        col = "black", # Color matching the points
-        shape = 16, # Default filled circle shape
-        size = .5
-    ) +
-    # tm_symbols(
-    #     col = "trend_precip_mean", # Color by effect size
-    #     title.col = "Sen's slope",
-    #     #shape = "significant", # Different shape for significant points
-    #     #shapes = c(21, 24), # 21 (circle), 24 (cross-hatch-like triangle)
-    #     border.col = "black",
-    #     size = 0.5,
-    #     palette = "-RdBu", # Diverging palette for effect size
-    #     legend.col.show = TRUE#,
-    #     #legend.shape.show = TRUE
-    # ) +
-    tm_layout(
-        legend.outside = TRUE,
-        legend.outside.position = "right",
-        frame = F,
-        legend.title.size = 2,
-        legend.text.size = 1.5,
-        legend.outside.size = .3
-    )
+    tm_shape(ms_groups) +
+    tm_symbols(fill = 'black', size = 0.3,
+               fill.legend = tm_legend(title = "MS sites")) +
+    tm_layout(frame = FALSE,
+              legend.position = tm_pos_out("right", "center"))
 tmap_save(map_gpp, here('figures', 'map_gpp_trends.png'), width = 10, height = 7, dpi = 300)
 
 # map_data %>%

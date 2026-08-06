@@ -4,7 +4,7 @@ library(patchwork)
 library(png)
 library(grid)
 
-flag_colors <- c('increasing' = "blue", 'decreasing' = 'red',
+flag_colors <- c('increasing' = "red", 'decreasing' = 'blue',
                  'non-significant' = "grey", 'data limited' = 'black')
 target_q_trend <- "q_mean"
 
@@ -115,10 +115,10 @@ gpp_panel <- base_scatter(full_prism_trends) +
     scale_color_distiller(palette = 'BrBG', direction = 1) +
     scale_shape_manual(values = c(17, 16),
                        labels = c('experimental', 'non-experimental')) +
-    labs(x = 'Temperature trend\n(decade, mean annual, degrees C)',
+    guides(shape = "none") +
+    labs(x = 'Temperature trend\n(decade, mean annual, °C)',
          y = 'Precipitation trend\n(decade, mean annual, mm)',
-         color = 'GPP trend\n(mean, kgC/m^2/decade)',
-         shape = 'Condition')
+         color = 'GPP trend\n(mean, kgC/m²/decade)')
 
 limit <- max(abs(full_prism_trends$q_trend) * 10, na.rm = TRUE) * c(-1, 1)
 
@@ -130,12 +130,12 @@ q_panel <- base_scatter(full_prism_trends) +
     geom_point(data = subset(full_prism_trends, q_flag != "non-significant"),
                aes(color = q_trend * 10, shape = ws_status), size = 4) +
     scale_color_gradientn(
-        colors = c("#b2182b", "#d6604d", "#4393c3", "#2166ac"),
+        colors = c("#2166ac", "#4393c3", "#d6604d", "#b2182b"),
         values = scales::rescale(c(min(limit), 0, max(limit))),
         limits = limit) +
     scale_shape_manual(values = c(17, 16),
                        labels = c('experimental', 'non-experimental')) +
-    labs(x = 'Temperature trend\n(decade, mean annual, degrees C)',
+    labs(x = 'Temperature trend\n(decade, mean annual, °C)',
          y = 'Precipitation trend\n(decade, mean annual, mm)',
          color = 'Q trend\n(mean, mm/decade)',
          shape = 'Condition')
@@ -146,7 +146,7 @@ fig2 <- gpp_panel + q_panel +
 ggsave(here('figures', 'Figure_2.png'), fig2, width = 16, height = 7, dpi = 300)
 
 # ============================================================
-# FIGURE 3 — aridity histograms in cartesian layout
+# FIGURE 3 — aridity histograms via facet_wrap
 # ============================================================
 
 # aridity data
@@ -182,57 +182,47 @@ aridity <- d %>%
     full_join(full_prism_trends, by = 'site_code') %>%
     filter(ws_status == 'non-experimental')
 aridity$q_flag[is.na(aridity$q_flag)] <- "data limited"
-aridity$q_flag <- fct_relevel(aridity$q_flag, 'increasing', 'decreasing',
-                              'non-significant', 'data limited')
+aridity$q_flag <- factor(aridity$q_flag,
+                         levels = c('increasing', 'decreasing',
+                                    'non-significant', 'data limited'))
 
-ylims <- c(0, 17)
-xlims <- c(0, 6)
+# assign quadrants for faceting
+aridity <- aridity %>%
+    mutate(quadrant = case_when(
+        trend_precip_mean > 0 & trend_temp_mean < 0 ~ 'Cooler, wetter',
+        trend_precip_mean > 0 & trend_temp_mean > 0 ~ 'Warmer, wetter',
+        trend_precip_mean < 0 & trend_temp_mean < 0 ~ 'Cooler, drier',
+        trend_precip_mean < 0 & trend_temp_mean > 0 ~ 'Hotter, drier'
+    )) %>%
+    filter(!is.na(quadrant)) %>%
+    mutate(quadrant = factor(quadrant,
+                             levels = c('Cooler, wetter', 'Warmer, wetter',
+                                        'Cooler, drier', 'Hotter, drier')))
 
-make_hist <- function(data, title_text, n_ne, fill_vals) {
-    ggplot(data, aes(x = mean_ai, fill = q_flag)) +
-        geom_histogram() +
-        scale_fill_manual(values = fill_vals, drop = FALSE) +
-        scale_x_continuous(limits = xlims) +
-        scale_y_continuous(limits = ylims) +
-        geom_vline(xintercept = 1, color = 'orange', lwd = 1.5, lty = 'longdash') +
-        theme_few(base_size = 14) +
-        annotate('text', x = 5.5, y = 15,
-                 label = paste0('n[ne]', ' == ', n_ne), parse = TRUE,
-                 hjust = 1, size = 4, color = 'grey30') +
-        labs(title = title_text, x = NULL, y = NULL, fill = 'Q trend')
-}
+# per-quadrant annotation labels
+quad_labels <- tibble(
+    quadrant = factor(c('Cooler, wetter', 'Warmer, wetter',
+                        'Cooler, drier', 'Hotter, drier'),
+                      levels = levels(aridity$quadrant)),
+    n_ne = c(n_cw, n_hw, n_cd, n_hd)
+) %>%
+    mutate(label = paste0('n[ne]', ' == ', n_ne))
 
-all_fill <- c('increasing' = 'blue', 'decreasing' = 'red',
-              'non-significant' = 'grey', 'data limited' = 'black')
-
-hist_cw <- make_hist(
-    aridity %>% filter(trend_precip_mean > 0, trend_temp_mean < 0),
-    'Cooler, wetter', n_cw, all_fill)
-
-hist_hw <- make_hist(
-    aridity %>% filter(trend_precip_mean > 0, trend_temp_mean > 0),
-    'Warmer, wetter', n_hw, all_fill)
-
-hist_cd <- make_hist(
-    aridity %>% filter(trend_precip_mean < 0, trend_temp_mean < 0),
-    'Cooler, drier', n_cd, all_fill)
-
-hist_hd <- make_hist(
-    aridity %>% filter(trend_precip_mean < 0, trend_temp_mean > 0),
-    'Hotter, drier', n_hd, all_fill)
-
-fig3 <- (hist_cw + hist_hw) /
-        (hist_cd + hist_hd) +
-    plot_layout(guides = 'collect') +
-    plot_annotation(caption = 'Aridity Index (mean, 1980-2020)') &
-    theme(legend.position = 'left',
-          plot.caption = element_text(hjust = 0.5, size = 14))
-
-# add shared axis labels via wrap_elements
-fig3_final <- wrap_elements(
-    grid::textGrob('n', rot = 90, gp = gpar(fontsize = 14))
-) + fig3 + plot_layout(widths = c(0.03, 1))
-
-ggsave(here('figures', 'Figure_3.png'), fig3_final, width = 10, height = 9, dpi = 300)
+fig3 <- ggplot(aridity, aes(x = mean_ai, fill = q_flag)) +
+    geom_histogram() +
+    facet_wrap(~quadrant, ncol = 2) +
+    scale_fill_manual(values = flag_colors,
+                      limits = c('increasing', 'decreasing',
+                                 'non-significant', 'data limited'),
+                      drop = FALSE) +
+    scale_x_continuous(limits = c(0, 6)) +
+    scale_y_continuous(limits = c(0, 17)) +
+    geom_vline(xintercept = 1, color = 'orange', lwd = 1.5, lty = 'longdash') +
+    geom_text(data = quad_labels, aes(x = 5.5, y = 15, label = label),
+              parse = TRUE, hjust = 1, size = 4, color = 'grey30',
+              inherit.aes = FALSE) +
+    theme_few(base_size = 14) +
+    labs(x = 'Aridity Index (mean, 1980-2020)', y = 'n', fill = 'Q trend')
+ggsave(here('figures', 'Figure_3.png'), fig3, width = 10, height = 9, dpi = 300)
 
 cat('All composite figures saved to figures/\n')
