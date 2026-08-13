@@ -131,7 +131,9 @@ ei_range_bar <- d_all %>%
            !is.na(q_flag)) %>%
 ggplot(aes(x = reorder(site_code, ei_obs_range), y = ei_obs_range, fill = q_flag))+
     geom_bar(stat = "identity")+
+    scale_fill_manual(values = c('increasing' = 'red', 'decreasing' = 'blue', 'non-significant' = 'grey'))+
     theme_few()+
+    labs(fill = 'Q trend')+
     theme(axis.text.x = element_text(angle = 45))
 ggsave(here('figures', 'ei_range_by_site.png'), ei_range_bar, width = 14, height = 7, dpi = 300)
 
@@ -150,7 +152,7 @@ ggplot(.,aes(x = aridity_index, y = ei_obs, color = q_flag))+
     geom_text(aes(label = label, vjust = 1))+
     geom_errorbar(aes(xmin = a_min, xmax = a_max))+
     theme_few(base_size = 20)+
-    scale_color_manual(values = c('red', 'blue', 'grey'))+
+    scale_color_manual(values = c('increasing' = 'red', 'decreasing' = 'blue', 'non-significant' = 'grey'))+
     labs(color = 'Q trend',
          title = '1980-2020 average w/ sd error bars')
 ggsave(here('figures', 'budyko_plot.png'), budyko_plot, width = 12, height = 10, dpi = 300)

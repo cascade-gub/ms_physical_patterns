@@ -122,19 +122,24 @@ gpp_panel <- base_scatter(full_prism_trends) +
 
 limit <- max(abs(full_prism_trends$q_trend) * 10, na.rm = TRUE) * c(-1, 1)
 
-q_panel <- base_scatter(full_prism_trends) +
-    geom_point(data = subset(full_prism_trends, is.na(q_flag)),
-               color = "black", size = 2, shape = 4) +
-    geom_point(data = subset(full_prism_trends, q_flag == "non-significant"),
-               color = "grey", size = 2, aes(shape = ws_status)) +
-    geom_point(data = subset(full_prism_trends, q_flag != "non-significant"),
-               aes(color = q_trend * 10, shape = ws_status), size = 4) +
+q_plot_data <- full_prism_trends %>%
+    mutate(point_type = case_when(
+        is.na(q_flag) ~ 'data limited',
+        TRUE ~ ws_status
+    ))
+
+q_panel <- base_scatter(q_plot_data) +
+    geom_point(data = subset(q_plot_data, is.na(q_flag)),
+               color = "black", size = 2, aes(shape = point_type)) +
+    geom_point(data = subset(q_plot_data, q_flag == "non-significant"),
+               color = "grey", size = 2, aes(shape = point_type)) +
+    geom_point(data = subset(q_plot_data, q_flag %in% c("increasing", "decreasing")),
+               aes(color = q_trend * 10, shape = point_type), size = 4) +
     scale_color_gradientn(
         colors = c("#2166ac", "#4393c3", "#d6604d", "#b2182b"),
         values = scales::rescale(c(min(limit), 0, max(limit))),
         limits = limit) +
-    scale_shape_manual(values = c(17, 16),
-                       labels = c('experimental', 'non-experimental')) +
+    scale_shape_manual(values = c('experimental' = 17, 'non-experimental' = 16, 'data limited' = 4)) +
     labs(x = 'Temperature trend\n(decade, mean annual, °C)',
          y = 'Precipitation trend\n(decade, mean annual, mm)',
          color = 'Q trend\n(mean, mm/decade)',
