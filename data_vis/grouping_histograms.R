@@ -36,6 +36,7 @@ d <- inner_join(p, daymet, by = c('network', 'domain', 'site_code', 'date')) %>%
 
 
 aridity <- d %>%
+    filter(year >= analysis_start_year, year <= analysis_end_year) %>%
     select(site_code, aridity_index) %>%
     group_by(site_code) %>%
     summarize(mean_ai = mean(aridity_index, na.rm = T)) %>%
@@ -66,7 +67,7 @@ hist_hw <- aridity %>%
     scale_fill_manual(values = q_colors, drop = FALSE)+
     scale_x_continuous(limits = xlims)+
     scale_y_continuous(limits = ylims)+
-    labs(x = 'Aridity Index (mean, 1980-2020)',
+    labs(x = paste0('Aridity Index (mean, ', analysis_start_year, '-', analysis_end_year, ')'),
          y = 'n',
          fill = 'Q trend',
          title = 'Hotter and wetter')+
@@ -90,7 +91,7 @@ hist_hd <- aridity %>%
     scale_fill_manual(values = q_colors, drop = FALSE)+
     scale_x_continuous(limits = xlims)+
     scale_y_continuous(limits = ylims)+
-    labs(x = 'Aridity Index (mean, 1980-2020)',
+    labs(x = paste0('Aridity Index (mean, ', analysis_start_year, '-', analysis_end_year, ')'),
          y = 'n',
          fill = 'Q trend',
          title = 'Hotter and drier')+
@@ -115,7 +116,7 @@ hist_cd <- aridity %>%
     scale_fill_manual(values = q_colors, drop = FALSE)+
     scale_x_continuous(limits = xlims)+
     scale_y_continuous(limits = ylims)+
-    labs(x = 'Aridity Index (mean, 1980-2020)',
+    labs(x = paste0('Aridity Index (mean, ', analysis_start_year, '-', analysis_end_year, ')'),
          y = 'n',
          color = 'Q trend',
          title = 'Cooler and drier')+
@@ -139,7 +140,7 @@ hist_cw <- aridity %>%
     guides(fill = guide_legend(override.aes = list(alpha=1))) +
     scale_x_continuous(limits = xlims)+
     scale_y_continuous(limits = ylims)+
-    labs(x = 'Aridity Index (mean, 1980-2020)',
+    labs(x = paste0('Aridity Index (mean, ', analysis_start_year, '-', analysis_end_year, ')'),
          y = 'n',
          color = 'Q trend',
          title = 'Cooler and wetter')+

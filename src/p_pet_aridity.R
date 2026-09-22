@@ -68,7 +68,7 @@ pq_couple <- d %>%
     left_join(., ms_site_data, by = 'site_code') %>%
     #filter(q_totsum > 1000) %>%
     filter(ws_status == "non-experimental") %>%
-    filter(year > 1980) %>%
+    filter(year >= analysis_start_year, year <= analysis_end_year) %>%
     select(precip_total, q_totsum, domain, site_code, year) %>%
     na.omit() %>%
     ggplot(., aes(x = precip_total, y = q_totsum, color = domain, group = domain))+
@@ -92,7 +92,7 @@ ggsave(here('figures', 'pq_coupling.png'), pq_couple, width = 10, height = 8, dp
 # ggplotly(pq_couple)
 
 d_all <- d %>%
-    filter(year %in% 1980:2020) %>%
+    filter(year >= analysis_start_year, year <= analysis_end_year) %>%
     na.omit() %>%
     group_by(site_code) %>%
     summarize(aridity_index_min = min(aridity_index, na.rm = T),
@@ -154,7 +154,7 @@ ggplot(.,aes(x = aridity_index, y = ei_obs, color = q_flag))+
     theme_few(base_size = 20)+
     scale_color_manual(values = c('increasing' = 'red', 'decreasing' = 'blue', 'non-significant' = 'grey'))+
     labs(color = 'Q trend',
-         title = '1980-2020 average w/ sd error bars')
+         title = paste0(analysis_start_year, '-', analysis_end_year, ' average w/ sd error bars'))
 ggsave(here('figures', 'budyko_plot.png'), budyko_plot, width = 12, height = 10, dpi = 300)
 
 # time series graphs
