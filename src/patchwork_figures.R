@@ -319,6 +319,7 @@ d <- inner_join(p, daymet, by = c('network', 'domain', 'site_code', 'date')) %>%
     full_join(., et_obs, by = c('site_code', 'year' = 'wy'))
 
 aridity <- d %>%
+    filter(year >= analysis_start_year, year <= analysis_end_year) %>%
     select(site_code, aridity_index) %>%
     group_by(site_code) %>%
     summarize(mean_ai = mean(aridity_index, na.rm = TRUE)) %>%
@@ -365,7 +366,7 @@ fig4 <- ggplot(aridity, aes(x = mean_ai, fill = q_flag)) +
               parse = TRUE, hjust = 1, size = 4, color = 'grey30',
               inherit.aes = FALSE) +
     theme_few(base_size = 14) +
-    labs(x = 'Aridity Index (mean, 1980-2020)', y = 'n', fill = 'Q trend')
+    labs(x = paste0('Aridity Index (mean, ', analysis_start_year, '–', analysis_end_year, ')'), y = 'n', fill = 'Q trend')
 ggsave(here('figures', 'Figure_4.png'), fig4, width = 10, height = 9, dpi = 300)
 
 cat('All composite figures saved to figures/\n')

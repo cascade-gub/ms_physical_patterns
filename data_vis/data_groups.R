@@ -218,8 +218,7 @@ ggsave(here('figures', 'hydrographs_by_grouping.png'), hydrograph_plot, width = 
 # handle setup
 library(RColorBrewer)
 source(here('src', 'setup.R'))
-library(tmap)
-library(usmap)
+library(maps)
 # read in full q_metrics.R output
 #source(here('src', 'q_metrics.R'))
 
@@ -283,8 +282,7 @@ write_csv(grid_groups, here('data_working', 'grid_groups.csv'))
 grid_groups <- read_csv(here('data_working', 'grid_groups.csv'))
 
 # read in ms data ####
-ms_groups <- read_csv(here('data_working', 'site_groupings_by_prsim_trend.csv')) %>%
-    st_as_sf(coords = c("longitude","latitude"), crs = 4326)
+ms_groups <- read_csv(here('data_working', 'site_groupings_by_prsim_trend.csv'))
 
 # munge ms and grid together ####
 ms_temp <- ms_groups %>%
@@ -338,72 +336,61 @@ ggsave(here('figures', 'grid_gpp_climate_scatter.png'), grid_gpp_scatter, width 
 
 
 # maps ####
-lat_lon_pattern <- "c\\((-?\\d+\\.\\d+),\\s*(-?\\d+\\.\\d+)\\)"
-
-
-map_data <- grid_metrics %>%
+grid_coords <- grid_metrics %>%
+    filter(water_year == min(water_year)) %>%
     select(site_code, geometry) %>%
-    distinct() %>%
     mutate(
-        Longitude = as.numeric(gsub("c\\((.*),.*", "\\1", geometry)),
-        Latitude = as.numeric(gsub("c\\(.*,(.*)\\)", "\\1", geometry))
+        lon = as.numeric(gsub("c\\((.*),.*", "\\1", geometry)),
+        lat = as.numeric(gsub("c\\(.*,(.*)\\)", "\\1", geometry))
     ) %>%
-    left_join(grid_groups, by = 'site_code', relationship = 'many-to-many') %>%
-    na.omit() %>%
-    st_as_sf(coords = c('Longitude', 'Latitude'), crs = 4326)
+    select(site_code, lon, lat)
 
+grid_map_df <- grid_groups %>%
+    left_join(grid_coords, by = 'site_code')
 
+states_df <- map_data('state')
 
-map_temp <- tm_shape(usmap::us_map(exclude = c('AK', 'HI', 'PR'))) +
-    tm_polygons() +
-    tm_shape(map_data) +
-    tm_symbols(
-        fill = "trend_tmean",
-        fill.scale = tm_scale_continuous(values = "-RdBu"),
-        fill.legend = tm_legend(title = "Temperature\n(°C/yr)"),
-        col_alpha = 0,
-        size = 0.15
-    ) +
-    tm_shape(ms_groups) +
-    tm_symbols(fill = 'black', size = 0.3,
-               fill.legend = tm_legend(title = "MS sites")) +
-    tm_layout(frame = FALSE,
-              legend.position = tm_pos_out("right", "center"))
-tmap_save(map_temp, here('figures', 'map_temperature_trends.png'), width = 10, height = 7, dpi = 300)
+map_temp <- ggplot() +
+    geom_tile(data = grid_map_df, aes(x = lon, y = lat, fill = trend_tmean),
+              width = 0.7, height = 0.7) +
+    scale_fill_distiller(palette = 'RdBu', direction = -1,
+                         name = 'Temperature\n(°C/yr)') +
+    geom_polygon(data = states_df, aes(x = long, y = lat, group = group),
+                 fill = NA, color = 'grey30', linewidth = 0.3) +
+    geom_point(data = ms_groups, aes(x = longitude, y = latitude),
+               size = 1.5, color = 'black') +
+    coord_sf(xlim = c(-125, -66), ylim = c(24, 50), crs = 4326) +
+    theme_few(base_size = 14) +
+    theme(axis.title = element_blank(), panel.grid = element_blank())
+ggsave(here('figures', 'map_temperature_trends.png'), map_temp, width = 10, height = 7, dpi = 300)
 
-map_ppt <- tm_shape(usmap::us_map(exclude = c('AK', 'HI', 'PR'))) +
-    tm_polygons() +
-    tm_shape(map_data) +
-    tm_symbols(
-        fill = "trend_ppt",
-        fill.scale = tm_scale_continuous(values = "Spectral"),
-        fill.legend = tm_legend(title = "PPT\n(mm/yr)"),
-        col_alpha = 0,
-        size = 0.15
-    ) +
-    tm_shape(ms_groups) +
-    tm_symbols(fill = 'black', size = 0.3,
-               fill.legend = tm_legend(title = "MS sites")) +
-    tm_layout(frame = FALSE,
-              legend.position = tm_pos_out("right", "center"))
-tmap_save(map_ppt, here('figures', 'map_precip_trends.png'), width = 10, height = 7, dpi = 300)
+map_ppt <- ggplot() +
+    geom_tile(data = grid_map_df, aes(x = lon, y = lat, fill = trend_ppt),
+              width = 0.7, height = 0.7) +
+    scale_fill_distiller(palette = 'Spectral', direction = 1,
+                         name = 'PPT\n(mm/yr)') +
+    geom_polygon(data = states_df, aes(x = long, y = lat, group = group),
+                 fill = NA, color = 'grey30', linewidth = 0.3) +
+    geom_point(data = ms_groups, aes(x = longitude, y = latitude),
+               size = 1.5, color = 'black') +
+    coord_sf(xlim = c(-125, -66), ylim = c(24, 50), crs = 4326) +
+    theme_few(base_size = 14) +
+    theme(axis.title = element_blank(), panel.grid = element_blank())
+ggsave(here('figures', 'map_precip_trends.png'), map_ppt, width = 10, height = 7, dpi = 300)
 
-map_gpp <- tm_shape(usmap::us_map(exclude = c('AK', 'HI', 'PR'))) +
-    tm_polygons() +
-    tm_shape(map_data) +
-    tm_symbols(
-        fill = "trend_GPP",
-        fill.scale = tm_scale_continuous(values = "BrBG"),
-        fill.legend = tm_legend(title = "GPP\n(kgC/m²/yr)"),
-        col_alpha = 0,
-        size = 0.15
-    ) +
-    tm_shape(ms_groups) +
-    tm_symbols(fill = 'black', size = 0.3,
-               fill.legend = tm_legend(title = "MS sites")) +
-    tm_layout(frame = FALSE,
-              legend.position = tm_pos_out("right", "center"))
-tmap_save(map_gpp, here('figures', 'map_gpp_trends.png'), width = 10, height = 7, dpi = 300)
+map_gpp <- ggplot() +
+    geom_tile(data = grid_map_df, aes(x = lon, y = lat, fill = trend_GPP),
+              width = 0.7, height = 0.7) +
+    scale_fill_distiller(palette = 'BrBG', direction = 1,
+                         name = 'GPP\n(kgC/m²/yr)') +
+    geom_polygon(data = states_df, aes(x = long, y = lat, group = group),
+                 fill = NA, color = 'grey30', linewidth = 0.3) +
+    geom_point(data = ms_groups, aes(x = longitude, y = latitude),
+               size = 1.5, color = 'black') +
+    coord_sf(xlim = c(-125, -66), ylim = c(24, 50), crs = 4326) +
+    theme_few(base_size = 14) +
+    theme(axis.title = element_blank(), panel.grid = element_blank())
+ggsave(here('figures', 'map_gpp_trends.png'), map_gpp, width = 10, height = 7, dpi = 300)
 
 # map_data %>%
 #     filter(var == 'tmean') %>%
