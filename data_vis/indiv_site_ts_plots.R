@@ -18,7 +18,7 @@ source(here('src', 'setup.R'))
 #### Data ####
 
 # Load in annual data summaries.
-data <- readRDS(here('data_working', 'discharge_metrics_siteyear.rds'))
+data <- readRDS(here('data_working', 'discharge_metrics_siteyear_nTest.rds'))
 
 # And join with site-level data.
 data <- data %>%
@@ -31,12 +31,12 @@ plotting_covar <- function(x) {
 
     df <- x %>%
         select(domain, site_code, water_year,
-               temp_mean_ann, gpp_conus, precip_mean_ann,
+               temp_mean_ann, gpp_global_500m_median, precip_mean_ann,
                q_mean, stream_temp_mean_ann) %>%
         pivot_longer(-c(domain, site_code, water_year),
                      names_to = "var") %>%
         mutate(var = factor(var,
-                                 levels = c("temp_mean_ann", "gpp_conus", "precip_mean_ann",
+                                 levels = c("temp_mean_ann", "gpp_global_500m_median", "precip_mean_ann",
                                             "q_mean", "stream_temp_mean_ann")))
     p <- ggplot(df,
                 aes(x = water_year,

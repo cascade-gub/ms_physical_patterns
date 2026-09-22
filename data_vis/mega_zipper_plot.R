@@ -36,7 +36,7 @@ sort_order <- read_csv(here('data_working', 'all_possible_good_siteyears.csv')) 
     mutate(site_code=factor(site_code, levels=site_code))
 
 # make q plot data from the full site_year dataset
-full_data <- readRDS(here('data_working', 'discharge_metrics_siteyear.RDS'))
+full_data <- readRDS(here('data_working', 'discharge_metrics_siteyear_nTest.rds'))
 q_plot_data <-  full_data %>%
     select(site_code, water_year, q_mean) %>%
     drop_na(q_mean) %>%
@@ -102,7 +102,7 @@ make_trend_panel <- function(target_trend, title_string){
         setNames( c('orange', 'blue', 'grey', 'black')
                   , c('decreasing', 'increasing', 'non-significant', 'insufficient data')  )}
 
-    if(target_trend %in% c('gpp_CONUS_30m_median_full', 'gpp_conus_longest_run')){
+    if(target_trend %in% c('gpp_global_500m_median_full', 'gpp_modis_longest_run')){
     # GPP
     plotColors <-
         setNames( c('brown4', 'green4', 'grey', 'black')
@@ -157,8 +157,6 @@ c_master <- q_plot_data %>%
     #scale_color_viridis(discrete = T) +
     annotate("text", x=modis_year-1.5, y=50, label="MODIS", angle=90, size=5, color=contrast_color)+
     geom_vline(xintercept = modis_year, color = contrast_color)+
-    annotate("text", x=landsat_year-1.5, y=50, label="LANDSAT-5", angle=90, size=5, color=contrast_color)+
-    geom_vline(xintercept = landsat_year, color = contrast_color)+
     annotate("text", x=prisim_year-1, y=50, label="PRISM", angle=90, size=5, color=contrast_color)+
     geom_vline(xintercept = prisim_year, color = contrast_color)+
     labs(title = 'MS Site Q Data Coverage')
@@ -167,14 +165,14 @@ c_master
 
 ## assemble plot #####
 zipper_plot <- make_trend_panel('temp_mean_full', 'T') +
-    make_trend_panel('precip_mean_full', 'PPT')+  labs(caption = 'Trends from 1980-Present') +
-    make_trend_panel('gpp_CONUS_30m_median_full', 'GPP')+
+    make_trend_panel('precip_mean_full', 'PPT')+  labs(caption = 'Trends from 2001-2023') +
+    make_trend_panel('gpp_global_500m_median_full', 'GPP')+
     c_master +
     make_trend_panel('temp_mean_longest_run', 'T') +
     #make_trend_panel('stream_temp_mean_longest_run', 'Ts')+
     make_trend_panel('precip_mean_longest_run', 'PPT') + labs(caption = 'Trends cut to Q data') +
     add_legend(
-        make_trend_panel('gpp_conus_longest_run', 'GPP') #+
+        make_trend_panel('gpp_modis_longest_run', 'GPP') #+
         )+
     plot_layout(ncol = 7, widths = c(.25, .25, .25, 1.5, .25, .25, .25))#+
     #plot_annotation(tag_levels = 'A')
@@ -182,11 +180,11 @@ zipper_plot
 
 # make secondary plot of new indices ####
 zipper_plot <- make_trend_panel('temp_mean_ann_full', 'Ta')
-    make_trend_panel('gpp_conus_full', 'GPP')+
+    make_trend_panel('gpp_modis_full', 'GPP')+
     make_trend_panel('precip_mean_ann_full', 'P')+
     c_master +
     make_trend_panel('temp_mean_ann_longest_run', 'Ta') +
-    make_trend_panel('gpp_conus_longest_run', 'GPP')+
+    make_trend_panel('gpp_modis_longest_run', 'GPP')+
     make_trend_panel('precip_mean_ann_longest_run', 'P') +
     make_trend_panel('p_n_days_longest_run', 'P days') +
     make_trend_panel('p_mean_intensity_longest_run', 'P int') +

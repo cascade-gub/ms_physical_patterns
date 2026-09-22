@@ -43,6 +43,8 @@ aridity <- d %>%
     filter(ws_status == 'non-experimental')
 aridity$q_flag[is.na(aridity$q_flag)] <- "data limited"
 aridity$q_flag <- fct_relevel(aridity$q_flag, 'increasing', 'decreasing', 'non-significant', 'data limited')
+q_colors <- c('increasing' = 'blue', 'decreasing' = 'red',
+              'non-significant' = 'grey', 'data limited' = 'black')
 
 
 # set axes the same
@@ -61,7 +63,7 @@ hist_hw <- aridity %>%
     ggplot(aes(x = mean_ai, fill = q_flag))+
         #geom_density(lwd = 2)+
     geom_histogram()+
-    scale_fill_manual(values = c('blue','red', 'grey', 'black'))+
+    scale_fill_manual(values = q_colors, drop = FALSE)+
     scale_x_continuous(limits = xlims)+
     scale_y_continuous(limits = ylims)+
     labs(x = 'Aridity Index (mean, 1980-2020)',
@@ -85,7 +87,7 @@ hist_hd <- aridity %>%
     ggplot(aes(x = mean_ai, fill = q_flag))+
     #geom_density(lwd = 2)+
     geom_histogram()+
-    scale_fill_manual(values = c('red', 'grey', 'black'))+
+    scale_fill_manual(values = q_colors, drop = FALSE)+
     scale_x_continuous(limits = xlims)+
     scale_y_continuous(limits = ylims)+
     labs(x = 'Aridity Index (mean, 1980-2020)',
@@ -110,7 +112,7 @@ hist_cd <- aridity %>%
     geom_histogram()+
     #geom_density(lwd = 2)+
     #geom_histogram()+
-    scale_fill_manual(values = c('black'))+
+    scale_fill_manual(values = q_colors, drop = FALSE)+
     scale_x_continuous(limits = xlims)+
     scale_y_continuous(limits = ylims)+
     labs(x = 'Aridity Index (mean, 1980-2020)',
@@ -133,7 +135,7 @@ hist_cw <- aridity %>%
     ggplot(aes(x = mean_ai, fill = q_flag))+
     geom_histogram()+
     geom_density(lwd = 2)+
-    scale_fill_manual(values = c('black'), drop=FALSE)+
+    scale_fill_manual(values = q_colors, drop = FALSE)+
     guides(fill = guide_legend(override.aes = list(alpha=1))) +
     scale_x_continuous(limits = xlims)+
     scale_y_continuous(limits = ylims)+

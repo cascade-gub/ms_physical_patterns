@@ -38,6 +38,9 @@ Rplot*.png
 # Word temp/lock files
 ~$*
 
+# Python
+__pycache__/
+
 # Claude Code
 CLAUDE.md
 .claude/

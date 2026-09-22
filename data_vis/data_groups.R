@@ -27,10 +27,10 @@ full_prism_trends <- read_csv(here('data_working', 'trends', 'full_prisim_climat
            warming = case_when(flag_temp_mean == 'increasing' ~ 'H',
                                flag_temp_mean == 'decreasing' ~ 'C',
                                flag_temp_mean == 'non-significant' ~ '-'),
-           greening = case_when(flag_gpp_CONUS_30m_median == 'increasing' ~ 'G',
-                                flag_gpp_CONUS_30m_median == 'decreasing' ~ 'B',
-                                flag_gpp_CONUS_30m_median == 'non-significant' ~ '-',
-                                is.na(flag_gpp_CONUS_30m_median) ~ '-'),
+           greening = case_when(flag_gpp_global_500m_median == 'increasing' ~ 'G',
+                                flag_gpp_global_500m_median == 'decreasing' ~ 'B',
+                                flag_gpp_global_500m_median == 'non-significant' ~ '-',
+                                is.na(flag_gpp_global_500m_median) ~ '-'),
            grouping = as.factor(paste0(warming, wetting, greening)),
            coarse_grouping = case_when(grouping %in% c('HDG', 'HD-', 'H-G', '-DG', 'HDB', 'H--', '--G', '-D-') ~ '(+)',
                                        grouping %in% c('--B', '-W-', '-WB', 'C--', 'C-B', 'CW-', 'CWB') ~ '(-)',
@@ -56,11 +56,11 @@ full_prism_trends %>%
 
 gpp_plot <- ggplot(full_prism_trends, aes(x = trend_temp_mean*10, y = trend_precip_mean*10, text = paste("Site:", site_code, "<br>Domain:", domain))) +
     # Points with 'non-significant' flag
-    geom_point(data = subset(full_prism_trends, flag_gpp_CONUS_30m_median == "non-significant"),
+    geom_point(data = subset(full_prism_trends, flag_gpp_global_500m_median == "non-significant"),
                color = "grey", size = 2) +
     # Points with other flags
-    geom_point(data = subset(arrange(full_prism_trends, trend_gpp_CONUS_30m_median), flag_gpp_CONUS_30m_median != "non-significant"),
-               aes(color = trend_gpp_CONUS_30m_median*10, shape = ws_status), size = 5) +
+    geom_point(data = subset(arrange(full_prism_trends, trend_gpp_global_500m_median), flag_gpp_global_500m_median != "non-significant"),
+               aes(color = trend_gpp_global_500m_median*10, shape = ws_status), size = 5) +
     scale_color_distiller(palette = 'BrBG', direction = 1) +
     theme_few(base_size = 20) +
     geom_hline(yintercept = 0) +
@@ -180,8 +180,8 @@ metrics <- readRDS(here('data_working', 'discharge_metrics_siteyear_nTest.rds'))
     distinct()
 
 metrics %>%
-    filter(site_code == 'GSWS06', water_year > 1980) %>%
-    ggplot(aes(x = water_year, y = gpp_CONUS_30m_median))+
+    filter(site_code == 'GSWS06', water_year >= analysis_start_year) %>%
+    ggplot(aes(x = water_year, y = gpp_global_500m_median))+
     geom_point()
 
 ## hydrographs ####
@@ -233,6 +233,7 @@ grid_metrics <- read_csv(here('data_raw', 'grid_csvs', 'et2.csv')) %>%
     pivot_longer(cols = -c('water_year', 'site_code', 'geometry'), names_to = 'var', values_to = 'val')
 
 grid_trends <- grid_metrics %>%
+    filter(water_year >= analysis_start_year, water_year <= analysis_end_year) %>%
     detect_trends()
 
 write_csv(grid_trends, here('data_working', 'grid_trends.csv'))

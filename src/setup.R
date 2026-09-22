@@ -63,6 +63,10 @@ prisim_year <- 1980
 landsat_year <- 1984
 modis_year <- 2000
 
+# trend analysis window (MODIS GPP era)
+analysis_start_year <- 2001   # first full MODIS year
+analysis_end_year   <- 2023   # last MODIS GPP year
+
 # helper functions ####
 # set logger for other scripts
 set_logger <- function(){

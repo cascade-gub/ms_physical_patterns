@@ -17,8 +17,10 @@ clim_trends <- metrics %>%
     pivot_longer(cols = -c('site_code', 'water_year', 'agg_code'),
                  names_to = 'var',
                  values_to = 'val') %>%
-    filter(var %in% c('temp_mean', 'precip_mean', 'gpp_CONUS_30m_median'),
-           agg_code == 'annual') %>%
+    filter(var %in% c('temp_mean', 'precip_mean', 'gpp_global_500m_median'),
+           agg_code == 'annual',
+           water_year >= analysis_start_year,
+           water_year <= analysis_end_year) %>%
     distinct() %>%
     reduce_to_longest_site_runs(., metric = 'temp_mean') %>%
     detect_trends(.)
@@ -67,12 +69,13 @@ prism_site_run_trends_data <- metrics %>%
            # in-stream
            stream_temp_mean,
            # productivity
-           gpp_conus = gpp_CONUS_30m_median) %>%
+           gpp_modis = gpp_global_500m_median) %>%
     #drop_na(temp_mean_ann, precip_mean_ann, q_mean) %>%
     pivot_longer(cols = -c('site_code', 'water_year', 'agg_code'),
                  names_to = 'var',
                  values_to = 'val') %>%
-           filter(water_year >= prisim_year) %>%
+           filter(water_year >= analysis_start_year,
+                  water_year <= analysis_end_year) %>%
     reduce_to_best_range(., metric = 'q_mean')
 
 # trend detection ####

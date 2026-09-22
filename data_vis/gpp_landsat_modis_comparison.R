@@ -2,7 +2,8 @@ library(here)
 source(here('src', 'setup.R'))
 
 # Sites used in the paper analysis
-paper_sites <- read_csv(here('data_working', 'trends', 'best_run_prisim.csv')) %>%
+# frozen on the pre-MODIS-pivot site list so this validation figure stays comparable
+paper_sites <- read_csv(here('data_working', 'archive_landsat_1980', 'trends', 'best_run_prisim.csv')) %>%
     pull(site_code) %>%
     unique()
 

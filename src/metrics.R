@@ -835,9 +835,13 @@ saveRDS(n_q_cq_decadal, "data_working/N_CQ_decadal.rds")
 ## read data ####
 p_data <- read_feather(here('data_raw', 'ms', 'v2', 'spatial_timeseries_vegetation.feather')) %>%
     mutate(month = month(date),
-           year = year(date),
-           water_year = case_when(month %in% c(10, 11, 12) ~ year+1,
-                                  TRUE ~ year)) %>%
+           year = if_else(is.na(date), year, as.numeric(year(date))),
+           # annual products (MODIS GPP/NPP) have no date: calendar year -> water_year
+           water_year = case_when(is.na(date) ~ year,
+                                  month %in% c(10, 11, 12) ~ year + 1,
+                                  TRUE ~ year),
+           # MOD17 fill (65535 * 1e-4) for urban/barren/water land cover
+           val = if_else(var == 'gpp_global_500m_median' & val >= 6.55, NA_real_, val)) %>%
     mutate(season = case_when(month %in% c(6,7,8) ~ "Summer",
                               month %in% c(12,1,2) ~ "Winter",
                               month %in% c(3,4,5) ~ "Spring",
@@ -857,6 +861,7 @@ p_ann <- p_data %>%
 
 ## seasonal prod ####
 p_season <- p_data %>%
+    filter(!is.na(month)) %>%
     distinct() %>%
     group_by(site_code, water_year, season, var) %>%
     summarize(val = mean(val, na.rm = T)) %>%
@@ -866,6 +871,7 @@ p_season <- p_data %>%
 
 ## monthly prod ####
 p_month <- p_data %>%
+    filter(!is.na(month)) %>%
     distinct() %>%
     group_by(site_code, water_year, month, var) %>%
     summarize(val = mean(val, na.rm = T)) %>%

@@ -36,7 +36,7 @@ q_data %>%
         select(site_code, date, val) %>%
         filter(site_code == i) %>%
         mutate(wy = as.integer(as.character(water_year(date, origin = 'usgs')))) %>%
-        filter(wy >= prisim_year) %>%
+        filter(wy >= analysis_start_year) %>%
         group_by(wy) %>%
         na.omit() %>%
         arrange(-val) %>%
