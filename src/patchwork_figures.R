@@ -25,10 +25,10 @@ full_prism_trends <- read_csv(here('data_working', 'trends', 'full_prisim_climat
            warming = case_when(flag_temp_mean == 'increasing' ~ 'H',
                                flag_temp_mean == 'decreasing' ~ 'C',
                                flag_temp_mean == 'non-significant' ~ '-'),
-           greening = case_when(flag_gpp_CONUS_30m_median == 'increasing' ~ 'G',
-                                flag_gpp_CONUS_30m_median == 'decreasing' ~ 'B',
-                                flag_gpp_CONUS_30m_median == 'non-significant' ~ '-',
-                                is.na(flag_gpp_CONUS_30m_median) ~ '-'),
+           greening = case_when(flag_gpp_global_500m_median == 'increasing' ~ 'G',
+                                flag_gpp_global_500m_median == 'decreasing' ~ 'B',
+                                flag_gpp_global_500m_median == 'non-significant' ~ '-',
+                                is.na(flag_gpp_global_500m_median) ~ '-'),
            grouping = as.factor(paste0(warming, wetting, greening))) %>%
     left_join(., ms_site_data, by = 'site_code') %>%
     left_join(., q_trends, by = 'site_code')
@@ -81,36 +81,174 @@ fig1 <- (wrap_elements(map_temp_grob) + wrap_elements(map_gpp_grob)) /
 ggsave(here('figures', 'Figure_1.png'), fig1, width = 14, height = 10, dpi = 300)
 
 # ============================================================
-# FIGURE 2 — GPP scatter + Q scatter side by side
+# FIGURE 2 — Data limitation mega zipper
+# ============================================================
+
+fig2_metrics <- readRDS(here('data_working', 'discharge_metrics_siteyear_nTest.rds')) %>%
+    distinct() %>%
+    filter(agg_code == 'annual') %>%
+    select(site_code, water_year, q_mean) %>%
+    drop_na(q_mean)
+
+fig2_sort <- read_csv(here('data_working', 'all_possible_good_siteyears.csv')) %>%
+    group_by(site_code) %>%
+    summarize(n_years = n(), .groups = 'drop') %>%
+    arrange(n_years)
+fig2_levels <- as.character(fig2_sort$site_code)
+
+fig2_full <- read_csv(here('data_working', 'trends', 'full_prisim_climate.csv')) %>%
+    add_flags() %>%
+    filter(var %in% c('temp_mean', 'precip_mean', 'gpp_global_500m_median')) %>%
+    select(site_code, var, flag) %>%
+    mutate(var = paste0(var, '_full')) %>%
+    pivot_wider(id_cols = site_code, names_from = var, values_from = flag)
+
+fig2_trim <- read_csv(here('data_working', 'trends', 'best_run_prisim.csv')) %>%
+    add_flags() %>%
+    filter(var %in% c('temp_mean', 'precip_mean', 'gpp_modis')) %>%
+    select(site_code, var, flag) %>%
+    mutate(var = paste0(var, '_trim')) %>%
+    pivot_wider(id_cols = site_code, names_from = var, values_from = flag)
+
+fig2_data <- fig2_sort %>%
+    left_join(fig2_full, by = 'site_code') %>%
+    left_join(fig2_trim, by = 'site_code') %>%
+    filter(!is.na(temp_mean_full), !is.na(precip_mean_full),
+           !is.na(gpp_global_500m_median_full))
+fig2_levels <- as.character(fig2_data$site_code)
+fig2_data <- fig2_data %>%
+    mutate(site_code = factor(site_code, levels = fig2_levels))
+
+make_trend_long <- function(data, t_col, p_col, g_col) {
+    bind_rows(
+        data %>% select(site_code, flag = all_of(t_col)) %>% mutate(var = 'T'),
+        data %>% select(site_code, flag = all_of(p_col)) %>% mutate(var = 'PPT'),
+        data %>% select(site_code, flag = all_of(g_col)) %>% mutate(var = 'GPP')
+    ) %>%
+        mutate(flag = replace_na(flag, 'insufficient data'),
+               hex = case_when(
+                   var == 'T' & flag == 'increasing' ~ 'red',
+                   var == 'T' & flag == 'decreasing' ~ 'skyblue3',
+                   var == 'PPT' & flag == 'increasing' ~ 'blue',
+                   var == 'PPT' & flag == 'decreasing' ~ 'orange',
+                   var == 'GPP' & flag == 'increasing' ~ 'green4',
+                   var == 'GPP' & flag == 'decreasing' ~ 'brown4',
+                   flag == 'non-significant' ~ 'grey',
+                   flag == 'insufficient data' ~ 'black'),
+               var = factor(var, levels = c('T', 'PPT', 'GPP')))
+}
+
+full_long <- make_trend_long(fig2_data,
+                             'temp_mean_full', 'precip_mean_full',
+                             'gpp_global_500m_median_full')
+trim_long <- make_trend_long(fig2_data,
+                             'temp_mean_trim', 'precip_mean_trim',
+                             'gpp_modis_trim')
+
+make_trend_tiles <- function(long_data, title) {
+    ggplot(long_data, aes(x = var, y = site_code, fill = hex)) +
+        geom_tile() +
+        scale_fill_identity() +
+        theme_few(base_size = 14) +
+        theme(axis.text.y = element_blank(),
+              axis.ticks.y = element_blank(),
+              axis.title = element_blank(),
+              axis.text.x = element_text(face = 'bold'),
+              plot.title = element_text(hjust = 0.5)) +
+        scale_x_discrete(position = 'top') +
+        labs(title = title)
+}
+
+full_tiles <- make_trend_tiles(full_long,
+    paste0('Annual trends, ', analysis_start_year, '–', analysis_end_year))
+trim_tiles <- make_trend_tiles(trim_long, 'Annual trends,\nTrimmed to Q data')
+
+q_cov_plot <- fig2_metrics %>%
+    filter(site_code %in% fig2_levels) %>%
+    mutate(site_code = factor(site_code, levels = fig2_levels)) %>%
+    ggplot(aes(x = water_year, y = site_code)) +
+    geom_tile(height = 0.8, fill = 'purple4') +
+    geom_vline(xintercept = prisim_year, color = 'darkorange', linewidth = 0.7) +
+    geom_vline(xintercept = modis_year, color = 'darkorange', linewidth = 0.7) +
+    annotate('text', x = prisim_year - 2, y = length(fig2_levels) * 0.35,
+             label = 'PRISM', angle = 90, size = 4.5, color = 'darkorange') +
+    annotate('text', x = modis_year - 2, y = length(fig2_levels) * 0.35,
+             label = 'MODIS', angle = 90, size = 4.5, color = 'darkorange') +
+    theme_few(base_size = 14) +
+    theme(axis.text.y = element_blank(),
+          axis.ticks.y = element_blank(),
+          axis.title.y = element_blank(),
+          plot.title = element_text(hjust = 0.5)) +
+    labs(x = NULL, title = 'Stream discharge (Q) records')
+
+key_df <- expand_grid(
+    flag = factor(c('increasing', 'decreasing', 'non-significant', 'insufficient data'),
+                  levels = rev(c('increasing', 'decreasing',
+                                 'non-significant', 'insufficient data'))),
+    var = factor(c('T', 'PPT', 'GPP'), levels = c('T', 'PPT', 'GPP'))
+) %>%
+    mutate(hex = case_when(
+        var == 'T' & flag == 'increasing' ~ 'red',
+        var == 'T' & flag == 'decreasing' ~ 'skyblue3',
+        var == 'PPT' & flag == 'increasing' ~ 'blue',
+        var == 'PPT' & flag == 'decreasing' ~ 'orange',
+        var == 'GPP' & flag == 'increasing' ~ 'green4',
+        var == 'GPP' & flag == 'decreasing' ~ 'brown4',
+        flag == 'non-significant' ~ 'grey',
+        flag == 'insufficient data' ~ 'black'))
+
+key_plot <- ggplot(key_df, aes(x = var, y = flag, fill = hex)) +
+    geom_tile(color = 'white', linewidth = 2) +
+    scale_fill_identity() +
+    theme_void(base_size = 11) +
+    theme(axis.text.x = element_text(face = 'bold'),
+          axis.text.y = element_text(hjust = 1),
+          plot.title = element_text(hjust = 0.5, face = 'bold')) +
+    labs(title = 'KEY')
+
+fig2_design <- "
+AABB
+AACC
+AADD
+"
+fig2_zipper <- q_cov_plot + full_tiles + trim_tiles + key_plot +
+    plot_layout(design = fig2_design,
+                widths = c(3, 3, 2, 2),
+                heights = c(5, 5, 2))
+ggsave(here('figures', 'Figure_2.png'), fig2_zipper,
+       width = 12, height = 10, dpi = 300)
+
+# ============================================================
+# FIGURE 3 — GPP scatter + Q scatter side by side
 # ============================================================
 
 base_scatter <- function(data) {
     ggplot(data, aes(x = trend_temp_mean * 10, y = trend_precip_mean * 10)) +
         geom_hline(yintercept = 0) +
         geom_vline(xintercept = 0) +
-        lims(x = c(-.6, .6), y = c(-.4, .4)) +
+        coord_cartesian(xlim = c(-.9, .9), ylim = c(-.7, .7)) +
         theme_few(base_size = 14) +
-        annotate('text', x = -0.55, y = 0.37,
+        annotate('text', x = -0.85, y = 0.65,
                  label = paste0('n[ne]', ' == ', n_cw), parse = TRUE,
                  hjust = 0, size = 3.5, color = 'grey40') +
-        annotate('text', x = 0.55, y = 0.37,
+        annotate('text', x = 0.85, y = 0.65,
                  label = paste0('n[ne]', ' == ', n_hw), parse = TRUE,
                  hjust = 1, size = 3.5, color = 'grey40') +
-        annotate('text', x = -0.55, y = -0.37,
+        annotate('text', x = -0.85, y = -0.65,
                  label = paste0('n[ne]', ' == ', n_cd), parse = TRUE,
                  hjust = 0, size = 3.5, color = 'grey40') +
-        annotate('text', x = 0.55, y = -0.37,
+        annotate('text', x = 0.85, y = -0.65,
                  label = paste0('n[ne]', ' == ', n_hd), parse = TRUE,
                  hjust = 1, size = 3.5, color = 'grey40')
 }
 
 gpp_panel <- base_scatter(full_prism_trends) +
     geom_point(data = subset(full_prism_trends,
-                             flag_gpp_CONUS_30m_median == "non-significant"),
+                             flag_gpp_global_500m_median == "non-significant"),
                color = "grey", size = 2) +
-    geom_point(data = subset(arrange(full_prism_trends, trend_gpp_CONUS_30m_median),
-                             flag_gpp_CONUS_30m_median != "non-significant"),
-               aes(color = trend_gpp_CONUS_30m_median * 10,
+    geom_point(data = subset(arrange(full_prism_trends, trend_gpp_global_500m_median),
+                             flag_gpp_global_500m_median != "non-significant"),
+               aes(color = trend_gpp_global_500m_median * 10,
                    shape = ws_status), size = 4) +
     scale_color_distiller(palette = 'BrBG', direction = 1) +
     scale_shape_manual(values = c(17, 16),
@@ -145,13 +283,13 @@ q_panel <- base_scatter(q_plot_data) +
          color = 'Q trend\n(mean, mm/decade)',
          shape = 'Condition')
 
-fig2 <- gpp_panel + q_panel +
+fig3 <- gpp_panel + q_panel +
     plot_layout(guides = 'collect') &
     theme(legend.position = 'right')
-ggsave(here('figures', 'Figure_2.png'), fig2, width = 16, height = 7, dpi = 300)
+ggsave(here('figures', 'Figure_3.png'), fig3, width = 16, height = 7, dpi = 300)
 
 # ============================================================
-# FIGURE 3 — aridity histograms via facet_wrap
+# FIGURE 4 — aridity histograms via facet_wrap
 # ============================================================
 
 # aridity data
@@ -213,7 +351,7 @@ quad_labels <- tibble(
 ) %>%
     mutate(label = paste0('n[ne]', ' == ', n_ne))
 
-fig3 <- ggplot(aridity, aes(x = mean_ai, fill = q_flag)) +
+fig4 <- ggplot(aridity, aes(x = mean_ai, fill = q_flag)) +
     geom_histogram() +
     facet_wrap(~quadrant, ncol = 2) +
     scale_fill_manual(values = flag_colors,
@@ -228,6 +366,6 @@ fig3 <- ggplot(aridity, aes(x = mean_ai, fill = q_flag)) +
               inherit.aes = FALSE) +
     theme_few(base_size = 14) +
     labs(x = 'Aridity Index (mean, 1980-2020)', y = 'n', fill = 'Q trend')
-ggsave(here('figures', 'Figure_3.png'), fig3, width = 10, height = 9, dpi = 300)
+ggsave(here('figures', 'Figure_4.png'), fig4, width = 10, height = 9, dpi = 300)
 
 cat('All composite figures saved to figures/\n')
