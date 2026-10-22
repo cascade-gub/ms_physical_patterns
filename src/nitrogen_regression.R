@@ -20,8 +20,7 @@ N_VWM_annual <- readRDS("data_working/N_VWM_annual.rds")
 
 #### Tidy ####
 
-# This is so our data match the time frame presented in the
-# overall bubble plot (2010-2020).
+# This is so our data match the time frame 2010-2020.
 mean_N_VWM_annual20 <- N_VWM_annual %>%
     filter(water_year > 2009) %>%
     filter(water_year < 2021) %>%
@@ -97,8 +96,6 @@ no3_data <- mean_N_VWM_annual20_nonexp %>%
     left_join(ms_ws_attr) %>%
     mutate(nlcd_wetland = nlcd_wetland_herb + nlcd_wetland_wood,
            nlcd_dev = nlcd_dev_hi + nlcd_dev_med + nlcd_dev_low + nlcd_dev_open)
-# NOTE- NEED TO CHAT WITH MIKE RE: HOW/WHEN AGGREGATE
-# STATISTICS ARE CALCULATED.
 
 # Examine variables.
 hist(log(no3_data$mean_annual_VWM_mgL)) # needs a log transformation
@@ -192,8 +189,6 @@ nh3_data <- mean_N_VWM_annual20_nonexp %>%
     left_join(ms_ws_attr) %>%
     mutate(nlcd_wetland = nlcd_wetland_herb + nlcd_wetland_wood,
            nlcd_dev = nlcd_dev_hi + nlcd_dev_med + nlcd_dev_low + nlcd_dev_open)
-# NOTE- NEED TO CHAT WITH MIKE RE: HOW/WHEN AGGREGATE
-# STATISTICS ARE CALCULATED.
 
 # Examine variables.
 hist(log(nh3_data$mean_annual_VWM_mgL)) # needs a log transformation
@@ -209,7 +204,7 @@ ggplot(nh3_data, aes(x = ecoregion,
                      y = log(mean_annual_VWM_mgL))) +
     geom_boxplot() +
     geom_jitter() +
-    theme_bw() # ecoregion appears an appropriate random intercept
+    theme_bw() # ecoregion still appears appropriate
 
 # And examine for possible correlations.
 nh3_select <- nh3_data %>%
@@ -295,8 +290,6 @@ tdn_data <- mean_N_VWM_annual20_nonexp %>%
     left_join(ms_ws_attr) %>%
     mutate(nlcd_wetland = nlcd_wetland_herb + nlcd_wetland_wood,
            nlcd_dev = nlcd_dev_hi + nlcd_dev_med + nlcd_dev_low + nlcd_dev_open)
-# NOTE- NEED TO CHAT WITH MIKE RE: HOW/WHEN AGGREGATE
-# STATISTICS ARE CALCULATED.
 
 # Examine variables.
 hist(log(tdn_data$mean_annual_VWM_mgL)) # needs a log transformation
@@ -312,7 +305,7 @@ ggplot(tdn_data, aes(x = ecoregion,
                      y = log(mean_annual_VWM_mgL))) +
     geom_boxplot() +
     geom_jitter() +
-    theme_bw() # ecoregion appears an appropriate random intercept
+    theme_bw() # ecoregion still appropriate
 
 # And examine for possible correlations.
 tdn_select <- tdn_data %>%

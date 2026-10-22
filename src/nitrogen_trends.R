@@ -2,7 +2,7 @@
 
 #### README ####
 # The following script will estimate trends
-# for nitrogen data.
+# for nitrogen and greenness data.
 
 #### Load packages ####
 library(here)
@@ -13,10 +13,16 @@ source(here('src', 'setup.R'))
 # Load in climate data (for N deposition).
 clim_raw <- read_feather(here('data_raw/ms/v2/spatial_timeseries_climate.feather'))
 
+# Load in greenness data (for productivity).
+green <- read_csv("data_raw/ms_landsat_greenness_annual.csv")
+
 # Load VWM nitrogen datasets.
 n_vwm_month <- readRDS("data_working/N_VWM_monthly.rds")
 n_vwm_seas <- readRDS("data_working/N_VWM_seasonal.rds")
 n_vwm_ann <- readRDS("data_working/N_VWM_annual.rds")
+
+# Load in discharge trends.
+q_trends <- read_csv("data_working/trends/best_run_prisim.csv")
 
 #### Prep data ####
 
@@ -26,6 +32,9 @@ nonexp_sites <- n_vwm_ann %>%
     filter(ws_status == "non-experimental")
 
 length(unique(nonexp_sites$site_code)) # 161 sites
+
+# BUT NOTE - WE CALCULATE TRENDS FOR ALL SITES BELOW,
+# including both experimental, and non-experimental sites.
 
 # Tidy column names.
 n_vwm_month <- n_vwm_month %>%
@@ -61,6 +70,9 @@ n_vwm <- full_join(n_vwm_ann, n_vwm_month)
 n_vwm <- full_join(n_vwm, n_vwm_seas)
 
 # Trim all nitrogen data to only calculate trends post 1980.
+# This, we felt was the most inclusive option while still trying
+# to best match the other datasets - climate data typically begins
+# in 1981, deposition data in 1985, and productivity data in 1986.
 n_vwm80 <- n_vwm %>%
     filter(water_year > 1979)
 
@@ -133,6 +145,27 @@ n_vwm80_trim <- right_join(n_vwm80_10, n_mos_yrs_trim)
 # Keep in mind the number of sites above will decrease due to this
 # filtering, so need to reference the original n_vwm80 dataset to
 # ensure correct counting of number of sites with insufficient data.
+
+#### Q ####
+
+# Nic has already run these trends, so I'm just summarizing them here.
+q_trends <- left_join(q_trends, ms_site_data)
+
+# Further trim dataset.
+mean_q_trends_nonexp <- q_trends %>%
+    # remove experimental sites
+    filter(ws_status == "non-experimental") %>%
+    # and keep only records for mean discharge
+    filter(var == "q_mean") %>%
+    mutate(flag = case_when(sign(trend_upper)!= sign(trend_lower) ~ 'non-significant',
+                            sign(trend_upper) == sign(trend_lower) & sign(trend) > 0 ~ 'increasing',
+                            sign(trend_upper) == sign(trend_lower) & sign(trend) < 0 ~ 'decreasing',
+                            sign(trend_upper)!= sign(trend_lower) & trend == 0 ~ 'flat',
+                            trend == NA ~ 'insufficient data'))
+
+# And aggregate by trend designation.
+mean_q_trend_counts <- mean_q_trends_nonexp %>%
+    count(flag)
 
 #### NO3 ####
 
@@ -357,6 +390,40 @@ ndep_trends_ann <- detect_trends(ndep_ann)
 # Export for use in making figures.
 saveRDS(ndep_trends_ann, "data_working/ndep_trends_annual.rds")
 saveRDS(ndep_ann, "data_working/ndep_data_for_trends_annual.rds")
+
+#### Greenness ####
+
+##### Annual #####
+
+# Using new NIRv dataset courtesy of Mike for productivity
+# metric that properly harmonizes between LANDSAT missions.
+
+# Editing greenness dataset so things match up with function below.
+green_ed <- green %>%
+    select(-n_points_ndvi) %>%
+    select(-n_points_nirv) %>%
+    select(-n_points_site) %>%
+    pivot_longer(ndvi:nirv, values_to = "val",
+                 names_to = "analyte") %>%
+    mutate(timestep = "Annual")
+
+# Data start in 1984, so not doing any additional trimming here.
+# Reduce to best range.
+green_ann <- gen_reduce_to_best_range(data_in = green_ed,
+                                     solute = 'nirv',
+                                     aggregation = 'Annual')
+
+# Renaming a column to work with the function below.
+green_ann <- green_ann %>%
+    rename(var = analyte) %>%
+    drop_na(var)
+
+# Detect trends.
+green_trends_ann <- detect_trends(green_ann)
+
+# Export for use in making figures.
+saveRDS(green_trends_ann, "data_working/green_trends_annual.rds")
+saveRDS(green_ann, "data_working/green_data_for_trends_annual.rds")
 
 #### Old Seasonal Data Exploration Below ####
 

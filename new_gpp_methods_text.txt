@@ -1,0 +1,51 @@
+We replaced Landsat-derived GPP (Robinson et al. 2018) with cross-calibrated Landsat
+greenness, because GPP trends were inflated by the 2013 transition from the Landsat 7
+Enhanced Thematic Mapper Plus (ETM+) to the Landsat 8 Operational Land Imager (OLI). In each
+watershed, we randomly sampled 30 Landsat pixel centers at least 45 m apart (3,764 in total).
+At each pixel we extracted Collection 2 Level-2
+surface reflectance from every Landsat 5, 7, 8, and 9 scene from 1984 to 2025 using
+Google Earth Engine. We then processed the time series with the LandsatTS R package
+(v1.2.3; Berner et al. 2023). LandsatTS masked clouds, shadow, snow, water, and
+low-quality observations, and computed NDVI and NIRv (Badgley et al. 2017). It
+cross-calibrated Landsat 5 and 8 observations to Landsat 7 using random forest models
+trained on our own pixels. To define each pixel's growing season, LandsatTS fit a smooth
+seasonal curve of greenness against day of year, pooling five years of observations
+centered on the year of interest. The growing season was the span of days on which this
+curve was at or above 75% of its peak. A pixel's annual value was the median of that
+year's observations falling within its growing season.
+
+We modified the standard LandsatTS workflow as follows:
+1. added Landsat 9 to the extraction and treated it as Landsat 8; the two agreed to
+   within 0.002 NDVI,
+2. excluded Landsat 7 observations after 2017, when orbital drift began shifting its
+   overpass time, so that drift affected neither calibration nor the series,
+3. extracted year-round imagery and widened the calibration window from June–August
+   to May–September, to suit temperate growing seasons,
+4. shortened the curve-fitting window from 7 to 5 years and lowered its minimum
+   from 20 to 10 observations, so that the curve follows change more closely and pixels
+   with sparse records (common in the 1980s-90s and in cloudy regions) are retained. We
+   also lowered the minimum valid NIRv value from 0.15 to 0.02, because the default is
+   set for NDVI and NIRv values are roughly 4-6x smaller.
+
+A pixel needed at least two growing-season observations to receive a value for a given
+year. Because clouds determine which pixels have values in any given year, we did not
+simply average pixels within a watershed. Instead, a watershed's annual value was its
+long-term average greenness plus the median, across its pixels, of each pixel's
+departure from its own long-term average that year. Years in which fewer than half of a
+watershed's pixels had values were left blank. Before calibration,
+Landsat 8 read higher than Landsat 7 by 4.9% (NDVI) and 9.8% (NIRv); after calibration,
+the cross-validated bias was −0.2% and +0.3%.
+
+To check the Landsat 8/9 calibration, we compared it with LEOHS linear band harmonization
+(Richardson et al. 2025), fitted by ordinary least squares, reduced major axis (RMA), and
+Theil-Sen regression to near-simultaneous Landsat 7/8 image pairs over our watersheds, and
+with a series built from Landsat 7 alone, without calibration. Our calibration and the
+least-squares and Theil-Sen harmonizations matched Landsat 7 to within 0.005 NDVI at the
+2013 transition; RMA overcorrected by 0.018.
+
+References
+- Badgley, G., Field, C. B., & Berry, J. A. (2017). Canopy near-infrared reflectance and terrestrial photosynthesis. Science Advances, 3(3), e1602244.
+- Berner, L. T., Assmann, J. J., Normand, S., & Goetz, S. J. (2023). 'LandsatTS': an R package to facilitate retrieval, cleaning, cross-calibration, and phenological modeling of Landsat time series data. Ecography, e06768.
+- Richardson et al. (2025). Geocarto International. doi:10.1080/10106049.2025.2538108
+- Robinson, N. P., et al. (2018). Terrestrial primary production for the conterminous United States derived from Landsat 30 m and MODIS 250 m. Remote Sensing in Ecology and Conservation, 4(3), 264–280.
+

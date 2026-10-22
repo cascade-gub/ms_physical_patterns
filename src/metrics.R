@@ -429,6 +429,8 @@ ppt_days_yr <- clim %>%
     rename(ppt_days = n) %>%
     mutate(agg_code = 'annual')
 
+## annual clim summaries #####
+
 # join together
 clim_metrics_out <- clim %>%
     group_by(site_code, water_year) %>%
@@ -573,10 +575,37 @@ n_data <- chem_data %>%
     filter(var %in% c("NO3_NO2_N", "NO3_N", "NO2_N",
                       "NH3_NH4_N", "NH4_N", "NH3_N",
                       "TDN", "TPN", "TN", "TIN",
-                      "TDKN", "TKN", "N2O")) # skipping "d15N_NO3"
+                      "TDKN", "TKN", "N2O")) # skipping "d15N_NO3", "DON", and "TON"
+
+# check to see how the common ones populate
+site_by_n <- n_data %>%
+    select(site_code, var) %>%
+    unique() %>%
+    mutate(present = 1) %>%
+    pivot_wider(names_from = var, values_from = present) %>%
+    select(site_code,
+           NH4_N, NH3_N, NH3_NH4_N,
+           NO3_N, NO3_NO2_N,
+           TDKN, TKN,
+           TDN, TIN, TN)
+
+# made a bunch of plots where major measures of NH4 or NO3
+# were both present and only kept those that either (1)
+# helped to extend the time series or (2) were of a reasonable
+# magnitude given the other measure's values
+
+# also looked at TDN measures, and found only one domain (Niwot)
+# that had appreciable TIN/TN measures that could be used to combine/
+# calculate TDN, but TDN records there were already v complete,
+# so chose to use TDN only for future analyses
 
 # Make uniform names for analytes
 n_data <- n_data %>%
+    # but first remove the handful of values that don't align
+    filter(!site_code %in% c("BIGC", "BLDE", "COMO",
+                            "TECR", "stevenson_creek") &
+               !var == "NO3_NO2_N") %>%
+    # now, do the combining
     mutate(analyte_N = case_when(var %in% c("NH4_N",
                                             "NH3_N",
                                             "NH3_NH4_N") ~ "NH3_N",
@@ -593,7 +622,7 @@ n_daily <- n_data %>%
     ungroup()
 
 # And create a new DIN category that sums together
-# if there is BOTH a NH4/NH3 record and a NO3 record
+# if there is BOTH an NH3 record and a NO3 record
 n_daily_wide <- n_daily %>%
     pivot_wider(names_from = analyte_N, values_from = val_dailymean) %>%
     mutate(DIN = case_when(is.na(NH3_N) == FALSE &
