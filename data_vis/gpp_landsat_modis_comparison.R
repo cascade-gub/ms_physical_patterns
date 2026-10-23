@@ -1,19 +1,30 @@
 library(here)
 source(here('src', 'setup.R'))
 
-# Sites used in the paper analysis
-# frozen on the pre-MODIS-pivot site list so this validation figure stays comparable
-paper_sites <- read_csv(here('data_working', 'archive_landsat_1980', 'trends', 'best_run_prisim.csv')) %>%
+# Sites used in the paper analysis: the current climate pool (headwater filter applied)
+paper_sites <- read_csv(here('data_working', 'trends', 'full_prisim_climate.csv'), show_col_types = FALSE) %>%
     pull(site_code) %>%
     unique()
 
 # Load vegetation data
 # gpp_CONUS_30m_median = Landsat 30m, 16-day composites (1986–2021)
-# gpp_global_500m_median = MODIS 500m (MOD17A3), annual (2001–2023)
+# gpp_global_500m_median = MODIS 500m GPP; with gpp_source == 'water_year' (setup.R) the
+#                          water-year sums of MOD17A2HGF from src/modis_gpp_wateryear_gee.py,
+#                          otherwise the MacroSheds MOD17A3HGF calendar-year value (2001–2023)
 # evi_median = MODIS 250m (MOD13Q1), 16-day composites (2000–2024)
 veg <- read_feather(here('data_raw', 'ms', 'v2', 'spatial_timeseries_vegetation.feather')) %>%
     filter(var %in% c('gpp_CONUS_30m_median', 'gpp_global_500m_median', 'evi_median'),
            site_code %in% paper_sites)
+
+if (gpp_source == 'water_year') {
+    gpp_wy <- read_csv(here('data_raw', 'ms_add_ons', 'modis_gpp_wateryear.csv'), show_col_types = FALSE) %>%
+        filter(!is.na(gpp_wy_median), site_code %in% paper_sites) %>%
+        transmute(site_code, var = 'gpp_global_500m_median', year = water_year,
+                  date = as.Date(NA), val = gpp_wy_median)
+    veg <- veg %>%
+        filter(var != 'gpp_global_500m_median') %>%
+        bind_rows(gpp_wy)
+}
 
 # --- Helper: build matched annual data for a pair of products ---
 build_annual_pair <- function(veg_data, var_x, var_y) {

@@ -67,6 +67,40 @@ modis_year <- 2000
 analysis_start_year <- 2001   # first full MODIS year
 analysis_end_year   <- 2023   # last MODIS GPP year
 
+# headwater site filter (adjusted stream order <= max_stream_order)
+# NHDPlus flowlines stop near 1 km2 of drainage, so a gauge on a smaller
+# catchment snaps to a larger segment and its NHDPlus Strahler order is too high.
+# If the NHD drainage area exceeds the MacroSheds watershed area by more than
+# nhd_area_ratio_cutoff, the adjusted order is set to 1.
+max_stream_order <- 2
+nhd_area_ratio_cutoff <- 2
+
+# seasonal-sampling sites (e.g., Niwot Ridge gauges that only run in the snow-free season)
+# Every site first goes through the standard gate (frequency_check(): 51 weeks x 4
+# obs per water year, then >= 10 years with <= 40% missing in mega_zipper_data.R).
+# A site that cannot reach a usable q_mean trend that way is evaluated instead on
+# mean discharge over a fixed summer window (summer_months), using only water
+# years with at least seasonal_min_summer_days observation days in that window
+# (metrics.R writes q_summer_siteyear.rds; mega_zipper_data.R applies the rule and
+# records q_window = 'JJA' for those sites). Set seasonal_summer_path <- FALSE to
+# turn the path off.
+seasonal_summer_path <- TRUE
+summer_months <- c(6, 7, 8)
+seasonal_min_summer_days <- 80
+
+# MODIS GPP source for MacroSheds sites and the reference grid (reviewer comment #16)
+# 'calendar_year': MacroSheds gpp_global_500m_median (MOD17A3HGF annual, a calendar-year
+#                  total) and data_raw/grid_csvs/gpp.csv
+# 'water_year':    October-September sums of the 8-day MOD17A2HGF product from
+#                  src/modis_gpp_wateryear_gee.py (data_raw/ms_add_ons/modis_gpp_wateryear.csv
+#                  and data_raw/grid_csvs/gpp_wy.csv). metrics.R and data_groups.R substitute
+#                  them under the same variable / file role, so downstream scripts are unchanged;
+#                  the calendar-year value is kept in the metrics as gpp_modis_calendar.
+gpp_source <- 'water_year'
+# sites need more than this many observations per water year in
+# mega_zipper_data.R (applied on top of frequency_check())
+full_year_min_obs_per_year <- 305
+
 # helper functions ####
 # set logger for other scripts
 set_logger <- function(){
@@ -74,6 +108,14 @@ set_logger <- function(){
         tools::file_path_sans_ext(basename(rstudioapi::getSourceEditorContext()$path)),
         error = function(e) 'script'
     )
+    # under Rscript, getSourceEditorContext() may return an empty path
+    if(length(script_name) == 0 || is.na(script_name) || !nzchar(script_name)) script_name <- 'script'
+    script_name <- tryCatch({
+        a <- grep('^--file=', commandArgs(FALSE), value = TRUE)
+        if(script_name == 'script' && length(a) > 0)
+            tools::file_path_sans_ext(basename(sub('^--file=', '', a[1])))
+        else script_name
+    }, error = function(e) script_name)
     log_file_name <- paste0(script_name,
                             '_', format(Sys.time(), '%D_%H_%M_%S'), '.txt') %>%
         gsub('/','',.)
@@ -84,6 +126,28 @@ set_logger <- function(){
     log_appender(appender_file(log_file_path))
 }
 
+
+# returns site codes that pass the headwater filter (adjusted stream order <= max_stream_order)
+# adjusted_order = 1 when area_ratio_nhd_to_ms > nhd_area_ratio_cutoff, else NHDPlus stream_order
+# from data_working/ms_stream_order.csv (src/stream_order_ms.R). Sites with NA order are dropped.
+headwater_sites <- function(path = here('data_working', 'ms_stream_order.csv')){
+    if(!file.exists(path)){
+        stop('headwater_sites(): ', path, ' not found. Run src/stream_order_ms.R first.')
+    }
+    so <- read_csv(path, show_col_types = FALSE)
+    needed <- c('site_code', 'stream_order', 'area_ratio_nhd_to_ms')
+    if(!all(needed %in% names(so))){
+        stop('headwater_sites(): ', path, ' is missing columns: ',
+             paste(setdiff(needed, names(so)), collapse = ', '))
+    }
+    so %>%
+        mutate(adjusted_order = if_else(!is.na(area_ratio_nhd_to_ms) &
+                                            area_ratio_nhd_to_ms > nhd_area_ratio_cutoff,
+                                        1, as.numeric(stream_order))) %>%
+        filter(!is.na(adjusted_order), adjusted_order <= max_stream_order) %>%
+        pull(site_code) %>%
+        unique()
+}
 
 ## CARPENTRY ####
 # freq_check checks how many days exists per week are sampled and then how many good weeks per year exist

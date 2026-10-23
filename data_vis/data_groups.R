@@ -223,7 +223,11 @@ library(maps)
 #source(here('src', 'q_metrics.R'))
 
 grid_metrics <- read_csv(here('data_raw', 'grid_csvs', 'et2.csv')) %>%
-    full_join(.,  read_csv(here('data_raw', 'grid_csvs', 'gpp.csv')), by = c('FID', 'year')) %>%
+    # gpp_source (setup.R): water-year sums from src/modis_gpp_wateryear_gee.py, or the
+    # calendar-year MOD17A3HGF file from src/grid_modis_gpp_gee.py
+    full_join(.,  read_csv(here('data_raw', 'grid_csvs',
+                                if (gpp_source == 'water_year') 'gpp_wy.csv' else 'gpp.csv')),
+              by = c('FID', 'year')) %>%
     full_join(.,  read_csv(here('data_raw', 'grid_csvs', 'pdsi.csv')), by = c('FID', 'year')) %>%
     full_join(.,  read_csv(here('data_raw', 'grid_csvs', 'ppt.csv')), by = c('FID', 'year')) %>%
     full_join(.,  read_csv(here('data_raw', 'grid_csvs', 'spei30d.csv')), by = c('FID', 'year')) %>%
@@ -250,6 +254,7 @@ ggplot(test, aes(x = flag)) +
 
 # data grouping ####
 grid_groups <- grid_trends %>%
+    filter(var %in% c('tmean', 'ppt', 'GPP')) %>% # groups need only these three; ET/pdsi/spei30d must not gate completeness
     select(site_code, var, trend, flag) %>%
     pivot_wider(id_cols = site_code, values_from = c(trend, flag), names_from = var) %>%
     na.omit() %>%
@@ -336,9 +341,12 @@ ggsave(here('figures', 'grid_gpp_climate_scatter.png'), grid_gpp_scatter, width 
 
 
 # maps ####
-grid_coords <- grid_metrics %>%
-    filter(water_year == min(water_year)) %>%
-    select(site_code, geometry) %>%
+# coordinates from ppt.csv, which has geometry for every point and year
+# (grid_metrics$geometry comes from et2.csv, which has no rows before 2000, so
+#  taking the minimum year there returned NA for every point and no tiles were drawn)
+grid_coords <- read_csv(here('data_raw', 'grid_csvs', 'ppt.csv'), show_col_types = FALSE) %>%
+    distinct(FID, geometry) %>%
+    select(site_code = FID, geometry) %>%
     mutate(
         lon = as.numeric(gsub("c\\((.*),.*", "\\1", geometry)),
         lat = as.numeric(gsub("c\\(.*,(.*)\\)", "\\1", geometry))
@@ -363,6 +371,7 @@ map_temp <- ggplot() +
     theme_few(base_size = 14) +
     theme(axis.title = element_blank(), panel.grid = element_blank())
 ggsave(here('figures', 'map_temperature_trends.png'), map_temp, width = 10, height = 7, dpi = 300)
+saveRDS(map_temp, here('data_working', 'map_temp.rds'))  # vector panel for patchwork_figures.R
 
 map_ppt <- ggplot() +
     geom_tile(data = grid_map_df, aes(x = lon, y = lat, fill = trend_ppt),
@@ -377,6 +386,7 @@ map_ppt <- ggplot() +
     theme_few(base_size = 14) +
     theme(axis.title = element_blank(), panel.grid = element_blank())
 ggsave(here('figures', 'map_precip_trends.png'), map_ppt, width = 10, height = 7, dpi = 300)
+saveRDS(map_ppt, here('data_working', 'map_ppt.rds'))  # vector panel for patchwork_figures.R
 
 map_gpp <- ggplot() +
     geom_tile(data = grid_map_df, aes(x = lon, y = lat, fill = trend_GPP),
@@ -391,6 +401,7 @@ map_gpp <- ggplot() +
     theme_few(base_size = 14) +
     theme(axis.title = element_blank(), panel.grid = element_blank())
 ggsave(here('figures', 'map_gpp_trends.png'), map_gpp, width = 10, height = 7, dpi = 300)
+saveRDS(map_gpp, here('data_working', 'map_gpp.rds'))  # vector panel for patchwork_figures.R
 
 # map_data %>%
 #     filter(var == 'tmean') %>%
@@ -412,20 +423,22 @@ ggsave(here('figures', 'map_gpp_trends.png'), map_gpp, width = 10, height = 7, d
 #     filter(var == 'GPP') %>%
 #     mapview(., zcol = 'flag')
 
-pal = mapviewPalette("mapviewTopoColors")
-map_data %>%
-    mapview(., zcol = 'trend_ET', col.regions=rev(brewer.pal(10, "Spectral")))
-
-map_data %>%
-    mapview(., zcol = 'trend_GPP', col.regions=brewer.pal(10, "PiYG"))
-
+# Interactive exploration only: `map_data` is not defined in this script (the
+# bare name resolves to ggplot2::map_data), so these calls error under Rscript.
+# All outputs are written above this point. Uncomment to explore in RStudio.
+# pal = mapviewPalette("mapviewTopoColors")
+# map_data %>%
+#     mapview(., zcol = 'trend_ET', col.regions=rev(brewer.pal(10, "Spectral")))
+#
+# map_data %>%
+#     mapview(., zcol = 'trend_GPP', col.regions=brewer.pal(10, "PiYG"))
+#
 # map_data %>%
 #     filter(p_GPP < 0.1) %>%
 #     mapview(., zcol = 'trend_GPP', col.regions=brewer.pal(10, "PiYG"))
-
-
-map_data %>%
-    mapview(., zcol = 'trend_ppt', col.regions=brewer.pal(10, "Spectral"))
+#
+# map_data %>%
+#     mapview(., zcol = 'trend_ppt', col.regions=brewer.pal(10, "Spectral"))
 
 # map_data %>%
 #     filter(p_tmean < 0.05) %>%

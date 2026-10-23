@@ -54,7 +54,7 @@ l_2001 <- flags[['Landsat\n2001–2021']]
 m_2001 <- flags[['MODIS\n2001–2021']]
 m_2023 <- flags[['MODIS\n2001–2023']]
 
-cat('\n=== flag counts per run (n = 166 sites) ===\n')
+cat(sprintf('\n=== flag counts per run (n = %d sites) ===\n', nrow(flags)))
 print(sapply(flags[-1], table))
 
 cat('\n=== Window effect: Landsat 1986-2022 (rows) -> Landsat 2001-2021 (cols) ===\n')

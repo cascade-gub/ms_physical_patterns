@@ -11,6 +11,12 @@ source(here('src', 'setup.R'))
 metrics <- readRDS(here('data_working', 'discharge_metrics_siteyear_nTest.rds')) %>%
     distinct()
 
+# headwater filter: adjusted stream order <= max_stream_order (see setup.R)
+hw_sites <- headwater_sites()
+metrics <- metrics %>%
+    filter(site_code %in% hw_sites)
+message('headwater sites in metrics: ', n_distinct(metrics$site_code))
+
 # run full climate trends first
 clim_trends <- metrics %>%
     select(-contains('date'), -source) %>% # dates breaking math
@@ -36,25 +42,10 @@ clim_trends %>%
 # create longest run w/ prism data ####
 # make frame of all data during prism
 
-#first filter data for years of interest
-valid_site_years <- metrics %>%
-    select(-contains('date')) %>%
-    filter(agg_code == 'annual') %>%
-    group_by(site_code) %>%
-    summarize(n_median = median(n, na.rm = T),
-              n_max = max(n, na.rm = T),
-              n_sd = sd(n, na.rm = T)) %>%
-    mutate(seasonal = case_when(n_median > 89 & n_median < 180 ~ 1,
-                                n_median >= 180 ~ 0,
-                                n_median < 90 ~ 0)) %>%
-    select(site_code, seasonal)
-
 prism_site_run_trends_data <- metrics %>%
     select(-contains('date')) %>% # dates breaking math
-    left_join(., valid_site_years, by = 'site_code') %>%
     filter(agg_code == 'annual',
-           case_when(seasonal == 1 ~ n > 89,
-                     seasonal == 0 ~ n > 305)) %>%
+           n > full_year_min_obs_per_year) %>%
     select(site_code, water_year, agg_code,
            # climate
            temp_mean,
@@ -79,7 +70,67 @@ prism_site_run_trends_data <- metrics %>%
     reduce_to_best_range(., metric = 'q_mean')
 
 # trend detection ####
-prism_site_run_trends <- detect_trends(prism_site_run_trends_data)
+prism_site_run_trends <- detect_trends(prism_site_run_trends_data) %>%
+    mutate(q_window = 'water_year')
+
+# seasonal-site path ####
+# Sites that cannot reach a usable q_mean trend through the standard gate
+# (frequency_check in metrics.R, then >= 10 years with <= 40% missing) are
+# evaluated on mean discharge over a fixed summer window instead
+# (q_summer_siteyear.rds from metrics.R; summer_months and
+# seasonal_min_summer_days in setup.R). A site enters best_run_prisim.csv
+# through exactly one path; q_window records which.
+if (seasonal_summer_path) {
+    good_q_sites <- prism_site_run_trends %>%
+        filter(var == 'q_mean', code == 'good') %>%
+        pull(site_code) %>%
+        unique()
+
+    q_summer <- readRDS(here('data_working', 'q_summer_siteyear.rds')) %>%
+        filter(site_code %in% hw_sites,
+               !site_code %in% good_q_sites,
+               water_year >= analysis_start_year,
+               water_year <= analysis_end_year)
+
+    summer_run_data <- metrics %>%
+        filter(agg_code == 'annual') %>%
+        select(site_code, water_year, agg_code,
+               temp_mean, precip_mean,
+               gpp_modis = gpp_global_500m_median) %>%
+        distinct() %>%
+        inner_join(select(q_summer, site_code, water_year, q_mean = q_mean_summer),
+                   by = c('site_code', 'water_year')) %>%
+        pivot_longer(cols = -c('site_code', 'water_year', 'agg_code'),
+                     names_to = 'var',
+                     values_to = 'val') %>%
+        reduce_to_best_range(., metric = 'q_mean')
+
+    summer_run_trends <- detect_trends(summer_run_data) %>%
+        mutate(q_window = 'JJA')
+
+    summer_good_sites <- summer_run_trends %>%
+        filter(var == 'q_mean', code == 'good') %>%
+        pull(site_code) %>%
+        unique()
+
+    summer_path_sites <- tibble(site_code = unique(q_summer$site_code)) %>%
+        left_join(summer_run_trends %>%
+                      filter(var == 'q_mean') %>%
+                      add_flags() %>%
+                      select(site_code, start, end, n, trend, trend_lower, trend_upper, code, flag),
+                  by = 'site_code') %>%
+        mutate(code = replace_na(code, 'under_10'),
+               entered_via_summer_window = site_code %in% summer_good_sites)
+    write_csv(summer_path_sites, here('data_working', 'seasonal_path_sites.csv'))
+    message('summer-window path: ', length(summer_good_sites), ' of ',
+            n_distinct(q_summer$site_code),
+            ' sites without a standard q_mean trend gained one on the summer window: ',
+            paste(summer_good_sites, collapse = ', '))
+
+    prism_site_run_trends <- prism_site_run_trends %>%
+        filter(!site_code %in% summer_good_sites) %>%
+        bind_rows(filter(summer_run_trends, site_code %in% summer_good_sites))
+}
 
 # export
 #write_csv(prism_site_run_trends , here('data_working', 'trends', 'longest_site_run_prisim.csv'))

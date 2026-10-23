@@ -73,6 +73,28 @@ q_data_scaled <- q_data_nointerp_scaled %>%
   mutate(water_year = case_when(month %in% c(10, 11, 12) ~ year+1,
                                 TRUE ~ year))
 
+## summer-window discharge (seasonal-site path) ####
+# Gauges that only run in the snow-free season (e.g. the Niwot Ridge sites) can
+# never pass frequency_check() (51 weeks x 4 obs per water year), and a mean over
+# whichever days happened to be sampled is not comparable between years. Mean
+# discharge over a fixed summer window (summer_months in setup.R) is, provided the
+# window is well sampled, so it is saved here for every site-year with at least
+# seasonal_min_summer_days observation days. src/mega_zipper_data.R uses it only
+# for sites that fail the standard gate below.
+log_info('summer-window discharge means')
+q_summer <- q_data_scaled %>%
+    filter(month %in% summer_months) %>%
+    group_by(site_code, water_year) %>%
+    summarize(n_summer_days = n(),
+              q_mean_summer = mean(val_mmd, na.rm = TRUE),
+              .groups = 'drop') %>%
+    filter(n_summer_days >= seasonal_min_summer_days)
+
+saveRDS(q_summer, here('data_working', 'q_summer_siteyear.rds'))
+write_csv(q_summer, here('data_working', 'q_summer_siteyear.csv'))
+log_info({nrow(q_summer)}, ' site-years with a complete summer window at ',
+         {n_distinct(q_summer$site_code)}, ' sites')
+
 if(q_freq_check == T){
 ## q freq check ####
 log_info('performing freq check')
@@ -878,6 +900,37 @@ p_data <- read_feather(here('data_raw', 'ms', 'v2', 'spatial_timeseries_vegetati
                               #TRUE ~ NA))
 
 log_info({nrow(p_data)}, ' rows of productivity data')
+
+## water-year MODIS GPP (reviewer comment #16) ####
+# MacroSheds' gpp_global_500m_median is the calendar-year MOD17A3HGF total. With
+# gpp_source == 'water_year' (setup.R) it is replaced by the October-September sum of
+# the 8-day MOD17A2HGF product extracted by src/modis_gpp_wateryear_gee.py (watershed
+# median of valid pixels; the urban/barren/water fill is already masked there). The
+# calendar-year value is kept as gpp_modis_calendar for comparison.
+if (gpp_source == 'water_year') {
+    wy_path <- here('data_raw', 'ms_add_ons', 'modis_gpp_wateryear.csv')
+    if (!file.exists(wy_path)) {
+        stop('gpp_source is water_year but ', wy_path,
+             ' is missing; run src/modis_gpp_wateryear_gee.py (or set gpp_source to calendar_year)')
+    }
+    gpp_wy <- read_csv(wy_path, show_col_types = FALSE) %>%
+        filter(!is.na(gpp_wy_median)) %>%
+        select(site_code, water_year, gpp_wy_median)
+    gpp_cal <- p_data %>%
+        filter(var == 'gpp_global_500m_median') %>%
+        mutate(var = 'gpp_modis_calendar')
+    gpp_wy_rows <- gpp_cal %>%
+        select(-val) %>%
+        inner_join(gpp_wy, by = c('site_code', 'water_year')) %>%
+        mutate(var = 'gpp_global_500m_median', val = gpp_wy_median) %>%
+        select(-gpp_wy_median)
+    p_data <- p_data %>%
+        filter(var != 'gpp_global_500m_median') %>%
+        bind_rows(gpp_cal, gpp_wy_rows)
+    log_info('gpp_global_500m_median replaced by water-year MOD17A2HGF sums at ',
+             {n_distinct(gpp_wy_rows$site_code)}, ' sites (',
+             {nrow(gpp_wy_rows)}, ' site-years); calendar-year values kept as gpp_modis_calendar')
+}
 
 ## annual prod ####
 p_ann <- p_data %>%
