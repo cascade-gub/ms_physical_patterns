@@ -5,1270 +5,1375 @@ Document Change Summary
    Old: "166 first- and zero-order"
    New: "142 first- and second-order (headwater)"
 
-2. REPLACEMENT  (author: Claude, date: 2026-10-22T21:02:13Z)
+2. DELETION  (author: Claude, date: 2026-10-23T15:11:06Z)
+   Removed: "annual "
+
+3. REPLACEMENT  (author: Claude, date: 2026-10-22T21:02:13Z)
    Old: "71 of 166"
    New: "65 of 142"
 
-3. REPLACEMENT  (author: Claude, date: 2026-10-22T21:02:13Z)
+4. REPLACEMENT  (author: Claude, date: 2026-10-22T21:02:13Z)
    Old: "126 non-experimental sites, 46 had streamflow records sufficient for trend detection, and 6 showed a significant trend: 4 increasing, all within one Wisconsin lake-district domain, and 2 decreasing at arid, warming sites in "
    New: "103 non-experimental sites, 49 had streamflow records sufficient for trend detection, 12 of them only for a fixed summer window, and 10 showed a significant trend: 6 increasing, at humid sites in a Wisconsin lake district and the Colorado alpine, and 4 decreasing at arid, warming sites in coastal "
 
-4. INSERTION  (author: Claude, date: 2026-10-22T23:16:55Z)
-   Added: " Within sites, year-to-year streamflow anomalies tracked precipitation almost one for one, responded to temperature mainly at arid sites, and showed no detectable response to GPP once precipitation and temperature were accounted for; the observed warming implies a decline in mean flow of about 3%, an order of magnitude below interannual variability."
+5. INSERTION  (author: Claude, date: 2026-10-22T23:16:55Z)
+   Added: " Within sites, year-to-year streamflow anomalies tracked precipitation almost one for one, responded to temperature mainly at arid sites, and responded to GPP by at most a few percent once precipitation and temperature were accounted for; the observed warming implies a decline in mean flow of about 3%, an order of magnitude below interannual variability."
 
-5. REPLACEMENT  (author: Claude, date: 2026-10-22T21:10:40Z)
+6. REPLACEMENT  (author: Claude, date: 2026-10-22T21:10:40Z)
    Old: "and E, T, and S are evaporation, transpiration, and storage, respectively."
    New: "E and T are evaporation and transpiration, and ΔS is the change in storage over the period (positive when storage increases, negative when it is drawn down)."
 
-6. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
+7. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
    Old: "CONUS, increasing evaporation (Ji et al, 2014)."
    New: "CONUS (Ji et al, 2014). Warming raises atmospheric water demand because higher air temperature is generally accompanied by a higher vapor pressure deficit, so potential evaporation increases; actual evapotranspiration rises only where water is available to meet that demand."
 
-7. REPLACEMENT  (author: Claude, date: 2026-10-22T19:28:20Z)
+8. REPLACEMENT  (author: Claude, date: 2026-10-22T19:28:20Z)
    Old: " productivity from watersheds has been increasing across most of the CONUS"
    New: " plant productivity (gross primary productivity, GPP) has been increasing across most of the CONUS, in part because elevated atmospheric CO₂ stimulates photosynthesis"
 
-8. INSERTION  (author: Claude, date: 2026-10-22T19:34:17Z)
+9. INSERTION  (author: Claude, date: 2026-10-22T19:34:17Z)
    Added: " where soil water is available"
 
-9. REPLACEMENT  (author: Claude, date: 2026-10-22T19:34:26Z)
+10. REPLACEMENT  (author: Claude, date: 2026-10-22T19:34:26Z)
    Old: "essential."
    New: "essential for anticipating water availability and for understanding how watersheds are responding."
 
-10. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:01Z)
+11. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:01Z)
    Old: "to inputs, it is reasonable to expect change in outputs,"
    New: "in the terms of the water budget, it is reasonable to expect change in the output,"
 
-11. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:24Z)
+12. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:24Z)
    Old: "extreme,"
    New: "extreme."
 
-12. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:36Z)
+13. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:36Z)
    Old: "productivity"
    New: "ecosystem productivity (GPP)"
 
-13. INSERTION  (author: Claude, date: 2026-10-22T19:33:01Z)
+14. INSERTION  (author: Claude, date: 2026-10-22T19:33:01Z)
    Added: "mean annual "
 
-14. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:02Z)
+15. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:02Z)
    Old: "discharge"
    New: "streamflow"
 
-15. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:25Z)
+16. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:25Z)
    Old: "discharge"
    New: "streamflow"
 
-16. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:36Z)
+17. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:36Z)
    Old: "to see abundant change, as"
    New: "significant streamflow trends at most sites that show a significant trend in temperature or precipitation, because"
 
-17. REPLACEMENT  (author: Claude, date: 2026-10-22T19:28:20Z)
+18. REPLACEMENT  (author: Claude, date: 2026-10-22T19:28:20Z)
    Old: "water balance?"
    New: "climate?"
 
-18. REPLACEMENT  (author: Claude, date: 2026-10-22T19:28:20Z)
+19. REPLACEMENT  (author: Claude, date: 2026-10-22T19:28:20Z)
    Old: "current suite of watershed studies"
    New: "existing network of small-watershed study sites"
 
-19. INSERTION  (author: Claude, date: 2026-10-22T23:21:06Z)
+20. INSERTION  (author: Claude, date: 2026-10-22T23:21:06Z)
    Added: " Table 1 lists every data source and how it enters the analysis."
 
-20. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: ""
-
-21. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "Variable"
+21. REPLACEMENT  (author: Claude, date: 2026-10-23T15:17:20Z)
+   Old: "and for MODIS GPP"
+   New: ""
 
 22. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "Source"
+   Added: ""
 
 23. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "Resolution"
+   Added: "Variable"
 
 24. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "Time step"
+   Added: "Source"
 
 25. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "Aggregation used for trends"
+   Added: "Resolution"
 
 26. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "Sites"
+   Added: "Time step"
 
 27. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "Window"
+   Added: "Aggregation used for trends"
 
 28. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "Used for"
+   Added: "Sites"
 
 29. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "Streamflow (Q)"
+   Added: "Window"
 
 30. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "MacroSheds discharge (Vlah et al, 2023)"
+   Added: "Used for"
 
 31. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "gauge"
+   Added: "Streamflow (Q)"
 
 32. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "daily"
+   Added: "MacroSheds discharge (Vlah et al, 2023)"
 
 33. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "water-year mean daily flow (mm d⁻¹); summer-only sites: June–August mean"
+   Added: "gauge"
 
 34. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "MS"
+   Added: "daily"
 
 35. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "2001–2023"
+   Added: "water-year mean daily flow (mm d⁻¹); summer-only sites: June–August mean"
 
 36. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "streamflow trends; Figures 2–4"
+   Added: "MS"
 
 37. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "Air temperature"
+   Added: "2001–2023"
 
 38. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "PRISM AN81d via MacroSheds, watershed median"
+   Added: "streamflow trends; Figures 2–4"
 
 39. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "4 km"
+   Added: "Air temperature (MS sites)"
 
 40. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "daily"
-
-41. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "water-year mean (°C)"
-
-42. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "MS"
-
-43. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "2001–2023"
-
-44. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "NWD groups; Figures 1–4"
-
-45. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "Air temperature"
-
-46. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "PRISM via Google Earth Engine"
-
-47. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "4 km"
-
-48. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "annual"
-
-49. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "calendar-year mean (°C)"
-
-50. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "grid"
-
-51. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "2001–2023"
-
-52. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "NWD groups; Figure 1"
-
-53. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "Precipitation"
-
-54. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
    Added: "PRISM AN81d via MacroSheds, watershed median"
 
-55. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+41. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
    Added: "4 km"
 
-56. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+42. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
    Added: "daily"
 
-57. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "water-year mean daily (mm d⁻¹)"
+43. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "water-year mean (°C)"
 
-58. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+44. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
    Added: "MS"
 
-59. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+45. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
    Added: "2001–2023"
 
-60. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+46. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
    Added: "NWD groups; Figures 1–4"
 
-61. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "Precipitation"
+47. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "Air temperature (reference grid)"
 
-62. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+48. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
    Added: "PRISM via Google Earth Engine"
 
-63. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+49. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
    Added: "4 km"
 
-64. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "annual"
+50. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "annual (water year)"
 
-65. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "calendar-year total (mm)"
+51. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "water-year mean (°C)"
 
-66. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+52. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
    Added: "grid"
 
-67. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+53. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
    Added: "2001–2023"
 
-68. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+54. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
    Added: "NWD groups; Figure 1"
 
-69. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "GPP"
+55. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "Precipitation (MS sites)"
 
-70. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "MODIS MOD17A3HGF Collection 6.1 via MacroSheds, watershed median (Running & Zhao, 2021)"
+56. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "PRISM AN81d via MacroSheds, watershed median"
 
-71. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "500 m"
+57. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "4 km"
 
-72. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "annual (calendar year)"
-
-73. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "annual total (kg C m⁻² yr⁻¹); fill value masked"
-
-74. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "MS"
-
-75. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "2001–2023"
-
-76. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "NWD groups; Figures 1–3"
-
-77. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "GPP"
-
-78. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "MODIS MOD17A3HGF Collection 6.1 via Google Earth Engine, mean of pixels in the 1 km² footprint"
-
-79. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "500 m"
-
-80. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "annual (calendar year)"
-
-81. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "annual total (kg C m⁻² yr⁻¹)"
-
-82. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "grid"
-
-83. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "2001–2023"
-
-84. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "NWD groups; Figure 1"
-
-85. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "PET and P (Daymet)"
-
-86. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "MacroSheds CAMELS-compliant Daymet forcings (Thornton et al, 2022; Addor et al, 2017); PET by Priestley–Taylor with gridded alpha (Aschonitis et al, 2017)"
-
-87. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "1 km"
-
-88. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+58. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
    Added: "daily"
 
+59. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "water-year mean daily (mm d⁻¹)"
+
+60. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "MS"
+
+61. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "2001–2023"
+
+62. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "NWD groups; Figures 1–4"
+
+63. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "Precipitation (reference grid)"
+
+64. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "PRISM via Google Earth Engine"
+
+65. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "4 km"
+
+66. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "annual (water year)"
+
+67. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "water-year total (mm)"
+
+68. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "grid"
+
+69. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "2001–2023"
+
+70. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "NWD groups; Figure 1"
+
+71. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "GPP (MS sites)"
+
+72. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: ""
+
+73. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "500 m"
+
+74. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: ""
+
+75. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: ""
+
+76. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "MS"
+
+77. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "2001–2023"
+
+78. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "NWD groups; Figures 1–3"
+
+79. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "GPP (reference grid)"
+
+80. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: ""
+
+81. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "500 m"
+
+82. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: ""
+
+83. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: ""
+
+84. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "grid"
+
+85. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "2001–2023"
+
+86. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "NWD groups; Figure 1"
+
+87. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "PET and P (Daymet)"
+
+88. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "MacroSheds CAMELS-compliant Daymet forcings (Thornton et al, 2022; Addor et al, 2017); PET by Priestley–Taylor with gridded alpha (Aschonitis et al, 2017)"
+
 89. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "water-year sums; PET/P averaged over 2001–2023"
+   Added: "1 km"
 
 90. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "MS"
+   Added: "daily"
 
 91. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "2001–2023"
+   Added: "water-year sums; PET/P averaged over 2001–2023"
 
 92. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "aridity classes; Figure 4"
+   Added: "MS"
 
 93. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "Landsat GPP"
-
-94. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "MacroSheds (USGS, 2025)"
-
-95. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "30 m"
-
-96. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "16-day"
-
-97. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "annual"
-
-98. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "MS"
-
-99. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "1986–2022"
-
-100. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "GPP product validation only (Table S1, figures s2–s3)"
-
-101. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "MODIS EVI"
-
-102. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "MODIS MOD13Q1 via MacroSheds, watershed median"
-
-103. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "250 m"
-
-104. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "16-day"
-
-105. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "annual"
-
-106. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
-   Added: "MS"
-
-107. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
    Added: "2001–2023"
 
+94. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "aridity classes; Figure 4"
+
+95. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "Landsat GPP"
+
+96. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "MacroSheds (USGS, 2025)"
+
+97. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "30 m"
+
+98. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "16-day"
+
+99. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "annual"
+
+100. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "MS"
+
+101. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "1986–2022"
+
+102. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "GPP product validation only (Table S1, figures s2–s3)"
+
+103. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "MODIS EVI"
+
+104. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "MODIS MOD13Q1 via MacroSheds, watershed median"
+
+105. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "250 m"
+
+106. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "16-day"
+
+107. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "annual"
+
 108. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "MS"
+
+109. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
+   Added: "2001–2023"
+
+110. INSERTION  (author: Claude, date: 2026-10-22T21:35:05Z)
    Added: "GPP product validation only (figure s2)"
 
-109. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
+111. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
    Old: "GPP,"
    New: "gross primary productivity (GPP),"
 
-110. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
-   Old: "(65535, or 6.5535 after scaling)"
-   New: "(65535 in the stored integer, or 6.5535 kg C m⁻² yr⁻¹ after applying the product’s 0.0001 scale factor)"
+112. REPLACEMENT  (author: Claude, date: 2026-10-23T15:11:06Z)
+   Old: "used the MODIS MOD17A3HGF annual GPP product (500 m resolution) as distributed by MacroSheds (variable gpp_global_500m_median), which reports the median annual GPP of the MODIS pixels within each watershed boundary for 2001–2023 (Running et al, 2004; Running & Zhao, 2021)."
+   New: "summed the 8-day MODIS MOD17A2HGF product (Collection 6.1, 500 m; Running et al, 2004; Running & Zhao, 2021) over each water year (October–September) in Google Earth Engine and took the median of the pixels within each watershed boundary for 2001–2023."
 
-111. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:50Z)
-   Old: "8"
-   New: "7"
+113. DELETION  (author: Claude, date: 2026-10-23T15:11:57Z)
+   Removed: " MacroSheds does not mask this value before computing the watershed median, so watersheds dominated by these classes carry a constant fill value (65535, or 6.5535 after scaling) rather than a GPP estimate. We masked values at or above 6.55 to no-data, which removed 8 watersheds (in the Baltimore, Plum Island, and Santa Barbara domains) from GPP trend analysis and left 158 sites with a usable GPP record."
 
-112. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
-   Old: "158"
-   New: "135"
+114. INSERTION  (author: Claude, date: 2026-10-23T15:11:06Z)
+   Added: " We masked these pixels before taking the watershed median, so a watershed has a GPP record wherever it contains vegetated pixels; one site (GFGL, in the Baltimore domain) has none and is excluded from GPP trend analysis, leaving 141 sites with a usable GPP record."
 
-113. INSERTION  (author: Claude, date: 2026-10-22T19:59:41Z)
+115. INSERTION  (author: Claude, date: 2026-10-22T19:59:41Z)
    Added: "142 MS sites range from 0.01 to 85 km² in area, with a median of 1.54 km² (interquartile range 0.41–6.24 km²), and 24, 60, and 79 of the 142"
 
-114. DELETION  (author: Claude, date: 2026-10-22T19:57:51Z)
+116. DELETION  (author: Claude, date: 2026-10-22T19:57:51Z)
    Removed: "166 MS sites have a median area of 3.07 km² (interquartile range 0.5–11.98 km²), and 24, 60, and 79 of the 166"
 
-115. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
-   Old: " assigned each value to the water year (October–September) of the same calendar year, an overlap of nine months; this offset has no bearing on trend estimation"
-   New: " used the annual product as distributed and assigned each value to the water year (October–September) ending in the same calendar year, a nine-month overlap; this offset does not affect the trend estimates"
+117. DELETION  (author: Claude, date: 2026-10-23T15:11:57Z)
+   Removed: " Second, MOD17A3HGF reports a calendar-year total. We assigned each value to the water year (October–September) of the same calendar year, an overlap of nine months; this offset has no bearing on trend estimation but means annual GPP and streamflow metrics are not aligned to exactly the same twelve months. The MOD17A3HGF collection underlying the MacroSheds variable is not documented; the grid GPP described below was extracted from Collection 6.1."
 
-116. REPLACEMENT  (author: Claude, date: 2026-10-22T21:34:08Z)
-   Old: "The MOD17A3HGF collection underlying the MacroSheds variable is not documented; the grid GPP described below was extracted from"
-   New: "Both the MacroSheds variable and the grid GPP described below are derived from MOD17A3HGF"
+118. INSERTION  (author: Claude, date: 2026-10-23T15:11:06Z)
+   Added: " Second, the 8-day composites start on fixed days of the year, so a water-year sum comprises the composites that begin between 1 October and 30 September; the few days of overlap at each end cancel, and GPP is aligned with the water-year streamflow and climate metrics. The grid GPP described below was summed the same way."
 
-117. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
+119. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
    Old: " analyzed trends in daily streamflow data from MS sites."
    New: " computed annual metrics from daily streamflow records at MS sites and analyzed trends in the annual series."
 
-118. REPLACEMENT  (author: Claude, date: 2026-10-22T19:35:33Z)
+120. REPLACEMENT  (author: Claude, date: 2026-10-22T19:35:33Z)
    Old: " using the ‘nhdplusTools’ package in R (Blodgett, 2023) we limited our analysis to first or zero order streams."
    New: " we restricted the analysis to headwater streams, defined as first- and second-order streams (Strahler, 1957; Meyer et al, 2007). Stream order was taken from the NHDPlus flowline nearest each gauge using the ‘nhdplusTools’ package in R (Blodgett, 2023). Because NHDPlus flowlines omit much of the headwater channel network (Fritz et al, 2013; Elmore et al, 2013), a gauge whose catchment was smaller than half the drainage area of its nearest flowline was treated as first-order."
 
-119. REPLACEMENT  (author: Claude, date: 2026-10-22T21:02:13Z)
+121. INSERTION  (author: Claude, date: 2026-10-23T15:25:12Z)
+   Added: "MODIS record"
+
+122. DELETION  (author: Claude, date: 2026-10-23T15:25:12Z)
+   Removed: "MOD17A3HGF record"
+
+123. REPLACEMENT  (author: Claude, date: 2026-10-22T21:02:13Z)
    Old: "Sites with limited or seasonal sampling (such as the snowmelt-dominated Niwot Ridge sites in Colorado) were manually flagged and added back into the analysis."
    New: "Gauges that operate only in the snow-free season (the Niwot Ridge sites in Colorado) cannot meet this criterion, and several year-round gauges fall one or two complete years short of it. For headwater sites that did not reach a usable record under the standard criterion, we instead used mean streamflow over a fixed June–August window, retaining water years with at least 80 observation days in that window and applying the same minimum of 10 years with no more than 40% missing. Fourteen sites entered the analysis this way (Table S2). We refer to them as summer-only sites, mark them in figures 2–4, and note that their trends describe summer flow (melt-season flow at Niwot Ridge, dry-season flow at Santa Barbara) rather than annual mean flow."
 
-120. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
+124. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
    Old: "166 MS sites with complete climate records, 40 are experimental and 126"
    New: "142 MS sites with complete climate records, 39 are experimental and 103"
 
-121. INSERTION  (author: Claude, date: 2026-10-22T19:27:42Z)
+125. INSERTION  (author: Claude, date: 2026-10-22T19:27:42Z)
    Added: " Significance was judged from the 95% confidence interval of the Sen slope, which ‘zyp’ derives from the variance of Kendall’s S (Sen, 1968); a series was classed as increasing or decreasing when the interval excluded zero and non-significant otherwise. No prewhitening was applied."
 
-122. DELETION  (author: Claude, date: 2026-10-22T21:36:56Z)
+126. DELETION  (author: Claude, date: 2026-10-22T21:36:56Z)
    Removed: "PRISM"
 
-123. DELETION  (author: Claude, date: 2026-10-22T21:36:56Z)
+127. DELETION  (author: Claude, date: 2026-10-22T21:36:56Z)
    Removed: " temperature and precipitation "
 
-124. REPLACEMENT  (author: Claude, date: 2026-10-22T21:36:56Z)
+128. REPLACEMENT  (author: Claude, date: 2026-10-22T21:36:56Z)
    Old: "(1981–2024; PRISM"
-   New: "annual PRISM temperature (mean) and precipitation (total) for calendar years 1981–2024 (PRISM"
+   New: "annual PRISM temperature (mean) and precipitation (total) for water years 1981–2024 (PRISM"
 
-125. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
-   Old: "before applying the scale factor."
-   New: "applying the product’s 0.0001 scale factor (MOD17 stores GPP as integers; multiplying by 0.0001 gives kg C m⁻² yr⁻¹)."
+129. INSERTION  (author: Claude, date: 2026-10-23T15:11:06Z)
+   Added: "water-year MODIS GPP summed from the 8-day MOD17A2HGF composites (Collection 6.1, 2001–2023)"
 
-126. DELETION  (author: Claude, date: 2026-10-22T19:28:41Z)
+130. DELETION  (author: Claude, date: 2026-10-23T15:11:06Z)
+   Removed: "MODIS annual GPP from MOD17A3HGF Collection 6.1 (2001–2023)"
+
+131. INSERTION  (author: Claude, date: 2026-10-23T15:11:57Z)
+   Added: "applying the product’s 0.0001 scale factor (MOD17 stores GPP as integers; multiplying by 0.0001 gives kg C m⁻² per composite)."
+
+132. DELETION  (author: Claude, date: 2026-10-23T15:11:57Z)
+   Removed: "before applying the scale factor."
+
+133. DELETION  (author: Claude, date: 2026-10-22T19:28:41Z)
    Removed: "Grid evapotranspiration, where used, is from the MODIS 8-day ET product (Mu et al, 2011). "
 
-127. REPLACEMENT  (author: Claude, date: 2026-10-22T19:58:19Z)
+134. REPLACEMENT  (author: Claude, date: 2026-10-22T19:58:19Z)
    Old: "4,857"
    New: "4,859"
 
-128. REPLACEMENT  (author: Claude, date: 2026-10-22T19:28:46Z)
+135. REPLACEMENT  (author: Claude, date: 2026-10-22T19:28:46Z)
    Old: "trends for every grid variable (temperature, precipitation, GPP, and the ancillary ET and drought indices) and enter the NWD comparison."
    New: "temperature, precipitation, and GPP trends and were used in the comparison with MS sites."
 
-129. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
+136. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
    Old: "Using PRISM data, we computed mean, maximum, minimum, and variance annually, for all MS and grid sites. As with streamflow, we computed the same metrics aggregated monthly and seasonally for greater context, along with cumulative precipitation and precipitation intensity."
-   New: "From the daily PRISM series we computed, for each MS site and water year (October–September), mean daily temperature and mean daily precipitation; these annual series are the basis of all temperature and precipitation trends reported here. For grid sites we used one PRISM value per year: annual mean temperature and annual total precipitation."
+   New: "From the daily PRISM series we computed, for each MS site and water year (October–September), mean daily temperature and mean daily precipitation; these annual series are the basis of all temperature and precipitation trends reported here. For grid sites we used one PRISM value per water year: mean temperature and total precipitation."
 
-130. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:02Z)
+137. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:02Z)
    Old: "year as the ratio of potential evapotranspiration to precipitation (PET/P),"
    New: "year, defined as in the Budyko framework as the ratio of potential evapotranspiration to precipitation (PET/P; the reciprocal of the P/PET convention used in climatology),"
 
-131. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:25Z)
+138. REPLACEMENT  (author: Claude, date: 2026-10-22T19:33:25Z)
    Old: "CAMELS-style Daymet product)"
    New: "MacroSheds ‘CAMELS Daymet forcings’ product, which reproduces the CAMELS forcing variables from Daymet for each MacroSheds watershed)"
 
-132. INSERTION  (author: Claude, date: 2026-10-22T21:34:08Z)
+139. INSERTION  (author: Claude, date: 2026-10-22T21:34:08Z)
    Added: ", with PET computed by the Priestley–Taylor method using the gridded alpha coefficients of Aschonitis et al (2017)"
 
-133. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
+140. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
    Old: "0.014; maximum 0.44), and only 1 of 166 sites (BLUE)"
    New: "0.011; maximum 0.31), and no site"
 
-134. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
+141. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
    Old: "related"
    New: "correlated"
 
-135. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:52Z)
-   Old: "Landsat GPP over 1986–2022 flagged 113 sites as increasing, 40 as non-significant, and 10 as decreasing; restricting Landsat to 2001–2021 changed these counts to 85, 57, and 21. The shorter window alone moved 33 of the 113 (29%) Landsat-increasing sites to non-significant. Substituting MODIS on the same 2001–2021 window changed the counts to 16, 123, and 19: 64 of the 85 (75%) Landsat-increasing sites became non-significant and only 13 remained increasing. Extending MODIS to its full 2001–2023 record gives 29 increasing, 112 non-significant, and 17 decreasing. Of the 115 sites flagged as significant by either sensor on the common window, only 26 were significant in both (25 with the same sign)."
-   New: "shortening the Landsat window alone moved 31% of Landsat-greening sites to non-significant, whereas switching sensor on the same window moved 74% (Table S1, figure s3)."
+142. INSERTION  (author: Claude, date: 2026-10-23T15:16:44Z)
+   Added: "139 sites, r = 0.63, slope 0.74"
 
-136. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
+143. DELETION  (author: Claude, date: 2026-10-23T15:16:44Z)
+   Removed: "113 sites, r = 0.52, slope 0.75"
+
+144. INSERTION  (author: Claude, date: 2026-10-23T15:17:20Z)
+   Added: "140, r = 0.55, slope 0.65"
+
+145. DELETION  (author: Claude, date: 2026-10-23T15:16:44Z)
+   Removed: "120, r = 0.58, slope 0.70"
+
+146. INSERTION  (author: Claude, date: 2026-10-23T15:16:45Z)
+   Added: "shortening the Landsat window alone moved 31% of Landsat-greening sites to non-significant, whereas switching sensor on the same window moved 81% (Table S1, figure s3). The widespread greening in the Landsat record was therefore mostly a sensor effect rather than a window effect, and we use the MODIS record for all GPP trends reported here."
+
+147. DELETION  (author: Claude, date: 2026-10-23T15:16:44Z)
+   Removed: "Landsat GPP over 1986–2022 flagged 113 sites as increasing, 40 as non-significant, and 10 as decreasing; restricting Landsat to 2001–2021 changed these counts to 85, 57, and 21. The shorter window alone moved 33 of the 113 (29%) Landsat-increasing sites to non-significant. Substituting MODIS on the same 2001–2021 window changed the counts to 16, 123, and 19: 64 of the 85 (75%) Landsat-increasing sites became non-significant and only 13 remained increasing. Extending MODIS to its full 2001–2023 record gives 29 increasing, 112 non-significant, and 17 decreasing. Of the 115 sites flagged as significant by either sensor on the common window, only 26 were significant in both (25 with the same sign). The widespread greening in the Landsat record was therefore mostly a sensor effect rather than a window effect, and we use the MODIS record for all GPP trends reported here."
+
+148. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
    Old: "In the past, researchers have relied on potential evapotranspiration (PET) as a measure of water demand in watersheds—combining changes in vegetation, temperature, and wetness (via vapor pressure deficit) (Zeng et al, 2018). However, PET relies on reference crop values to derive ET, which do not translate well to smaller, less anthropogenically affected systems"
    New: "Potential evapotranspiration (PET) is the usual measure of atmospheric water demand; it integrates temperature, radiation, and humidity (via vapor pressure deficit) (Zeng et al, 2018), but it describes demand on a reference surface and does not respond to changes in the vegetation that actually transpires, and reference-crop formulations translate poorly to natural vegetation"
 
-137. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
+149. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
    Old: "If a watershed has been trending hotter and drier (less precipitation), we can classify it as increasing NWD. If a watershed is getting cooler and wetter (more precipitation), it has decreasing NWD."
    New: "NWD is a qualitative balance between atmospheric demand for water and its supply. Demand rises with warming (a proxy for rising vapor pressure deficit) and with increasing vegetation productivity (greening, a significant increase in GPP); supply falls with declining precipitation. A watershed with significant warming, drying, or greening and no opposing trend is classed as increasing NWD (+); one with significant cooling, wetting, or browning (a significant decrease in GPP) and no opposing trend is decreasing NWD (−); a watershed with no significant trend in any driver is ‘no change’; mixed combinations are ‘variable’ (Table 2)."
 
-138. REPLACEMENT  (author: Claude, date: 2026-10-22T19:28:20Z)
+150. REPLACEMENT  (author: Claude, date: 2026-10-22T19:28:20Z)
    Old: "As sites are small, headwater streams, storage was considered small and/or static for the analysis period."
    New: "Over multi-year windows we treat the change in storage (ΔS) as small relative to the other terms, the standard closure assumption for long-term water-balance analysis; this is an assumption about the averaging period, not catchment size, and a persistent trend in groundwater storage would violate it."
 
-139. INSERTION  (author: Claude, date: 2026-10-22T21:10:47Z)
+151. INSERTION  (author: Claude, date: 2026-10-22T21:10:47Z)
    Added: ""
 
-140. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
+152. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:42Z)
    Old: "monitoring efforts across watershed science have"
    New: "the existing network of small-watershed study sites has"
 
-141. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
+153. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
    Old: "71 of 166"
    New: "65 of 142"
 
-142. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
+154. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
    Old: "166)"
    New: "142)"
 
-143. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
-   Old: "166 MS sites, 46.4% fall in the increasing (+) group; 42.8% show no change; 8.4% are variable (mixed signals), and 2.4%"
-   New: "142 MS sites, 47.2% fall in the increasing (+) group; 42.3% show no change; 9.9% are variable (mixed signals), and 0.7%"
+155. INSERTION  (author: Claude, date: 2026-10-23T15:14:57Z)
+   Added: "142 MS sites, 47.9% fall in the increasing (+) group; 40.8% show no change; 9.9% are variable (mixed signals), and 1.4%"
 
-144. REPLACEMENT  (author: Claude, date: 2026-10-22T19:58:19Z)
+156. DELETION  (author: Claude, date: 2026-10-23T15:14:57Z)
+   Removed: "166 MS sites, 46.4% fall in the increasing (+) group; 42.8% show no change; 8.4% are variable (mixed signals), and 2.4%"
+
+157. INSERTION  (author: Claude, date: 2026-10-23T15:14:57Z)
+   Added: "41.1% increasing, 51.5% no change, 4.2% variable, and 3.2% decreasing"
+
+158. DELETION  (author: Claude, date: 2026-10-23T15:14:57Z)
+   Removed: "40.3% increasing, 52.4% no change, 4.1% variable, and 3.3% decreasing"
+
+159. REPLACEMENT  (author: Claude, date: 2026-10-22T19:58:19Z)
    Old: "4,857"
    New: "4,859"
 
-145. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
-   Old: "temperature (top left), precipitation (PPT, bottom left) and"
-   New: "mean annual temperature (top left), annual precipitation (PPT, bottom left) and annual"
+160. INSERTION  (author: Claude, date: 2026-10-23T15:14:57Z)
+   Added: "mean annual temperature (top left), annual precipitation (PPT, bottom left) and"
 
-146. REPLACEMENT  (author: Claude, date: 2026-10-22T19:58:19Z)
+161. DELETION  (author: Claude, date: 2026-10-23T15:14:57Z)
+   Removed: "temperature (top left), precipitation (PPT, bottom left) and"
+
+162. REPLACEMENT  (author: Claude, date: 2026-10-22T19:58:19Z)
    Old: "4,857"
    New: "4,859"
 
-147. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:52Z)
-   Old: "studies within MS have a distribution similar to the grid, including the rare areas of decreasing NWD."
-   New: "MS sites have a distribution similar to the grid, although only one MS site falls in the rare decreasing-NWD class."
+163. INSERTION  (author: Claude, date: 2026-10-23T15:14:57Z)
+   Added: "MS sites have a distribution similar to the grid, although only two MS sites fall in the rare decreasing-NWD class."
 
-148. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:52Z)
-   Old: "(98"
-   New: "(102"
+164. DELETION  (author: Claude, date: 2026-10-23T15:14:57Z)
+   Removed: "studies within MS have a distribution similar to the grid, including the rare areas of decreasing NWD."
 
-149. INSERTION  (author: Claude, date: 2026-10-22T19:34:12Z)
+165. INSERTION  (author: Claude, date: 2026-10-23T15:15:37Z)
+   Added: "157 decreasing grid cells (3.2%) are spread across the Mountain (51), West (51), Midwest/Great Lakes (37), Plains (9), South/Southeast (6), and Northeast (3)"
+
+166. DELETION  (author: Claude, date: 2026-10-23T15:15:37Z)
+   Removed: "159 decreasing grid cells (3.3%) are spread across the Mountain (51), West (50), Midwest/Great Lakes (36), Plains (12), South/Southeast (7), and Northeast (3)"
+
+167. INSERTION  (author: Claude, date: 2026-10-23T15:17:20Z)
+   Added: "(93"
+
+168. DELETION  (author: Claude, date: 2026-10-23T15:17:20Z)
+   Removed: "("
+
+169. DELETION  (author: Claude, date: 2026-10-23T15:15:37Z)
+   Removed: "98"
+
+170. INSERTION  (author: Claude, date: 2026-10-22T19:34:12Z)
    Added: " (a significant decrease in GPP)"
 
-150. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:52Z)
-   Old: "cells). MS captures this group with four sites (CP00 and RN01 at Santa Barbara, LowerJaramillo at Catalina-Jemez, and TECR from the National Ecological Observatory Network, NEON), all of which are classified as decreasing solely because of browning;"
-   New: "cells); the remaining 5 are cooling without a precipitation or GPP trend. MS captures this group with one site (TECR, from the National Ecological Observatory Network, NEON), classified as decreasing because of browning alone;"
+171. INSERTION  (author: Claude, date: 2026-10-23T15:15:37Z)
+   Added: "58 cells); the remaining 6 are cooling without a precipitation or GPP trend. MS captures this group with two sites (SM01 and SM04 at Santa Barbara), both classified as decreasing because of browning alone;"
 
-151. INSERTION  (author: Claude, date: 2026-10-22T21:04:01Z)
+172. DELETION  (author: Claude, date: 2026-10-23T15:15:37Z)
+   Removed: "52 cells). MS captures this group with four sites (CP00 and RN01 at Santa Barbara, LowerJaramillo at Catalina-Jemez, and TECR from the National Ecological Observatory Network, NEON), all of which are classified as decreasing solely because of browning;"
+
+173. INSERTION  (author: Claude, date: 2026-10-22T21:04:01Z)
    Added: "142"
 
-152. DELETION  (author: Claude, date: 2026-10-22T21:02:13Z)
+174. DELETION  (author: Claude, date: 2026-10-22T21:02:13Z)
    Removed: "166"
 
-153. INSERTION  (author: Claude, date: 2026-10-22T21:04:01Z)
-   Added: "135 of them; the remaining seven"
+175. INSERTION  (author: Claude, date: 2026-10-23T15:14:57Z)
+   Added: "141 of them; the remaining site (GFGL) has no vegetated MODIS pixel"
 
-154. DELETION  (author: Claude, date: 2026-10-22T21:02:13Z)
-   Removed: "158 of them; the remaining eight"
+176. DELETION  (author: Claude, date: 2026-10-23T15:14:57Z)
+   Removed: "158 of them; the remaining eight sites fall in urban land cover that the MODIS product reports as fill values"
 
-155. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
+177. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
    Old: "discharge"
    New: "streamflow"
 
-156. REPLACEMENT  (author: Claude, date: 2026-10-22T21:02:13Z)
+178. REPLACEMENT  (author: Claude, date: 2026-10-22T21:02:13Z)
    Old: "roughly in half, from 166 to 79 sites overall, and by nearly two-thirds among non-experimental sites, from 126 to 46; it also shortened the median record to 19 years, with a median end year of 2020."
    New: "from 142 to 83 sites overall (14 of them summer-only sites), and by about half among non-experimental sites, from 103 to 49; it also shortened the median record to 18 years, with a median end year of 2019."
 
-157. REPLACEMENT  (author: Claude, date: 2026-10-22T21:02:13Z)
+179. REPLACEMENT  (author: Claude, date: 2026-10-22T21:02:13Z)
    Old: "A further seven sites with usable streamflow trends (Luquillo and Krycklan) lie outside CONUS and PRISM coverage and are excluded from the climate comparison."
    New: "Sites outside CONUS (Luquillo and Krycklan) lie outside PRISM coverage and were excluded before trend analysis."
 
-158. REPLACEMENT  (author: Claude, date: 2026-10-22T21:02:13Z)
+180. REPLACEMENT  (author: Claude, date: 2026-10-22T21:02:13Z)
    Old: "0.51 (22% arid, AI > 1), whereas those without one have a median of 1.16 (64% arid; Wilcoxon rank-sum test, p = 1.8 × 10⁻⁵)"
    New: "0.52 (20% arid, AI > 1), whereas those without one have a median of 1.20 (70% arid; Wilcoxon rank-sum test, p = 2.1 × 10⁻⁴)"
 
-159. REPLACEMENT  (author: Claude, date: 2026-10-22T21:02:13Z)
+181. REPLACEMENT  (author: Claude, date: 2026-10-22T21:02:13Z)
    Old: "(23), Catalina-Jemez (13), Santa Barbara (13), and East River (12)"
    New: "(15), East River (12), Catalina-Jemez (10), and Santa Barbara (7)"
 
-160. INSERTION  (author: Claude, date: 2026-10-22T21:02:13Z)
+182. INSERTION  (author: Claude, date: 2026-10-22T21:02:13Z)
    Added: "; for summer-only sites (Table S2) the summer-window years used for their trend are shown in light purple"
 
-161. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
+183. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
    Old: "discharge."
    New: "streamflow (figure 3)."
 
-162. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:01Z)
+184. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:01Z)
    Old: "126 non-experimental MS sites, 46 had sufficient streamflow record for trend detection within the 2001–2023 window; only 6 of those (13%) showed significant streamflow trends (4 increasing, 2 decreasing) (figure 3). The four increasing sites (Allequash Creek, North Creek, Stevenson Creek, and Trout River) all belong to the Trout Lake domain in the Wisconsin lake district and should be read as one regional signal rather than four independent detections; none has a significant local trend in temperature, precipitation, or GPP (NWD group “—”). The two decreasing sites (AB00 and RS02) are both arid Santa Barbara streams that are warming without a significant change in precipitation or GPP (NWD group “H–”)."
    New: "103 non-experimental MS sites, 49 had sufficient streamflow record for trend detection within the 2001–2023 window (37 on the annual metric and 12 as summer-only sites); 10 of those (20%) showed significant streamflow trends (6 increasing, 4 decreasing) (figure 3). The six increasing sites fall in two clusters: three Trout Lake streams in the Wisconsin lake district (Allequash Creek, North Creek, and Stevenson Creek), which should be read as one regional signal rather than three independent detections, and three summer-only alpine gauges at Niwot Ridge, Colorado (GREEN5, MARTINELLI, and NAVAJO). None of the six has a significant local trend in temperature, precipitation, or GPP (NWD group “—”). The four decreasing sites (AB00, RS02, BC02, and HO00) are all arid Santa Barbara streams that are warming without a significant change in precipitation (NWD group “H–”; HO00 is also browning, group “H–B”); BC02 and HO00 are summer-only sites, so their trends are in dry-season flow."
 
-163. INSERTION  (author: Claude, date: 2026-10-22T21:13:20Z)
+185. INSERTION  (author: Claude, date: 2026-10-22T21:13:20Z)
    Added: " The Niwot trends are marginal, with lower confidence bounds just above zero."
 
-164. INSERTION  (author: Claude, date: 2026-10-22T21:04:56Z)
+186. INSERTION  (author: Claude, date: 2026-10-22T21:04:56Z)
    Added: "142"
 
-165. DELETION  (author: Claude, date: 2026-10-22T21:04:56Z)
+187. DELETION  (author: Claude, date: 2026-10-22T21:04:56Z)
    Removed: "166"
 
-166. INSERTION  (author: Claude, date: 2026-10-22T21:04:56Z)
+188. INSERTION  (author: Claude, date: 2026-10-22T21:04:56Z)
    Added: "50"
 
-167. DELETION  (author: Claude, date: 2026-10-22T21:04:56Z)
+189. DELETION  (author: Claude, date: 2026-10-22T21:04:56Z)
    Removed: "64"
 
-168. INSERTION  (author: Claude, date: 2026-10-22T21:04:56Z)
+190. INSERTION  (author: Claude, date: 2026-10-22T21:04:56Z)
    Added: "51"
 
-169. DELETION  (author: Claude, date: 2026-10-22T21:04:56Z)
+191. DELETION  (author: Claude, date: 2026-10-22T21:04:56Z)
    Removed: "60"
 
-170. INSERTION  (author: Claude, date: 2026-10-22T21:04:56Z)
+192. INSERTION  (author: Claude, date: 2026-10-22T21:04:56Z)
    Added: "27 non-significant, 6 increasing, 17 without a usable record"
 
-171. DELETION  (author: Claude, date: 2026-10-22T21:04:56Z)
+193. DELETION  (author: Claude, date: 2026-10-22T21:04:56Z)
    Removed: "30 non-significant, 4 increasing, 30 without a usable record"
 
-172. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
+194. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
    Old: " where GPP changed it"
    New: " GPP, where it changed,"
 
-173. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:56Z)
-   Old: "(22 greening, 0 browning, 37"
-   New: "(17 greening, 0 browning, 29"
+195. INSERTION  (author: Claude, date: 2026-10-23T15:15:37Z)
+   Added: "(18 greening, 0 browning, 31"
 
-174. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:56Z)
+196. DELETION  (author: Claude, date: 2026-10-23T15:15:37Z)
+   Removed: "(22 greening, 0 browning, 37"
+
+197. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:56Z)
    Old: "(10 non-significant, 2 decreasing, 48"
    New: "(12 non-significant, 4 decreasing, 35"
 
-175. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:57Z)
-   Old: "16 browning, 38"
-   New: "13 browning, 32"
+198. INSERTION  (author: Claude, date: 2026-10-23T15:15:37Z)
+   Added: "14 browning, 34"
 
-176. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:57Z)
-   Old: "158 sites with a usable MODIS record, GPP trends were mostly non-significant (29 greening, 17 browning, 112"
-   New: "135 sites with a usable MODIS record, GPP trends were mostly non-significant (24 greening, 14 browning, 97"
+199. DELETION  (author: Claude, date: 2026-10-23T15:15:37Z)
+   Removed: "16 browning, 38"
 
-177. INSERTION  (author: Claude, date: 2026-10-22T21:05:12Z)
+200. INSERTION  (author: Claude, date: 2026-10-23T15:15:37Z)
+   Added: "141 sites with a usable MODIS record, GPP trends were mostly non-significant (25 greening, 15 browning, 101"
+
+201. DELETION  (author: Claude, date: 2026-10-23T15:15:37Z)
+   Removed: "158 sites with a usable MODIS record, GPP trends were mostly non-significant (29 greening, 17 browning, 112"
+
+202. INSERTION  (author: Claude, date: 2026-10-22T21:05:12Z)
    Added: "squares mark summer-only sites (trend in June–August mean flow; Table S2), "
 
-178. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
+203. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
    Old: "only 1 of 166 sites"
    New: "no site"
 
-179. INSERTION  (author: Claude, date: 2026-10-22T21:04:01Z)
+204. INSERTION  (author: Claude, date: 2026-10-22T21:04:01Z)
    Added: " Ticks along the lower axis mark summer-only sites (Table S2)."
 
-180. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:01Z)
+205. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:01Z)
    Old: "Both significant decreasing trends at non-experimental sites were detected at arid, water-limited Santa Barbara sites (AI = 2.9 and 2.5) that are gaining heat without a significant change in incoming water. The four increasing trends were all at humid, energy-limited Trout Lake sites (AI = 0.66–0.67) with no significant local trend in temperature, precipitation, or GPP; because they share a single domain and lack"
    New: "All four significant decreasing trends at non-experimental sites were detected at arid, water-limited Santa Barbara sites (AI = 2.4–2.9) that are gaining heat without a significant change in incoming water. The six increasing trends were all at humid, energy-limited sites, three Trout Lake streams (AI = 0.66–0.67) and three Niwot Ridge summer-only gauges (AI = 0.72–0.86), none with a significant local trend in temperature, precipitation, or GPP; because each cluster shares a single domain and lacks"
 
-181. INSERTION  (author: Claude, date: 2026-10-22T19:33:24Z)
+206. INSERTION  (author: Claude, date: 2026-10-22T19:33:24Z)
    Added: "mean annual "
 
-182. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:01Z)
+207. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:01Z)
    Old: "46 non-experimental sites with sufficient record, 6 (13%) show a significant streamflow trend over 2001–2023 (4 increasing, 2 decreasing), even though 71 of the 166"
    New: "49 non-experimental sites with sufficient record, 10 (20%) show a significant streamflow trend over 2001–2023 (6 increasing, 4 decreasing), even though 65 of the 142"
 
-183. REPLACEMENT  (author: Claude, date: 2026-10-22T19:28:20Z)
+208. REPLACEMENT  (author: Claude, date: 2026-10-22T19:28:20Z)
    Old: "water balance?"
    New: "climate?"
 
-184. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:01Z)
+209. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:01Z)
    Old: "two decreasing sites (AB00 and RS02 at Santa Barbara) are arid (aridity index 2.9 and 2.5) and warming with no change in precipitation: adding heat to water-limited sites yields less streamflow. The four increasing sites (Trout Lake) are humid, energy-limited sites (aridity index 0.66–0.67). Those four streams, however, share one lake-district domain in northern Wisconsin and show no significant local temperature or precipitation trend, so they represent one response rather than four independent ones, and our climate drivers do not explain it."
    New: "four decreasing sites (all at Santa Barbara) are arid (aridity index 2.4–2.9) and warming with no change in precipitation: adding heat to water-limited sites yields less streamflow. The six increasing sites are humid, energy-limited sites (aridity index 0.66–0.86) in two clusters, a lake district in northern Wisconsin (Trout Lake) and the Colorado alpine (Niwot Ridge, summer-only records). Neither cluster shows a significant local temperature or precipitation trend, so they represent two regional responses rather than six independent ones, and our climate drivers do not explain them."
 
-185. INSERTION  (author: Claude, date: 2026-10-22T23:16:55Z)
-   Added: " Year to year, the full site pool shows why: streamflow anomalies follow precipitation almost one for one (elasticity 1.4), respond to temperature mainly where PET/P exceeds 1, and show no detectable response to GPP once precipitation and temperature are accounted for (figure 5)."
+210. INSERTION  (author: Claude, date: 2026-10-22T23:16:55Z)
+   Added: " Year to year, the full site pool shows why: streamflow anomalies follow precipitation almost one for one (elasticity 1.4), respond to temperature mainly where PET/P exceeds 1, and respond to GPP by at most a few percent once precipitation and temperature are accounted for (figure 5)."
 
-186. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:52Z)
+211. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:52Z)
    Old: "(71 of 166)"
    New: "(65 of 142)"
 
-187. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:52Z)
+212. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:52Z)
    Old: "166)"
    New: "142)"
 
-188. REPLACEMENT  (author: Claude, date: 2026-10-22T19:58:19Z)
-   Old: "(29 greening, 17 browning of 158)"
-   New: "(24 greening, 14 browning of 135)"
+213. INSERTION  (author: Claude, date: 2026-10-23T15:15:38Z)
+   Added: "(25 greening, 15 browning of 141)"
 
-189. REPLACEMENT  (author: Claude, date: 2026-10-22T19:28:20Z)
+214. DELETION  (author: Claude, date: 2026-10-23T15:15:37Z)
+   Removed: "(29 greening, 17 browning of 158)"
+
+215. REPLACEMENT  (author: Claude, date: 2026-10-22T19:28:20Z)
    Old: "current suite of watershed studies"
    New: "existing network of small-watershed study sites"
 
-190. INSERTION  (author: Claude, date: 2026-10-22T21:04:58Z)
-   Added: "47% increasing NWD, 42% no change, 10% variable, and 1% decreasing"
+216. INSERTION  (author: Claude, date: 2026-10-23T15:15:38Z)
+   Added: "48% increasing NWD, 41% no change, 10% variable, and 1% decreasing"
 
-191. DELETION  (author: Claude, date: 2026-10-22T21:04:57Z)
+217. DELETION  (author: Claude, date: 2026-10-23T15:15:38Z)
    Removed: "46% increasing NWD, 43% no change, 8% variable, and 2% decreasing"
 
-192. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
+218. INSERTION  (author: Claude, date: 2026-10-23T15:15:38Z)
+   Added: "41%"
+
+219. DELETION  (author: Claude, date: 2026-10-23T15:15:38Z)
+   Removed: "40%"
+
+220. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
    Old: "Discharge"
    New: "Streamflow"
 
-193. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:58Z)
+221. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:58Z)
    Old: "0.51 (22% arid) versus 1.16 (64% arid) for those without (Wilcoxon rank-sum p = 1.8 × 10⁻⁵)"
    New: "0.52 (20% arid) versus 1.20 (70% arid) for those without (Wilcoxon rank-sum p = 2.1 × 10⁻⁴)"
 
-194. INSERTION  (author: Claude, date: 2026-10-22T21:04:57Z)
+222. INSERTION  (author: Claude, date: 2026-10-22T21:04:57Z)
    Added: "65 of 142"
 
-195. DELETION  (author: Claude, date: 2026-10-22T21:04:57Z)
+223. DELETION  (author: Claude, date: 2026-10-22T21:04:57Z)
    Removed: "71 of 166"
 
-196. INSERTION  (author: Claude, date: 2026-10-22T21:04:57Z)
+224. INSERTION  (author: Claude, date: 2026-10-22T21:04:57Z)
    Added: "20% of non-experimental sites with sufficient record (10 of 49)"
 
-197. DELETION  (author: Claude, date: 2026-10-22T21:04:57Z)
+225. DELETION  (author: Claude, date: 2026-10-22T21:04:57Z)
    Removed: "13% of non-experimental sites with sufficient record (6 of 46)"
 
-198. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
+226. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
    Old: "discharge"
    New: "streamflow"
 
-199. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:57Z)
+227. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:57Z)
    Old: "166"
    New: "142"
 
-200. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:57Z)
-   Old: "(29 greening, 17 browning of 158)"
-   New: "(24 greening, 14 browning of 135)"
+228. INSERTION  (author: Claude, date: 2026-10-23T15:15:38Z)
+   Added: "(25 greening, 15 browning of 141)"
 
-201. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
+229. DELETION  (author: Claude, date: 2026-10-23T15:15:38Z)
+   Removed: "(29 greening, 17 browning of 158)"
+
+230. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
    Old: "discharge"
    New: "streamflow"
 
-202. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
+231. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
    Old: "126 sites to 46"
    New: "103 sites to 49"
 
-203. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
+232. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
    Old: "0.51 (10 of 46 arid) versus 1.16 (51 of 80 arid) for those without (Wilcoxon rank-sum p = 1.8 × 10⁻⁵)"
    New: "0.52 (10 of 49 arid) versus 1.20 (38 of 54 arid) for those without (Wilcoxon rank-sum p = 2.1 × 10⁻⁴)"
 
-204. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
+233. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
    Old: " Catalina-Jemez, Santa Barbara, and East River account for 61 of the 80)"
    New: " East River, Catalina-Jemez, and Santa Barbara account for 44 of the 54)"
 
-205. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
+234. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
    Old: "discharge"
    New: "streamflow"
 
-206. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
+235. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
    Old: "19 years with a median end year of 2020"
    New: "18 years with a median end year of 2019"
 
-207. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
+236. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
    Old: "166"
    New: "142"
 
-208. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
+237. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
    Old: "40 of the same 166"
    New: "36 of the same 142"
 
-209. INSERTION  (author: Claude, date: 2026-10-22T19:59:41Z)
+238. INSERTION  (author: Claude, date: 2026-10-23T15:16:45Z)
+   Added: "MODIS GPP has a 500 m pixel, so a single pixel covers 0.25 km²"
+
+239. DELETION  (author: Claude, date: 2026-10-23T15:16:45Z)
+   Removed: "MOD17A3HGF is an annual product at 500 m, so a single pixel covers 0.25 km²"
+
+240. INSERTION  (author: Claude, date: 2026-10-22T19:59:41Z)
    Added: "1.54 km² (interquartile range 0.41–6.24 km²): 24 of 142"
 
-210. DELETION  (author: Claude, date: 2026-10-22T19:57:52Z)
+241. DELETION  (author: Claude, date: 2026-10-22T19:57:52Z)
    Removed: "3.07 km² (interquartile range 0.5–11.98 km²): 24 of 166"
 
-211. INSERTION  (author: Claude, date: 2026-10-22T19:59:41Z)
-   Added: "Seven sites (four"
+242. INSERTION  (author: Claude, date: 2026-10-23T15:16:45Z)
+   Added: "One site (GFGL, in Baltimore) has no vegetated MODIS pixel and therefore no GPP trend."
 
-212. DELETION  (author: Claude, date: 2026-10-22T19:57:52Z)
-   Removed: "Eight sites (five"
+243. DELETION  (author: Claude, date: 2026-10-23T15:16:45Z)
+   Removed: "Eight sites (five in Baltimore, one at Santa Barbara, and two at Plum Island) return the MOD17 urban/barren fill value and were masked, so they have no GPP trend."
 
-213. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
-   Old: "discharge"
-   New: "streamflow"
+244. DELETION  (author: Claude, date: 2026-10-23T15:16:45Z)
+   Removed: " MODIS GPP is also a calendar-year total whereas discharge is aggregated by water year, so the two annual series are offset by a season."
 
-214. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:52Z)
+245. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:52Z)
    Old: "113 of the 166"
    New: "100 of the 142"
 
-215. INSERTION  (author: Claude, date: 2026-10-22T19:59:41Z)
+246. INSERTION  (author: Claude, date: 2026-10-22T19:59:41Z)
    Added: "31 of those 100 sites (31%)"
 
-216. DELETION  (author: Claude, date: 2026-10-22T19:57:52Z)
+247. DELETION  (author: Claude, date: 2026-10-22T19:57:52Z)
    Removed: "33 of those 113 sites (29%)"
 
-217. INSERTION  (author: Claude, date: 2026-10-22T19:59:41Z)
-   Added: "54 of the 73 remaining Landsat-increasing sites (74%)"
+248. INSERTION  (author: Claude, date: 2026-10-23T15:16:45Z)
+   Added: "59 of the 73 remaining Landsat-increasing sites (81%)"
 
-218. DELETION  (author: Claude, date: 2026-10-22T19:57:52Z)
+249. DELETION  (author: Claude, date: 2026-10-23T15:16:45Z)
    Removed: "64 of the 85 remaining Landsat-increasing sites (75%)"
 
-219. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:52Z)
-   Old: "29 of 158 sites are greening and 17"
-   New: "24 of 135 sites are greening and 14"
+250. INSERTION  (author: Claude, date: 2026-10-23T15:16:45Z)
+   Added: "25 of 141 sites are greening and 15"
 
-220. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:52Z)
-   Old: "22 sites and browning at none where the precipitation slope is positive, while browning occurs at 16"
-   New: "17 sites and browning at none where the precipitation slope is positive, while browning occurs at 13"
+251. DELETION  (author: Claude, date: 2026-10-23T15:16:45Z)
+   Removed: "29 of 158 sites are greening and 17"
 
-221. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
+252. INSERTION  (author: Claude, date: 2026-10-23T15:16:45Z)
+   Added: "18 sites and browning at none where the precipitation slope is positive, while browning occurs at 14"
+
+253. DELETION  (author: Claude, date: 2026-10-23T15:16:45Z)
+   Removed: "22 sites and browning at none where the precipitation slope is positive, while browning occurs at 16"
+
+254. REPLACEMENT  (author: Claude, date: 2026-10-22T19:27:43Z)
    Old: "discharge"
    New: "streamflow"
 
-222. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
+255. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
    Old: "two water-limited sites (aridity index 2.9 and 2.5) show decreased flows under warming, and the four energy-limited sites (aridity index 0.66–0.67)"
    New: "four water-limited sites (aridity index 2.4–2.9) show decreased flows under warming, and the six energy-limited sites (aridity index 0.66–0.86)"
 
-223. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
+256. REPLACEMENT  (author: Claude, date: 2026-10-22T21:04:02Z)
    Old: "Six non-experimental sites, four of them in one lake district"
    New: "Ten non-experimental sites, six of them in two domains"
 
-224. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:52Z)
+257. REPLACEMENT  (author: Claude, date: 2026-10-23T15:16:45Z)
+   Old: "(MOD17A3HGF, 500 m, annual)"
+   New: "(MOD17A2HGF, 500 m, summed to water years)"
+
+258. REPLACEMENT  (author: Claude, date: 2026-10-23T15:16:46Z)
+   Old: "113, r = 0.52, RMA slope = 0.75)"
+   New: "139, r = 0.63, RMA slope = 0.74)"
+
+259. REPLACEMENT  (author: Claude, date: 2026-10-23T15:16:46Z)
+   Old: "120, r = 0.58, RMA slope = 0.70)"
+   New: "140, r = 0.55, RMA slope = 0.65)"
+
+260. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:52Z)
    Old: "166"
    New: "142"
 
-225. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:53Z)
-   Old: "113 increasing / 40 non-significant / 10 decreasing for Landsat 1986–2022, 85 / 57 / 21 for Landsat 2001–2021, 16 / 123 / 19 for MODIS 2001–2021, and 29 / 112 / 17 for MODIS 2001–2023."
-   New: "100 increasing / 31 non-significant / 9 decreasing for Landsat 1986–2022, 73 / 52 / 15 for Landsat 2001–2021, 14 / 105 / 16 for MODIS 2001–2021, and 24 / 97 / 14 for MODIS 2001–2023 (sites with insufficient data: 2, 2, 7, and 7)."
+261. INSERTION  (author: Claude, date: 2026-10-23T15:17:20Z)
+   Added: "100 increasing / 31 non-significant / 9 decreasing for Landsat 1986–2022, 73 / 52 / 15 for Landsat 2001–2021, 14 / 112 / 15 for MODIS 2001–2021, and 25 / 101 / 15 for MODIS 2001–2023 (sites with insufficient data: 2, 2, 1, and 1)."
 
-226. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:53Z)
+262. DELETION  (author: Claude, date: 2026-10-23T15:17:20Z)
+   Removed: "113 increasing / 40 non-significant / 10 decreasing for Landsat 1986–2022, 85 / 57 / 21 for Landsat 2001–2021, 16 / 123 / 19 for MODIS 2001–2021, and 29 / 112 / 17 for MODIS 2001–2023."
+
+263. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:53Z)
    Old: "33 of the 113 Landsat-increasing sites (29%)"
    New: "31 of the 100 Landsat-increasing sites (31%)"
 
-227. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:53Z)
-   Old: "64 of the 85 Landsat-increasing sites (75%) non-significant, with 13 remaining increasing; of the 115 sites significant in either sensor over 2001–2021, 26 are significant in both, and 25"
-   New: "54 of the 73 Landsat-increasing sites (74%) non-significant, with 12 remaining increasing; of the 96 sites significant in either sensor over 2001–2021, 22 are significant in both, and 21"
+264. INSERTION  (author: Claude, date: 2026-10-23T15:17:20Z)
+   Added: "59 of the 73 Landsat-increasing sites (81%) non-significant, with 12 remaining increasing; of the 96 sites significant in either sensor over 2001–2021, 21 are significant in both, and 20"
 
-228. INSERTION  (author: Claude, date: 2026-10-22T20:00:17Z)
+265. DELETION  (author: Claude, date: 2026-10-23T15:17:20Z)
+   Removed: "64 of the 85 Landsat-increasing sites (75%) non-significant, with 13 remaining increasing; of the 115 sites significant in either sensor over 2001–2021, 26 are significant in both, and 25"
+
+266. REPLACEMENT  (author: Claude, date: 2026-10-23T15:17:20Z)
+   Old: "MOD17A3HGF (annual, 500 m) with the urban/barren/water fill value"
+   New: "the water-year sum of MOD17A2HGF (8-day, 500 m) with the urban/barren/water fill pixels"
+
+267. REPLACEMENT  (author: Claude, date: 2026-10-23T15:17:20Z)
+   Old: "54 of the 73 Landsat-greening sites on 2001–2021 (74%) become non-significant under MODIS on the same window, and 12 remain greening. Of the 96 sites significant in either sensor on 2001–2021, 22 are significant in both and 21 share the same sign."
+   New: "59 of the 73 Landsat-greening sites on 2001–2021 (81%) become non-significant under MODIS on the same window, and 12 remain greening. Of the 96 sites significant in either sensor on 2001–2021, 21 are significant in both and 20 share the same sign. MODIS GPP is the water-year sum of MOD17A2HGF."
+
+268. INSERTION  (author: Claude, date: 2026-10-22T20:00:17Z)
    Added: ""
 
-229. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
+269. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
    Old: "not, for practical purposes: the two climatologies are almost perfectly correlated across the 166 sites (r = 0.999), the median absolute shift is 0.014, and the largest shift is 0.44. One site, BLUE (NEON), moves from 0.96 to 1.01 and crosses from humid to arid."
    New: "not: the two climatologies are almost perfectly correlated across the 142 sites (r = 0.999), the median absolute shift is 0.011, and the largest shift is 0.31. No site changes class."
 
-230. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
+270. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
    Old: "166"
    New: "142"
 
-231. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
+271. REPLACEMENT  (author: Claude, date: 2026-10-22T19:57:51Z)
    Old: "The one site that changes class (BLUE) is labeled. n = 166, r = 0.999, median |shift| = 0.014, max |shift| = 0.44."
    New: "No site changes class. n = 142, r = 0.999, median |shift| = 0.011, max |shift| = 0.31."
 
-232. INSERTION  (author: Claude, date: 2026-10-22T21:05:29Z)
+272. INSERTION  (author: Claude, date: 2026-10-22T21:05:29Z)
    Added: ""
-
-233. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Site"
-
-234. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Domain"
-
-235. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Status"
-
-236. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Area (km²)"
-
-237. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Why the standard criterion was not met"
-
-238. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Summer-window years (n)"
-
-239. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Trend in summer flow"
-
-240. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "GREEN5"
-
-241. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Niwot Ridge"
-
-242. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-experimental"
-
-243. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "1.44"
-
-244. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Alpine gauge frozen in winter; observations June–September only (median 139 days per water year); no complete water year"
-
-245. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2006–2017 (11)"
-
-246. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "increasing"
-
-247. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "MARTINELLI"
-
-248. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Niwot Ridge"
-
-249. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-experimental"
-
-250. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "0.03"
-
-251. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Alpine gauge frozen in winter; observations June–September only (median 122 days); no complete water year"
-
-252. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2002–2021 (17)"
-
-253. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "increasing"
-
-254. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "NAVAJO"
-
-255. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Niwot Ridge"
-
-256. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-experimental"
-
-257. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "0.47"
-
-258. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Alpine gauge frozen in winter; observations June–September only (median 120 days); no complete water year"
-
-259. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2001–2014 (11)"
-
-260. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "increasing"
-
-261. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "SADDLE"
-
-262. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Niwot Ridge"
-
-263. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-experimental"
-
-264. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "0.15"
-
-265. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Alpine gauge frozen in winter; observations May–September only (median 132 days); no complete water year"
-
-266. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2001–2022 (20)"
-
-267. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-significant"
-
-268. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "GREEN4"
-
-269. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Niwot Ridge"
-
-270. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-experimental"
-
-271. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2.24"
-
-272. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Alpine gauge, seasonal through 2008 and year-round from 2009; 9 complete water years, one short of the minimum"
 
 273. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2001–2022 (20)"
+   Added: "Site"
 
 274. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-significant"
+   Added: "Domain"
 
 275. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "BC02"
+   Added: "Status"
 
 276. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Santa Barbara"
+   Added: "Area (km²)"
 
 277. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-experimental"
+   Added: "Why the standard criterion was not met"
 
 278. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "13.0"
+   Added: "Summer-window years (n)"
 
 279. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Seasonally dry coastal stream (zero flow on 8% of observed days) with record gaps; 8 complete water years"
+   Added: "Trend in summer flow"
 
 280. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2005–2018 (11)"
+   Added: "GREEN5"
 
 281. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "decreasing"
+   Added: "Niwot Ridge"
 
 282. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "HO00"
+   Added: "non-experimental"
 
 283. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Santa Barbara"
+   Added: "1.44"
 
 284. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-experimental"
+   Added: "Alpine gauge frozen in winter; observations June–September only (median 139 days per water year); no complete water year"
 
 285. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "11.1"
+   Added: "2006–2017 (11)"
 
 286. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Year-round coastal stream with record gaps; 9 complete water years"
+   Added: "increasing"
 
 287. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2002–2018 (13)"
+   Added: "MARTINELLI"
 
 288. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "decreasing"
+   Added: "Niwot Ridge"
 
 289. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "SP02"
+   Added: "non-experimental"
 
 290. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Santa Barbara"
-
-291. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-experimental"
-
-292. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "8.0"
-
-293. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Seasonally dry coastal stream (zero flow on 20% of observed days) with record gaps; 9 complete water years"
-
-294. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2009–2023 (10)"
-
-295. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-significant"
-
-296. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "HistoryGrove"
-
-297. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Catalina-Jemez"
-
-298. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-experimental"
-
-299. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "3.2"
-
-300. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Winter record gaps; 2 complete water years"
-
-301. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2008–2021 (10)"
-
-302. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-significant"
-
-303. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "UpperJaramillo"
-
-304. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Catalina-Jemez"
-
-305. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-experimental"
-
-306. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2.2"
-
-307. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Winter record gaps; 5 complete water years"
-
-308. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2009–2020 (10)"
-
-309. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-significant"
-
-310. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "cart_creek"
-
-311. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Plum Island"
-
-312. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-experimental"
-
-313. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "4.7"
-
-314. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Scattered record gaps; 6 complete water years"
-
-315. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2003–2015 (12)"
-
-316. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-significant"
-
-317. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "saw_mill_brook"
-
-318. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Plum Island"
-
-319. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-experimental"
-
-320. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "3.2"
-
-321. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Scattered record gaps, mostly in winter; 2 complete water years"
-
-322. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2002–2015 (11)"
-
-323. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-significant"
-
-324. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "P300"
-
-325. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "KREW"
-
-326. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "experimental"
-
-327. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "4.6"
-
-328. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Record limited to 2006–2015; 9 complete water years"
-
-329. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2006–2015 (10)"
-
-330. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-significant"
-
-331. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "WS78"
-
-332. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Santee"
-
-333. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "experimental"
-
-334. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "52.4"
-
-335. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "Intermittent coastal-plain stream (zero flow on 17% of observed days) with record gaps; 9 complete water years"
-
-336. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "2005–2017 (13)"
-
-337. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
-   Added: "non-significant"
-
-338. INSERTION  (author: Claude, date: 2026-10-22T23:16:55Z)
-   Added: ""
-
-339. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "Streamflow metric"
-
-340. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "P"
-
-341. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "T"
-
-342. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "GPP"
-
-343. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "GPP | P"
-
-344. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "GPP | P, T"
-
-345. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "Mean flow"
-
-346. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "0.79"
-
-347. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.16"
-
-348. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.08"
-
-349. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.12"
-
-350. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.08"
-
-351. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "Total flow"
-
-352. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "0.79"
-
-353. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.16"
-
-354. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.08"
-
-355. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.12"
-
-356. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.07"
-
-357. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "Median flow"
-
-358. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "0.57"
-
-359. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.07"
-
-360. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "0.00"
-
-361. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "0.02"
-
-362. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "0.01"
-
-363. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "High flow (95th percentile)"
-
-364. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "0.72"
-
-365. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.21"
-
-366. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.02"
-
-367. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.12"
-
-368. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.16"
-
-369. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "Low flow (5th percentile)"
-
-370. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "0.36"
-
-371. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.21"
-
-372. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.04"
-
-373. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.03"
-
-374. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.02"
-
-375. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "Flashiness (Richards-Baker index)"
-
-376. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "0.31"
-
-377. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "0.04"
-
-378. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
    Added: "0.03"
 
+291. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Alpine gauge frozen in winter; observations June–September only (median 122 days); no complete water year"
+
+292. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "2002–2021 (17)"
+
+293. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "increasing"
+
+294. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "NAVAJO"
+
+295. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Niwot Ridge"
+
+296. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-experimental"
+
+297. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "0.47"
+
+298. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Alpine gauge frozen in winter; observations June–September only (median 120 days); no complete water year"
+
+299. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "2001–2014 (11)"
+
+300. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "increasing"
+
+301. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "SADDLE"
+
+302. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Niwot Ridge"
+
+303. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-experimental"
+
+304. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "0.15"
+
+305. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Alpine gauge frozen in winter; observations May–September only (median 132 days); no complete water year"
+
+306. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "2001–2022 (20)"
+
+307. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-significant"
+
+308. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "GREEN4"
+
+309. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Niwot Ridge"
+
+310. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-experimental"
+
+311. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "2.24"
+
+312. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Alpine gauge, seasonal through 2008 and year-round from 2009; 9 complete water years, one short of the minimum"
+
+313. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "2001–2022 (20)"
+
+314. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-significant"
+
+315. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "BC02"
+
+316. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Santa Barbara"
+
+317. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-experimental"
+
+318. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "13.0"
+
+319. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Seasonally dry coastal stream (zero flow on 8% of observed days) with record gaps; 8 complete water years"
+
+320. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "2005–2018 (11)"
+
+321. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "decreasing"
+
+322. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "HO00"
+
+323. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Santa Barbara"
+
+324. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-experimental"
+
+325. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "11.1"
+
+326. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Year-round coastal stream with record gaps; 9 complete water years"
+
+327. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "2002–2018 (13)"
+
+328. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "decreasing"
+
+329. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "SP02"
+
+330. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Santa Barbara"
+
+331. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-experimental"
+
+332. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "8.0"
+
+333. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Seasonally dry coastal stream (zero flow on 20% of observed days) with record gaps; 9 complete water years"
+
+334. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "2009–2023 (10)"
+
+335. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-significant"
+
+336. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "HistoryGrove"
+
+337. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Catalina-Jemez"
+
+338. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-experimental"
+
+339. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "3.2"
+
+340. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Winter record gaps; 2 complete water years"
+
+341. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "2008–2021 (10)"
+
+342. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-significant"
+
+343. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "UpperJaramillo"
+
+344. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Catalina-Jemez"
+
+345. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-experimental"
+
+346. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "2.2"
+
+347. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Winter record gaps; 5 complete water years"
+
+348. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "2009–2020 (10)"
+
+349. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-significant"
+
+350. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "cart_creek"
+
+351. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Plum Island"
+
+352. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-experimental"
+
+353. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "4.7"
+
+354. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Scattered record gaps; 6 complete water years"
+
+355. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "2003–2015 (12)"
+
+356. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-significant"
+
+357. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "saw_mill_brook"
+
+358. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Plum Island"
+
+359. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-experimental"
+
+360. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "3.2"
+
+361. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Scattered record gaps, mostly in winter; 2 complete water years"
+
+362. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "2002–2015 (11)"
+
+363. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-significant"
+
+364. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "P300"
+
+365. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "KREW"
+
+366. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "experimental"
+
+367. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "4.6"
+
+368. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Record limited to 2006–2015; 9 complete water years"
+
+369. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "2006–2015 (10)"
+
+370. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-significant"
+
+371. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "WS78"
+
+372. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Santee"
+
+373. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "experimental"
+
+374. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "52.4"
+
+375. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "Intermittent coastal-plain stream (zero flow on 17% of observed days) with record gaps; 9 complete water years"
+
+376. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "2005–2017 (13)"
+
+377. INSERTION  (author: Claude, date: 2026-10-22T21:05:30Z)
+   Added: "non-significant"
+
+378. INSERTION  (author: Claude, date: 2026-10-22T23:16:55Z)
+   Added: ""
+
 379. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "0.01"
+   Added: "Streamflow metric"
 
 380. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.05"
+   Added: "P"
 
 381. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "Runoff ratio"
+   Added: "T"
 
 382. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "0.33"
+   Added: "GPP"
 
 383. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.28"
+   Added: "GPP | P"
 
 384. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.02"
+   Added: "GPP | P, T"
 
 385. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.14"
+   Added: "Mean flow"
 
 386. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.08"
+   Added: "0.79"
 
 387. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "Timing (day half of annual flow passed)"
-
-388. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "0.11"
-
-389. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.21"
-
-390. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
    Added: "−0.16"
 
+388. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.06"
+
+389. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.09"
+
+390. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.07"
+
 391. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
-   Added: "−0.13"
+   Added: "Total flow"
 
 392. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "0.79"
+
+393. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.16"
+
+394. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.09"
+
+395. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.17"
+
+396. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.09"
+
+397. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "Median flow"
+
+398. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "0.57"
+
+399. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
    Added: "−0.07"
+
+400. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.04"
+
+401. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.03"
+
+402. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.05"
+
+403. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "High flow (95th percentile)"
+
+404. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "0.72"
+
+405. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.21"
+
+406. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.03"
+
+407. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.09"
+
+408. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.11"
+
+409. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "Low flow (5th percentile)"
+
+410. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "0.36"
+
+411. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.21"
+
+412. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.06"
+
+413. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.11"
+
+414. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.06"
+
+415. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "Flashiness (Richards-Baker index)"
+
+416. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "0.31"
+
+417. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "0.04"
+
+418. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "0.09"
+
+419. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "0.03"
+
+420. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.02"
+
+421. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "Runoff ratio"
+
+422. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "0.33"
+
+423. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.28"
+
+424. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.06"
+
+425. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.15"
+
+426. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.08"
+
+427. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "Timing (day half of annual flow passed)"
+
+428. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "0.11"
+
+429. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.21"
+
+430. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.19"
+
+431. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.18"
+
+432. INSERTION  (author: Claude, date: 2026-10-22T23:16:56Z)
+   Added: "−0.03"

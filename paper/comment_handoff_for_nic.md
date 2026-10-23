@@ -9,11 +9,11 @@ Facts found on 2026-10-22 in the MacroSheds processing code (github.com/MacroSHE
 - MacroSheds `gpp_global_500m_median` is Earth Engine `MODIS/061/MOD17A3HGF`, band `Gpp`, 500 m, the median of pixels within each watershed boundary (an `_sd` companion is also produced). So the MacroSheds variable and our grid extraction are the same collection, 6.1.
 - MacroSheds `precip_median` and `temp_median` are Earth Engine `OREGONSTATE/PRISM/AN81d`, the daily 4 km PRISM product, as the median of grid cells within each watershed.
 - `pet(mm)` in the CAMELS-compliant Daymet forcings is Priestley–Taylor with the gridded alpha coefficient of Aschonitis et al. (2017), not a calibrated alpha as in CAMELS. Reference: Aschonitis, V. G., et al. (2017). High-resolution global grids of revised Priestley-Taylor and Hargreaves-Samani coefficients for assessing ASCE-standardized reference crop evapotranspiration and solar radiation. Earth System Science Data, 9(2), 615–638. https://doi.org/10.5194/essd-9-615-2017 (add to the references doc if you cite it).
-- Not found anywhere in the repo: how our own grid PRISM files (`data_raw/grid_csvs/ppt.csv`, `temperature.csv`: one value per point and calendar year, 1981–2024) were extracted. There is no script for them in this repository, so the dataset (AN81m monthly summed to annual, or AN81d) has to come from whoever ran the Earth Engine export, probably Heili.
+- Grid PRISM files (`data_raw/grid_csvs/ppt.csv`, `temperature.csv`): one value per point and water year, 1981–2024 (Nic, 2026-10-23). There is no extraction script in this repository; the PRISM dataset id used in the Earth Engine export is still worth noting in the Methods if you have it.
 
 ---
 
-## Comment #16 — superseded (17:55): GPP is being recomputed on water years from the 8-day MOD17A2HGF product (`src/modis_gpp_wateryear_gee.py`); the text below is the earlier plan and no longer applies. The reply will be written once the rerun is in.
+## Comment #16 — done (2026-10-23 09:30): GPP is now the October–September sum of the 8-day MOD17A2HGF product for every watershed and grid point; the Methods describe that method, every GPP-dependent number in the draft comes from the rerun, and a reply is on the comment. Nothing left for you here. The text below is the earlier plan, kept for the record.
 
 ## Comment #16 (id 1359991307) — Methods, Data sourcing, paragraph beginning "Two properties of the MODIS record"
 
